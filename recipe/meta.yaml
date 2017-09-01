@@ -36,7 +36,7 @@ requirements:
     - libgit2
     - arpack
     - suitesparse
-    - pcre2
+    - pcre2 10.21
     
   run:
     - zlib 1.2.8
@@ -50,7 +50,7 @@ requirements:
     - arpack
     - suitesparse
     - curl
-    - pcre2
+    - pcre2 10.21
 
 test:
   commands:
