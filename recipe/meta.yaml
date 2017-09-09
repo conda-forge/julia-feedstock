@@ -13,14 +13,15 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [osx or win]
-  number: 1
+  skip: True  # [win]
+  number: 2
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
     - gcc  # [linux]
+    - llvm  # [osx]
     - toolchain
     - patchelf
     - cmake
