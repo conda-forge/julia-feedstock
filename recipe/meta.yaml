@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [osx or win]
+  skip: True  # [win]
   number: 0
   features:
     - blas_{{ variant }}
@@ -21,8 +21,9 @@ build:
 requirements:
   build:
     - gcc  # [linux]
+    - llvm  # [osx]
     - toolchain
-    - patchelf
+    - patchelf  # [linux]
     - cmake
     - zlib 1.2.8
     - python 2.7.*
