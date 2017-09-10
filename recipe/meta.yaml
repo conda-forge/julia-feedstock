@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 1
+  number: 0
   features:
     - blas_{{ variant }}
 
@@ -23,7 +23,7 @@ requirements:
     - gcc  # [linux]
     - llvm  # [osx]
     - toolchain
-    - patchelf
+    - patchelf  # [linux]
     - cmake
     - zlib 1.2.8
     - python 2.7.*
