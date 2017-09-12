@@ -6,7 +6,3 @@ if !("JULIA_PKGDIR" in keys(ENV))
     Pkg.__init__()
     pop!(Base.LOAD_CACHE_PATH)
 end
-
-if !("JULIA_HISTORY" in keys(ENV))
-    ENV["JULIA_HISTORY"] = joinpath(JULIA_PREFIX, ".julia_history")
-end
