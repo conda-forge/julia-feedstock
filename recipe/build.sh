@@ -14,4 +14,4 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  install
 
 # Configure juliarc to use conda environment
-cp -f "${RECIPE_DIR}/juliarc.jl" "${PREFIX}/etc/julia/juliarc.jl"
+"${PREFIX}/etc/julia/juliarc.jl" << "${RECIPE_DIR}/juliarc.jl"
