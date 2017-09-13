@@ -1,5 +1,5 @@
 {% set name = "julia" %}
-{% set version = "0.5.2" %}
+{% set version = "0.6.0" %}
 {% set sha256 = "efa3303d63e39bf3ea06e23ef68807cca0095c7e0507bdf26eae1d5dee7868c7" %}
 {% set variant = "openblas" %}
 
