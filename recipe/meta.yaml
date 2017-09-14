@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 1
+  number: 2
   features:
     - blas_{{ variant }}
 
@@ -36,6 +36,7 @@ requirements:
     - libgit2
     - arpack
     - suitesparse
+    - pcre2 10.21
     
   run:
     - zlib 1.2.8
@@ -49,6 +50,7 @@ requirements:
     - arpack
     - suitesparse
     - curl
+    - pcre2 10.21
 
 test:
   commands:
