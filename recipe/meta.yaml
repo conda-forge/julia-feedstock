@@ -17,6 +17,9 @@ build:
   number: 2
   features:
     - blas_{{ variant }}
+  ignore_prefix_files:
+    - bin/julia
+    - bin/julia-debug
 
 requirements:
   build:
