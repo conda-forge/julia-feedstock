@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 2
+  number: 3
   features:
     - blas_{{ variant }}
   ignore_prefix_files:
