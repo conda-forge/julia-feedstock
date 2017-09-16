@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 1
+  number: 3
   features:
     - blas_{{ variant }}
 
@@ -28,6 +28,7 @@ requirements:
     - python 2.7.*
     - perl 5.20.*
     - openblas 0.2.19|0.2.19.*
+    - openlibm 0.5.4
     - blas 1.1 {{ variant }}
     - fftw
     - gmp 6.1.*
@@ -36,6 +37,7 @@ requirements:
     - libgit2
     - arpack
     - suitesparse
+    - pcre2 10.21
     
   run:
     - zlib 1.2.8
@@ -45,10 +47,12 @@ requirements:
     - gmp 6.1.*
     - mpfr 3.1.*
     - openblas 0.2.19|0.2.19.*
+    - openlibm 0.5.4
     - blas 1.1 {{ variant }}
     - arpack
     - suitesparse
     - curl
+    - pcre2 10.21
 
 test:
   commands:
