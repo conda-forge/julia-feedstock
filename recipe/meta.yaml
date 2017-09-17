@@ -29,6 +29,7 @@ requirements:
     - perl 5.20.*
     - openblas 0.2.19|0.2.19.*
     - openlibm 0.5.4
+    - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
     - fftw
     - gmp 6.1.*
@@ -48,6 +49,7 @@ requirements:
     - mpfr 3.1.*
     - openblas 0.2.19|0.2.19.*
     - openlibm 0.5.4
+    - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
     - arpack
     - suitesparse
