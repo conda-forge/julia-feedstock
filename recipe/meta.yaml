@@ -20,7 +20,6 @@ build:
 
 requirements:
   build:
-    - gcc  # [linux]
     - toolchain
     - patchelf
     - cmake
@@ -42,7 +41,6 @@ requirements:
     
   run:
     - zlib 1.2.8
-    - libgcc  # [linux]
     - libgit2
     - fftw
     - gmp 6.1.*
