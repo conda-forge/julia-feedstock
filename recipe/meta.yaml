@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 5
+  number: 6
   features:
     - blas_{{ variant }}
 
