@@ -5,6 +5,12 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 export LIBRARY_PATH=${PREFIX}/lib
 export CMAKE_PREFIX_PATH=${PREFIX}
 
+# Hack to suppress building docs
+cat > doc/Makefile << EOF
+html :	
+	mkdir -p _build/html
+EOF
+
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  LIBBLAS=-lopenblas LIBBLASNAME=libopenblas${SHLIB_EXT} LIBLAPACK=-lopenblas LIBLAPACKNAME=libopenblas${SHLIB_EXT} \
  USE_SYSTEM_LIBGIT2=1 USE_LLVM_SHLIB=0 USE_SYSTEM_CURL=1 USE_SYSTEM_OPENLIBM=1 USE_SYSTEM_MPFR=1 \
