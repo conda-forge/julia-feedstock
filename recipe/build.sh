@@ -4,7 +4,6 @@ export C_INCLUDE_PATH=${PREFIX}/include
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export LIBRARY_PATH=${PREFIX}/lib
 export CMAKE_PREFIX_PATH=${PREFIX}
-export MACOSX_DEPLOYMENT_TARGET=10.9
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  LIBBLAS=-lopenblas LIBBLASNAME=libopenblas.so LIBLAPACK=-lopenblas LIBLAPACKNAME=libopenblas.so \
