@@ -14,14 +14,14 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 200
+  number: 201
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
-    - toolchain
-    - patchelf  # [linux]
+    - ccache-toolchain
+    - patchelf          # [linux]
     - cmake
     - zlib 1.2.8
     - python 2.7.*
