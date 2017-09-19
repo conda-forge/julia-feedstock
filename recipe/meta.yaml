@@ -20,7 +20,7 @@ build:
 
 requirements:
   build:
-    - toolchain
+    - ccache-toolchain
     - patchelf  # [linux]
     - cmake
     - zlib 1.2.8
