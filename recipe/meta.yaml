@@ -56,7 +56,8 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'
+    - julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'  # [linux]
+    - julia -e 'Base.runtests("core backtrace");'                           # [osx]
   requires:
     - perl
 
