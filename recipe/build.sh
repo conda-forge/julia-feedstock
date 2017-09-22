@@ -5,6 +5,18 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 export LIBRARY_PATH=${PREFIX}/lib
 export CMAKE_PREFIX_PATH=${PREFIX}
 
+
+# Set extra make flags
+export EXTRA_MAKEFLAGS=""
+if [ "$(uname)" == "Darwin" ]
+then
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=1"
+elif [ "$(uname)" == "Linux" ]
+then
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
+fi
+
+
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
 html :	
@@ -17,6 +29,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_PATCHELF=1 USE_SYSTEM_LIBSSH2=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_BLAS=1 USE_SYSTEM_PCRE=1 \
  USE_SYSTEM_FFTW=1 USE_SYSTEM_GMP=1 USE_SYSTEM_LAPACK=1 USE_SYSTEM_ARPACK=1 USE_SYSTEM_SUITESPARSE=1 \
  USE_SYSTEM_OPENSPECFUN=1 \
+ ${EXTRA_MAKEFLAGS} \
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  install
 
