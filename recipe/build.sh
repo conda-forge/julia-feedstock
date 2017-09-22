@@ -16,6 +16,12 @@ then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
 fi
 
+# Remove the dynamic library for good measure.
+# Julia normally links to this statically.
+if [ "$(uname)" == "Darwin" ]
+then
+    rm -f "${PREFIX}/lib/libosxunwind.dylib"
+fi
 
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
