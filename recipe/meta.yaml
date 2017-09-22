@@ -26,6 +26,7 @@ requirements:
     - zlib 1.2.8
     - python 2.7.*
     - perl 5.20.*
+    - libosxunwind 0.0.3  # [osx]
     - openblas 0.2.19|0.2.19.*
     - openlibm 0.5.4
     - openspecfun 0.5.3
@@ -44,6 +45,7 @@ requirements:
     - libgit2
     - fftw
     - gmp 6.1.*
+    - libosxunwind 0.0.3  # [osx]
     - mpfr 3.1.*
     - openblas 0.2.19|0.2.19.*
     - openlibm 0.5.4
