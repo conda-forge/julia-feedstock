@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [osx or win]
+  skip: True  # [win]
   number: 200
   features:
     - blas_{{ variant }}
@@ -71,3 +71,4 @@ extra:
     - bgruening
     - dfornika
     - acaprez
+    - abhi18av
