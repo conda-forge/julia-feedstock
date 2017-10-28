@@ -1,6 +1,6 @@
 {% set name = "julia" %}
 {% set version = "0.6.1" %}
-{% set sha256 = "e68adfa85df529f8ad092a9bf85d2350101c658fe455c5ebf2b6d119359e10d9" %}
+{% set sha256 = "d4910837c0f7b43e18ebe62c6b99edcfa20611e0a98a95777065a4a3112544ef" %}
 {% set variant = "openblas" %}
 
 package:
