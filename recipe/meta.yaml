@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "0.6.0" %}
-{% set sha256 = "2b3f1299333c8e2c6949f093e6168cc4c71c8cdf75e9ed7eccb84752d76dd8fb" %}
+{% set version = "0.6.1" %}
+{% set sha256 = "d4910837c0f7b43e18ebe62c6b99edcfa20611e0a98a95777065a4a3112544ef" %}
 {% set variant = "openblas" %}
 
 package:
@@ -37,7 +37,7 @@ requirements:
     - libgit2
     - arpack
     - suitesparse
-    - pcre2 10.21
+    - pcre2 10.23
     
   run:
     - zlib 1.2.8
@@ -52,7 +52,7 @@ requirements:
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.21
+    - pcre2 10.23
 
 test:
   commands:
