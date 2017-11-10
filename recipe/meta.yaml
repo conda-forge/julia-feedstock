@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 200
+  number: 201
   features:
     - blas_{{ variant }}
 
@@ -23,7 +23,7 @@ requirements:
     - toolchain
     - patchelf  # [linux]
     - cmake
-    - zlib 1.2.8
+    - zlib 1.2.11
     - python 2.7.*
     - perl 5.20.*
     - openblas 0.2.19|0.2.19.*
@@ -33,14 +33,14 @@ requirements:
     - fftw
     - gmp 6.1.*
     - mpfr 3.1.*
-    - curl
+    - curl >=7.44.0,<8
     - libgit2
     - arpack
     - suitesparse
     - pcre2 10.23
-    
+
   run:
-    - zlib 1.2.8
+    - zlib 1.2.11
     - libgit2
     - fftw
     - gmp 6.1.*
@@ -51,7 +51,7 @@ requirements:
     - blas 1.1 {{ variant }}
     - arpack
     - suitesparse
-    - curl
+    - curl >=7.44.0,<8
     - pcre2 10.23
 
 test:
