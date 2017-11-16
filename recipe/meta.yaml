@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 201
+  number: 202
   features:
     - blas_{{ variant }}
 
@@ -26,7 +26,7 @@ requirements:
     - zlib 1.2.11
     - python 2.7.*
     - perl 5.20.*
-    - openblas 0.2.19|0.2.19.*
+    - openblas 0.2.20|0.2.20.*
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
@@ -45,7 +45,7 @@ requirements:
     - fftw
     - gmp 6.1.*
     - mpfr 3.1.*
-    - openblas 0.2.19|0.2.19.*
+    - openblas 0.2.20|0.2.20.*
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
