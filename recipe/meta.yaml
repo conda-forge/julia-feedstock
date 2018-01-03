@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "0.6.1" %}
-{% set sha256 = "d4910837c0f7b43e18ebe62c6b99edcfa20611e0a98a95777065a4a3112544ef" %}
+{% set version = "0.6.2" %}
+{% set sha256 = "da6bb732c16c4514387d78dabbde725070a91634e63b665e4c22ab3cfe20f5ec" %}
 {% set variant = "openblas" %}
 
 package:
@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 202
+  number: 200
   features:
     - blas_{{ variant }}
 
@@ -36,8 +36,8 @@ requirements:
     - curl >=7.44.0,<8
     - libgit2
     - arpack
-    - suitesparse
-    - pcre2 10.23
+    - suitesparse 4.4.*
+    - pcre2 10.30
 
   run:
     - zlib 1.2.11
@@ -52,7 +52,7 @@ requirements:
     - arpack
     - suitesparse
     - curl >=7.44.0,<8
-    - pcre2 10.23
+    - pcre2 10.30
 
 test:
   commands:
