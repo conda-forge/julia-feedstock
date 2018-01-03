@@ -36,7 +36,7 @@ requirements:
     - curl >=7.44.0,<8
     - libgit2
     - arpack
-    - suitesparse 4.4.*
+    - suitesparse
     - pcre2 10.30
 
   run:
