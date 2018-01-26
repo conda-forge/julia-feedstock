@@ -56,7 +56,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'
+    - OPENBLAS_NUM_THREADS=1 julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'
   requires:
     - perl
 
