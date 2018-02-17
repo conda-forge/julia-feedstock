@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 202
+  number: 203
   features:
     - blas_{{ variant }}
 
@@ -34,14 +34,14 @@ requirements:
     - gmp 6.1.*
     - mpfr 3.1.*
     - curl >=7.44.0,<8
-    - libgit2
-    - arpack
+    - libgit2 0.25.*
+    - arpack  3.5.*
     - suitesparse
     - pcre2 10.23
 
   run:
     - zlib 1.2.11
-    - libgit2
+    - libgit2 0.25.*
     - fftw
     - gmp 6.1.*
     - mpfr 3.1.*
@@ -49,7 +49,7 @@ requirements:
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
-    - arpack
+    - arpack 3.5.*
     - suitesparse
     - curl >=7.44.0,<8
     - pcre2 10.23
