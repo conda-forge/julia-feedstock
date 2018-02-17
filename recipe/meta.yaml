@@ -35,7 +35,7 @@ requirements:
     - mpfr 3.1.*
     - curl
     - libgit2 0.25.*
-    - arpack
+    - arpack  3.5.*
     - suitesparse
     - pcre2 10.23
     
@@ -49,7 +49,7 @@ requirements:
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
-    - arpack
+    - arpack 3.5.*
     - suitesparse
     - curl
     - pcre2 10.23
