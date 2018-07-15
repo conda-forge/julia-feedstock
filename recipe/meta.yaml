@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 202
+  number: 203
   features:
     - blas_{{ variant }}
 
@@ -59,7 +59,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'
+    - julia -e 'Base.runtests("pkg libgit2-online")'
   requires:
     - perl
 
