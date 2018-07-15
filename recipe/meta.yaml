@@ -14,49 +14,52 @@ source:
 
 build:
   skip: True  # [osx or win]
-  number: 202
+  number: 203
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
-    - toolchain
-    - patchelf  # [linux]
     - cmake
-    - zlib 1.2.11
+    - perl
     - python 2.7.*
-    - perl 5.20.*
-    - openblas 0.2.20|0.2.20.*
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - patchelf  # [linux]
+    - zlib
+    - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
     - fftw
-    - gmp 6.1.*
-    - mpfr 3.1.*
-    - curl >=7.44.0,<8
+    - gmp
+    - mpfr
+    - curl
     - libgit2
     - arpack
     - suitesparse
     - pcre2 10.23
 
   run:
-    - zlib 1.2.11
+    - zlib
     - libgit2
     - fftw
-    - gmp 6.1.*
-    - mpfr 3.1.*
-    - openblas 0.2.20|0.2.20.*
+    - gmp
+    - mpfr
+    - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
     - arpack
     - suitesparse
-    - curl >=7.44.0,<8
+    - curl
     - pcre2 10.23
 
 test:
   commands:
-    - julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'
+    - julia -e 'Base.runtests("pkg libgit2-online")'
   requires:
     - perl
 
