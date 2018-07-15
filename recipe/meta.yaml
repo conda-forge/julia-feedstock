@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "0.5.2" %}
-{% set sha256 = "efa3303d63e39bf3ea06e23ef68807cca0095c7e0507bdf26eae1d5dee7868c7" %}
+{% set version = "0.6.1" %}
+{% set sha256 = "d4910837c0f7b43e18ebe62c6b99edcfa20611e0a98a95777065a4a3112544ef" %}
 {% set variant = "openblas" %}
 
 package:
@@ -14,51 +14,53 @@ source:
 
 build:
   skip: True  # [win]
-  number: 200
+  number: 203
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
-    - toolchain
-    - patchelf  # [linux]
     - cmake
-    - zlib 1.2.8
+    - perl
     - python 2.7.*
-    - perl 5.20.*
-    - libosxunwind 0.0.3  # [osx]
-    - openblas 0.2.19|0.2.19.*
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - patchelf  # [linux]
+    - zlib
+    - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
     - fftw
-    - gmp 6.1.*
-    - mpfr 3.1.*
+    - gmp
+    - mpfr
     - curl
     - libgit2
     - arpack
     - suitesparse
-    - pcre2 10.21
-    
+    - pcre2 10.23
+
   run:
-    - zlib 1.2.8
+    - zlib
     - libgit2
     - fftw
-    - gmp 6.1.*
-    - mpfr 3.1.*
-    - openblas 0.2.19|0.2.19.*
+    - gmp
+    - mpfr
+    - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - blas 1.1 {{ variant }}
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.21
+    - pcre2 10.23
 
 test:
   commands:
-    - julia -e 'Base.runtests("all"); Base.runtests("pkg libgit2-online")'  # [linux]
-    - julia -e 'Base.runtests("core backtrace");'                           # [osx]
+    - julia -e 'Base.runtests("pkg libgit2-online")'  # [linux]
+    - julia -e 'Base.runtests("core backtrace");'     # [osx]
   requires:
     - perl
 

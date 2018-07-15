@@ -1,7 +1,19 @@
 arpack:
 - '3.5'
+c_compiler:
+- toolchain_c
 curl:
 - '7.59'
+cxx_compiler:
+- toolchain_cxx
+fortran_compiler:
+- toolchain_fort
+gmp:
+- '6'
+mpfr:
+- '4'
+openblas:
+- 0.2.20
 perl:
 - '5.26'
 pin_run_as_build:
@@ -9,5 +21,15 @@ pin_run_as_build:
     max_pin: x.x
   curl:
     max_pin: x
+  gmp:
+    max_pin: x
+  mpfr:
+    max_pin: x
+  openblas:
+    max_pin: x.x.x
   perl:
     max_pin: x.x
+  zlib:
+    max_pin: x.x
+zlib:
+- '1.2'
