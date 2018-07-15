@@ -29,12 +29,7 @@ pin_run_as_build:
     max_pin: x.x.x
   perl:
     max_pin: x.x
-  python:
-    min_pin: x.x
-    max_pin: x.x
   zlib:
     max_pin: x.x
-python:
-- '2.7'
 zlib:
 - '1.2'
