@@ -21,14 +21,14 @@ build:
 requirements:
   build:
     - cmake
-    - perl 5.20.*
+    - perl
+    - python 2.7.*
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - patchelf  # [linux]
     - zlib
-    - python
     - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
