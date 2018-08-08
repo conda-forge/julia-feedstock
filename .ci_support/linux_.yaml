@@ -28,7 +28,7 @@ pin_run_as_build:
   openblas:
     max_pin: x.x.x
   perl:
-    max_pin: x.x
+    max_pin: x.x.x
   zlib:
     max_pin: x.x
 zlib:
