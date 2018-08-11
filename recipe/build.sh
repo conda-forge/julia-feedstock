@@ -11,9 +11,9 @@ html :
 	mkdir -p _build/html
 EOF
 
+# Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
 
-# Generate phony versioning info
 NO_GIT=1 make -C base version_git.jl.phony
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
