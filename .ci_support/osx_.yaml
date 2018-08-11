@@ -12,6 +12,8 @@ fortran_compiler:
 - toolchain_fort
 gmp:
 - '6'
+libunwind:
+- '1.2'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
@@ -29,6 +31,8 @@ pin_run_as_build:
     max_pin: x
   gmp:
     max_pin: x
+  libunwind:
+    max_pin: x.x
   mpfr:
     max_pin: x
   openblas:

@@ -14,8 +14,7 @@ Summary: A high-performance dynamic programming language for data science
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/julia-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/julia-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/julia-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/julia-feedstock)
+[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/julia-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/julia-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
