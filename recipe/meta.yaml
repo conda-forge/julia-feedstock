@@ -38,7 +38,6 @@ requirements:
     - mpfr
     - curl
     - libgit2
-    - libunwind     # [linux]
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
@@ -47,7 +46,6 @@ requirements:
   run:
     - zlib
     - libgit2
-    - libunwind     # [linux]
     - libosxunwind  # [osx]
     - fftw
     - gmp

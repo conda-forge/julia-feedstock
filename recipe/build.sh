@@ -16,6 +16,17 @@ export CMAKE_GENERATOR="make"
 
 NO_GIT=1 make -C base version_git.jl.phony
 
+export EXTRA_MAKEFLAGS="" 
+if [ "$(uname)" == "Darwin" ]
+then
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=1"
+elif [ "$(uname)" == "Linux" ]
+then
+	# On linux the released version of libunwind has issues building julia
+	# See: https://github.com/JuliaLang/julia/issues/23615
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
+fi
+
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  LIBBLAS=-lopenblas LIBBLASNAME=libopenblas LIBLAPACK=-lopenblas LIBLAPACKNAME=libopenblas \
  USE_LLVM_SHLIB=0 \
@@ -27,7 +38,6 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_LAPACK=1 \
  USE_SYSTEM_LIBGIT2=1 \
  USE_SYSTEM_LIBSSH2=1 \
- USE_SYSTEM_LIBUNWIND=1 \
  USE_SYSTEM_LLVM=0 \
  USE_SYSTEM_MPFR=1 \
  USE_SYSTEM_OPENLIBM=1 \
@@ -35,6 +45,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_PATCHELF=1 \
  USE_SYSTEM_PCRE=1 \
  USE_SYSTEM_SUITESPARSE=1 \
+ ${EXTRA_MAKEFLAGS}	\
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  install
 
