@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [osx or win]
+  skip: True  # [win]
   number: 203
   features:
     - blas_{{ variant }}
@@ -59,7 +59,8 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("pkg libgit2-online")'
+    - julia -e 'Base.runtests("pkg libgit2-online")'  # [linux]
+    - julia -e 'Base.runtests("core backtrace");'     # [osx]
   requires:
     - perl
 
