@@ -61,7 +61,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("pkg libgit2-online")'
+    - julia -e 'Base.runtests("LibGit2/online Pkg/pkg")'
   requires:
     - perl
 
