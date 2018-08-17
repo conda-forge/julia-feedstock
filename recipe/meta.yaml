@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "0.6.1" %}
-{% set sha256 = "d4910837c0f7b43e18ebe62c6b99edcfa20611e0a98a95777065a4a3112544ef" %}
+{% set version = "1.0.0" %}
+{% set sha256 = "aef997353def723862d76c2a4576bb330501bff20f87d44ad7eca3dca1890037" %}
 {% set variant = "openblas" %}
 
 package:
@@ -13,8 +13,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [osx or win]
-  number: 203
+  skip: True  # [win]
+  number: 0
   features:
     - blas_{{ variant }}
 
@@ -32,12 +32,13 @@ requirements:
     - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
-    - blas 1.1 {{ variant }}
+    - blas * {{ variant }}
     - fftw
     - gmp
     - mpfr
     - curl
     - libgit2
+    - libosxunwind  # [osx]
     - arpack
     - suitesparse
     - pcre2 10.23
@@ -45,13 +46,14 @@ requirements:
   run:
     - zlib
     - libgit2
+    - libosxunwind  # [osx]
     - fftw
     - gmp
     - mpfr
     - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
-    - blas 1.1 {{ variant }}
+    - blas * {{ variant }}
     - arpack
     - suitesparse
     - curl
@@ -59,7 +61,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("pkg libgit2-online")'
+    - julia -e 'Base.runtests("LibGit2/online Pkg/pkg")'
   requires:
     - perl
 
@@ -74,3 +76,4 @@ extra:
     - bgruening
     - dfornika
     - acaprez
+    - mariusvniekerk

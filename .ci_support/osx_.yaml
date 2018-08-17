@@ -1,3 +1,5 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 arpack:
 - '3.5'
 c_compiler:
@@ -12,6 +14,10 @@ gmp:
 - '6'
 libunwind:
 - '1.2'
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
 mpfr:
 - '4'
 openblas:
