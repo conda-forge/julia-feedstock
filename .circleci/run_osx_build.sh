@@ -16,15 +16,20 @@ bash $MINICONDA_FILE -b
 
 echo "Configuring conda."
 source ~/miniconda3/bin/activate root
-conda config --remove channels defaults
-conda config --add channels defaults
-conda config --add channels conda-forge
-conda config --set show_channel_urls true
-conda install --yes --quiet conda-forge-ci-setup=1
+
+conda install --yes --quiet conda-forge::conda-forge-ci-setup=2
+mangle_compiler ./ ./recipe .ci_support/${CONFIG}.yaml
+setup_conda_rc ./ ./recipe ./.ci_support/${CONFIG}.yaml
+
+
 source run_conda_forge_build_setup
 
 
-set -e
-conda build ./recipe -m ./.ci_support/${CONFIG}.yaml
 
-upload_or_check_non_existence ./recipe conda-forge --channel=main -m ./.ci_support/${CONFIG}.yaml
+set -e
+
+make_build_number ./ ./recipe ./.ci_support/${CONFIG}.yaml
+
+conda build ./recipe -m ./.ci_support/${CONFIG}.yaml --clobber-file ./.ci_support/clobber_${CONFIG}.yaml
+
+upload_package ./ ./recipe ./.ci_support/${CONFIG}.yaml
