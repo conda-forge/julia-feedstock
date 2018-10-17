@@ -2,16 +2,20 @@ arpack:
 - '3.5'
 c_compiler:
 - toolchain_c
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
 curl:
 - '7.59'
 cxx_compiler:
 - toolchain_cxx
+docker_image:
+- condaforge/linux-anvil
 fortran_compiler:
 - toolchain_fort
 gmp:
 - '6'
-libunwind:
-- '1.2'
 mpfr:
 - '4'
 openblas:
@@ -25,8 +29,6 @@ pin_run_as_build:
     max_pin: x
   gmp:
     max_pin: x
-  libunwind:
-    max_pin: x.x
   mpfr:
     max_pin: x
   openblas:
