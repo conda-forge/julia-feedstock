@@ -41,10 +41,9 @@ requirements:
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
-    - pcre2 10.23
+    - pcre2 10.31
 
   run:
-    - zlib
     - libgit2
     - libosxunwind  # [osx]
     - fftw
@@ -57,7 +56,7 @@ requirements:
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.23
+    - pcre2 10.31
 
 test:
   commands:
