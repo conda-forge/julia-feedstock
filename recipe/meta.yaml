@@ -73,6 +73,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - SylvainCorlay
     - bgruening
     - dfornika
     - acaprez
