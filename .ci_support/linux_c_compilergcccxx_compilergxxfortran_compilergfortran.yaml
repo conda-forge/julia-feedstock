@@ -18,6 +18,8 @@ fortran_compiler:
 - gfortran
 gmp:
 - '6'
+libssh2:
+- '1.8'
 mpfr:
 - '4'
 openblas:
@@ -31,6 +33,8 @@ pin_run_as_build:
     max_pin: x
   gmp:
     max_pin: x
+  libssh2:
+    max_pin: x.x
   mpfr:
     max_pin: x
   openblas:
