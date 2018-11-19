@@ -44,6 +44,8 @@ requirements:
     - arpack
     - suitesparse
     - pcre2 10.31
+    - curl
+    - libssh2
 
   run:
     - libgit2
@@ -57,8 +59,8 @@ requirements:
     - blas * {{ variant }}
     - arpack
     - suitesparse
-    - curl
     - pcre2 10.31
+    - libssh2
 
 test:
   commands:
