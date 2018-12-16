@@ -1,7 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 arpack:
-- '3.5'
+- 3.6.3
 c_compiler:
 - toolchain_c
 channel_sources:
@@ -23,12 +23,12 @@ macos_min_version:
 mpfr:
 - '4'
 openblas:
-- 0.2.20
+- 0.3.3
 perl:
 - '5.26'
 pin_run_as_build:
   arpack:
-    max_pin: x.x
+    max_pin: x.x.x
   curl:
     max_pin: x
   gmp:
