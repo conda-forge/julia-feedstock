@@ -44,7 +44,7 @@ requirements:
     - arpack
     - suitesparse
     - pcre2 10.31
-    - curl
+    - libcurl
     - libssh2
 
   run:
