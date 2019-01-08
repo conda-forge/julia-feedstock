@@ -14,7 +14,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 0
+  number: 1
   features:
     - blas_{{ variant }}
 
@@ -32,7 +32,7 @@ requirements:
     - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
-    - blas * {{ variant }}
+    - blas 1.* {{ variant }}
     - fftw
     - gmp
     - mpfr
@@ -53,7 +53,7 @@ requirements:
     - openblas
     - openlibm 0.5.4
     - openspecfun 0.5.3
-    - blas * {{ variant }}
+    - blas 1.* {{ variant }}
     - arpack
     - suitesparse
     - curl
