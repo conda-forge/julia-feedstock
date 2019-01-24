@@ -1,7 +1,7 @@
 arpack:
 - 3.6.3
 c_compiler:
-- toolchain_c
+- gcc
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -9,11 +9,11 @@ channel_targets:
 curl:
 - '7.59'
 cxx_compiler:
-- toolchain_cxx
+- gxx
 docker_image:
-- condaforge/linux-anvil
+- condaforge/linux-anvil-comp7
 fortran_compiler:
-- toolchain_fort
+- gfortran
 gmp:
 - '6'
 mpfr:
