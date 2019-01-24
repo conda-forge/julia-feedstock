@@ -14,7 +14,7 @@ EOF
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
 
-NO_GIT=1 make -C base version_git.jl.phony
+NO_GIT=1 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
@@ -46,6 +46,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_SUITESPARSE=1 \
  ${EXTRA_MAKEFLAGS}	\
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
+ CC=$CC CXX=$CXX FC=$FC \
  install
 
 # Configure juliarc to use conda environment
