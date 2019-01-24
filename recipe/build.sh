@@ -29,7 +29,6 @@ fi
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  LIBBLAS=-lopenblas LIBBLASNAME=libopenblas LIBLAPACK=-lopenblas LIBLAPACKNAME=libopenblas \
- USE_LLVM_SHLIB=0 \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
  USE_SYSTEM_CURL=1 \
