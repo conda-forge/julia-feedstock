@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 arpack:
 - 3.6.3
 c_compiler:
-- toolchain_c
+- clang
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,9 +11,11 @@ channel_targets:
 curl:
 - '7.59'
 cxx_compiler:
-- toolchain_cxx
+- clangxx
 fortran_compiler:
-- toolchain_fort
+- gfortran
+fortran_compiler_version:
+- '4'
 gmp:
 - '6'
 macos_machine:
