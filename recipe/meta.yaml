@@ -14,13 +14,13 @@ source:
 
 build:
   skip: True  # [win]
-  number: 1
+  number: 2
   features:
     - blas_{{ variant }}
 
 requirements:
   build:
-    - cmake
+    - cmake-binary
     - perl
     - python 2.7.*
     - {{ compiler('fortran') }}
