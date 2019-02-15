@@ -4,6 +4,7 @@ export C_INCLUDE_PATH=${PREFIX}/include
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export LIBRARY_PATH=${PREFIX}/lib
 export CMAKE_PREFIX_PATH=${PREFIX}
+export PATH="${PREFIX}/bin:${PATH}"
 
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
@@ -14,7 +15,7 @@ EOF
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
 
-NO_GIT=1 make -C base version_git.jl.phony
+NO_GIT=1 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
@@ -29,7 +30,6 @@ fi
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  LIBBLAS=-lopenblas LIBBLASNAME=libopenblas LIBLAPACK=-lopenblas LIBLAPACKNAME=libopenblas \
- USE_LLVM_SHLIB=0 \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
  USE_SYSTEM_CURL=1 \
@@ -47,6 +47,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_SUITESPARSE=1 \
  ${EXTRA_MAKEFLAGS}	\
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
+ CC=$CC CXX=$CXX FC=$FC \
  install
 
 # Configure juliarc to use conda environment
