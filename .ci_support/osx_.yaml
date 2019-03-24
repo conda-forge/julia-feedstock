@@ -26,6 +26,8 @@ libblas:
 - 3.8 *netlib
 libcblas:
 - 3.8 *netlib
+liblapack:
+- 3.8.0 *netlib
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
