@@ -27,6 +27,7 @@ requirements:
   host:
     - libblas
     - libcblas
+    - liblapack
     - patchelf  # [linux]
     - zlib
     - openlibm 0.5.4
