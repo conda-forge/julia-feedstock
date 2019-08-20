@@ -10,8 +10,11 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      osx_:
-        CONFIG: osx_
+      osx_fortran_compiler_version4:
+        CONFIG: osx_fortran_compiler_version4
+        UPLOAD_PACKAGES: True
+      osx_fortran_compiler_version7:
+        CONFIG: osx_fortran_compiler_version7
         UPLOAD_PACKAGES: True
 
   steps:
@@ -35,7 +38,7 @@ jobs:
 
   - script: |
       source activate base
-      conda install -n base -c conda-forge --quiet --yes conda-forge-ci-setup=2 conda-build shyaml
+      conda install -n base -c conda-forge --quiet --yes conda-forge-ci-setup=2 conda-build
     displayName: 'Add conda-forge-ci-setup=2'
 
   - script: |
@@ -43,7 +46,7 @@ jobs:
       echo "Configuring conda."
 
       setup_conda_rc ./ ./recipe ./.ci_support/${CONFIG}.yaml
-
+      export CI=azure
       source run_conda_forge_build_setup
       conda update --yes --quiet --override-channels -c conda-forge -c defaults --all
     env: {
