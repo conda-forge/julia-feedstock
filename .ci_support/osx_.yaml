@@ -1,7 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 arpack:
-- 3.6.3
+- '3.7'
 c_compiler:
 - clang
 c_compiler_version:
@@ -11,7 +11,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 curl:
-- '7.64'
+- '7'
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
