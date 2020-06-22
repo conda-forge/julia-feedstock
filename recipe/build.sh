@@ -52,3 +52,24 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
 
 # Configure juliarc to use conda environment
 cat "${RECIPE_DIR}/juliarc.jl" >> "${PREFIX}/etc/julia/juliarc.jl"
+
+# If julia is running in a conda environment, install packages in env folder
+mkdir -p "${PREFIX}/etc/julia/packages/"
+
+cat <<EOF > "${PREFIX}/etc/conda/activate.d/julia-activate.sh"
+#!/usr/bin/env sh
+export LAST_JULIA_DEPOT_PATH=\$JULIA_DEPOT_PATH
+export LAST_JULIA_LOAD_PATH=\$JULIA_LOAD_PATH
+export JULIA_DEPOT_PATH='${PREFIX}/etc/julia/packages/'
+export JULIA_LOAD_PATH='@:@stdlib'"
+EOF
+
+cat <<EOF > "${PREFIX}/etc/conda/deactivate.d/julia-deactivate.sh"
+#!/usr/bin/env sh
+export JULIA_DEPOT_PATH=\$LAST_JULIA_DEPOT_PATH"
+export JULIA_LOAD_PATH=\$LAST_JULIA_LOAD_PATH"
+export LAST_JULIA_DEPOT_PATH=
+export LAST_JULIA_LOAD_PATH=
+EOF
+
+chmod +x "${PREFIX}/activate.d/*" "${PREFIX}/deactivate.d/*"
