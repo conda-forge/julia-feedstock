@@ -28,7 +28,7 @@ then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
 fi
 
-make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
+make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc V=1 NO_GIT=1 \
  LIBBLAS=-lblas LIBBLASNAME=libblas LIBLAPACK=-llapack LIBLAPACKNAME=liblapack \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
