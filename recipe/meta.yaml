@@ -40,8 +40,8 @@ requirements:
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
-    - pcre2 10.23
-    - pcre 8.44
+    - pcre2 10.31
+#    - pcre 8.44
 
   run:
     - zlib
@@ -55,8 +55,8 @@ requirements:
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.23
-    - pcre 8.44
+    - pcre2 10.31
+#    - pcre 8.44
 
 test:
   commands:
