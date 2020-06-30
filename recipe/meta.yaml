@@ -30,7 +30,7 @@ requirements:
     - liblapack
     - patchelf  # [linux]
     - zlib
-    - openlibm 0.5.4
+    - openlibm 0.7.0
     - openspecfun 0.5.3
     - fftw
     - gmp
