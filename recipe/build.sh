@@ -21,6 +21,8 @@ export EXTRA_MAKEFLAGS=""
 if [ "$(uname)" == "Darwin" ]
 then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=1"
+    # Not sure why llvmdev is getting installed. Probably a conda solver bug
+    rm -rf $BUILD_PREFIX/lib/libLLVM*
 elif [ "$(uname)" == "Linux" ]
 then
 	# On linux the released version of libunwind has issues building julia
