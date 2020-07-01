@@ -27,7 +27,7 @@ requirements:
   host:
     - llvmdev 8
     - pcre2
-    - dsfmt
+#    - dsfmt
     - libblas
     - libcblas
     - liblapack
@@ -48,7 +48,7 @@ requirements:
   run:
     - llvm 8
     - pcre2
-    - dsfmt
+#    - dsfmt
     - libblas
     - libcblas
     - liblapack
