@@ -39,10 +39,10 @@ requirements:
     - libssh2
     - curl
     - libgit2
-    - libuv
+#    - libuv
     - zlib
     - p7zip
-    - libutf8proc
+#    - libutf8proc
 
   run:
     - pcre2
@@ -59,10 +59,10 @@ requirements:
     - libssh2
     - curl
     - libgit2
-    - libuv
+#    - libuv
     - zlib
     - p7zip
-    - libutf8proc
+#    - libutf8proc
 
 test:
   commands:

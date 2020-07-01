@@ -48,7 +48,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc V=1 NO_GIT=1 \
  USE_SYSTEM_LIBUV=0 \
  USE_SYSTEM_ZLIB=1 \
  USE_SYSTEM_P7ZIP=1 \
- USE_SYSTEM_UTF8PROC=1 \
+ USE_SYSTEM_UTF8PROC=0 \
  ${EXTRA_MAKEFLAGS}	\
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  CC=$CC CXX=$CXX FC=$FC \
