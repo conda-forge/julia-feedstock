@@ -32,8 +32,7 @@ requirements:
     - liblapack
     - suitesparse
     - openlibm
-#    - libosxunwind # [linux]
-#    - libosxunwind 0.0.5 # [osx]
+    - libosxunwind 0.0.5 # [osx]
     - gmp
     - mpfr
     - patchelf  # [linux]
@@ -53,8 +52,7 @@ requirements:
     - liblapack
     - suitesparse
     - openlibm
-#    - libosxunwind # [linux]
-#    - libosxunwind 0.0.5 # [osx]
+    - libosxunwind 0.0.5 # [osx]
     - gmp
     - mpfr
     - patchelf  # [linux]
