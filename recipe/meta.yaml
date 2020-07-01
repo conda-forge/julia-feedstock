@@ -25,38 +25,46 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - pcre2
+    - dsfmt
     - libblas
     - libcblas
     - liblapack
-    - patchelf  # [linux]
-    - zlib
-    - openlibm 0.7.0
-    - openspecfun 0.5.3
-    - fftw
+    - suitesparse
+    - openlibm
+#    - libosxunwind # [linux]
+#    - libosxunwind 0.0.5 # [osx]
     - gmp
     - mpfr
+    - patchelf  # [linux]
+    - libssh2
     - curl
-    - libgit2 0.28.2
-    - libosxunwind  # [osx]
-    - arpack
-    - suitesparse
-    - pcre2 10.31
-#    - pcre 8.44
+    - libgit2
+    - libuv
+    - zlib
+    - p7zip
+    - libutf8proc
 
   run:
-    - zlib
-    - {{ pin_compatible("libgit2", max_pin="x.x") }}
-    - libosxunwind  # [osx]
-    - fftw
+    - pcre2
+    - dsfmt
+    - libblas
+    - libcblas
+    - liblapack
+    - suitesparse
+    - openlibm
+#    - libosxunwind # [linux]
+#    - libosxunwind 0.0.5 # [osx]
     - gmp
     - mpfr
-    - openlibm 0.7.0
-    - openspecfun 0.5.3
-    - arpack
-    - suitesparse
+    - patchelf  # [linux]
+    - libssh2
     - curl
-    - pcre2 10.31
-#    - pcre 8.44
+    - libgit2
+    - libuv
+    - zlib
+    - p7zip
+    - libutf8proc
 
 test:
   commands:
