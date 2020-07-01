@@ -31,7 +31,7 @@ requirements:
     - libcblas
     - liblapack
     - suitesparse
-    - openlibm
+#    - openlibm
     - libosxunwind 0.0.5  # [osx]
     - gmp
     - mpfr
@@ -51,7 +51,7 @@ requirements:
     - libcblas
     - liblapack
     - suitesparse
-    - openlibm
+#    - openlibm
     - libosxunwind 0.0.5  # [osx]
     - gmp
     - mpfr
