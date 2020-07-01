@@ -25,6 +25,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - libllvm8
     - pcre2
     - dsfmt
     - libblas

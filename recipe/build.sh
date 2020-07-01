@@ -30,7 +30,7 @@ fi
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc V=1 NO_GIT=1 \
  LIBBLAS=-lblas LIBBLASNAME=libblas LIBLAPACK=-llapack LIBLAPACKNAME=liblapack \
- USE_SYSTEM_LLVM=0 \
+ USE_SYSTEM_LLVM=1 \
  USE_SYSTEM_PCRE=1 \
  USE_SYSTEM_DSFMT=1 \
  USE_SYSTEM_BLAS=1 \
