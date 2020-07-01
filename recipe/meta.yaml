@@ -36,7 +36,7 @@ requirements:
     - gmp
     - mpfr
     - curl
-    - libgit2 0.28.4
+    - libgit2 0.28.2
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
