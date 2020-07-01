@@ -31,12 +31,12 @@ requirements:
     - patchelf  # [linux]
     - zlib
     - openlibm 0.7.0
-    - openspecfun 0.5.4
+    - openspecfun 0.5.3
     - fftw
     - gmp
     - mpfr
     - curl
-    - libgit2 0.28.5
+    - libgit2 0.28.4
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
@@ -51,7 +51,7 @@ requirements:
     - gmp
     - mpfr
     - openlibm 0.7.0
-    - openspecfun 0.5.4
+    - openspecfun 0.5.3
     - arpack
     - suitesparse
     - curl
