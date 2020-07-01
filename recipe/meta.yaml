@@ -30,17 +30,17 @@ requirements:
     - liblapack
     - patchelf  # [linux]
     - zlib
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
+    - openlibm
+    - openspecfun
     - fftw
     - gmp
     - mpfr
     - curl
-    - libgit2 0.27
+    - libgit2
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
-    - pcre2 10.31
+    - pcre2
 
   run:
     - zlib
@@ -49,12 +49,12 @@ requirements:
     - fftw
     - gmp
     - mpfr
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
+    - {{ pin_compatible("openlibm", max_pin="x.x.x") }}
+    - {{ pin_compatible("openspecfun", max_pin="x.x.x") }}
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.31
+    - {{ pin_compatible("pcre2", max_pin="x.x") }}
 
 test:
   commands:
