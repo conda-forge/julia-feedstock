@@ -46,6 +46,7 @@ requirements:
 #    - libutf8proc
 
   run:
+    - llvm 8
     - pcre2
     - dsfmt
     - libblas
