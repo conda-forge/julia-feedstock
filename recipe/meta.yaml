@@ -39,7 +39,7 @@ requirements:
     - patchelf  # [linux]
     - libssh2
     - curl
-    - libgit2
+    - libgit2 0.28.2
 #    - libuv
     - zlib
     - p7zip
@@ -60,7 +60,7 @@ requirements:
     - patchelf  # [linux]
     - libssh2
     - curl
-    - libgit2
+    - libgit2 0.28.2
 #    - libuv
     - zlib
     - p7zip
