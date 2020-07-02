@@ -28,7 +28,7 @@ requirements:
     - llvmdev 8
     - pcre2
 #    - dsfmt
-    - libblas 0.3.5
+#    - libblas
     - libcblas
 #    - liblapack
     - suitesparse 5.4.0
@@ -49,7 +49,7 @@ requirements:
     - llvm 8
     - pcre2
 #    - dsfmt
-    - libblas 0.3.5
+#    - libblas
     - libcblas
 #    - liblapack
     - suitesparse 5.4.0
