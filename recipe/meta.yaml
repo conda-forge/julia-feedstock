@@ -28,15 +28,15 @@ requirements:
     - llvmdev 8
     - pcre2
 #    - dsfmt
-    - libblas
+    - libblas 0.3.5
     - libcblas
-    - liblapack
-    - suitesparse
+#    - liblapack
+    - suitesparse 5.4.0
 #    - openlibm
     - libosxunwind 0.0.5  # [osx]
-    - gmp
+    - gmp 6.1.2
     - mpfr
-    - patchelf  # [linux]
+    - patchelf 0.9  # [linux]
     - libssh2
     - curl
     - libgit2 0.28.2
@@ -49,15 +49,15 @@ requirements:
     - llvm 8
     - pcre2
 #    - dsfmt
-    - libblas
+    - libblas 0.3.5
     - libcblas
-    - liblapack
-    - suitesparse
+#    - liblapack
+    - suitesparse 5.4.0
 #    - openlibm
     - libosxunwind 0.0.5  # [osx]
-    - gmp
+    - gmp 6.1.2
     - mpfr
-    - patchelf  # [linux]
+    - patchelf 0.9  # [linux]
     - libssh2
     - curl
     - libgit2 0.28.2
