@@ -29,7 +29,7 @@ requirements:
     - pcre2
 #    - dsfmt
 #    - libblas
-    - libcblas
+#    - libcblas
 #    - liblapack
     - suitesparse 5.4.0
 #    - openlibm
@@ -50,7 +50,7 @@ requirements:
     - pcre2
 #    - dsfmt
 #    - libblas
-    - libcblas
+#    - libcblas
 #    - liblapack
     - suitesparse 5.4.0
 #    - openlibm
