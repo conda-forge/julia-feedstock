@@ -12,6 +12,8 @@ html :
 	mkdir -p _build/html
 EOF
 
+touch ~/.gitconfig
+
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
 
@@ -20,7 +22,7 @@ NO_GIT=1 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
 then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0 -mmacosx-version-min=10.10"
 elif [ "$(uname)" == "Linux" ]
 then
 	# On linux the released version of libunwind has issues building julia
