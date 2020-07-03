@@ -54,7 +54,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  V=1 VERBOSE=1 \
  CC=$CC CXX=$CXX FC=$FC \
- install
+ install || (ls -al $SRC_DIR/usr/lib  && $SRC_DIR/usr/include && $SRC_DIR/usr/tools && false)
 
 # Configure juliarc to use conda environment
 cat "${RECIPE_DIR}/juliarc.jl" >> "${PREFIX}/etc/julia/juliarc.jl"
