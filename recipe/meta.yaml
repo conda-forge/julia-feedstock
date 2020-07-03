@@ -26,44 +26,44 @@ requirements:
     - {{ compiler('cxx') }}
   host:
 #    - llvmdev 8
-    - pcre2
+#    - pcre2
 #    - dsfmt
 #    - libblas
 #    - libcblas
 #    - liblapack
-    - suitesparse 5.4.0
+#    - suitesparse 5.4.0
 #    - openlibm
-    - libosxunwind 0.0.5  # [osx]
-    - gmp 6.1.2
-    - mpfr
-    - patchelf 0.9  # [linux]
-    - libssh2
+#    - libosxunwind 0.0.5  # [osx]
+#    - gmp 6.1.2
+#    - mpfr
+#    - patchelf 0.9  # [linux]
+#    - libssh2
     - curl
-    - libgit2 0.28.2
+#    - libgit2 0.28.2
 #    - libuv
-    - zlib
-    - p7zip
+#    - zlib
+#    - p7zip
 #    - libutf8proc
 
   run:
 #    - llvm 8
-    - pcre2
+#    - pcre2
 #    - dsfmt
 #    - libblas
 #    - libcblas
 #    - liblapack
-    - suitesparse 5.4.0
+#    - suitesparse 5.4.0
 #    - openlibm
-    - libosxunwind 0.0.5  # [osx]
-    - gmp 6.1.2
-    - mpfr
-    - patchelf 0.9  # [linux]
-    - libssh2
+#    - libosxunwind 0.0.5  # [osx]
+#    - gmp 6.1.2
+#    - mpfr
+#    - patchelf 0.9  # [linux]
+#    - libssh2
     - curl
-    - libgit2 0.28.2
+#    - libgit2 0.28.2
 #    - libuv
-    - zlib
-    - p7zip
+#    - zlib
+#    - p7zip
 #    - libutf8proc
 
 test:
