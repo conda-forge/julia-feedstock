@@ -27,6 +27,7 @@ then
     rm -rf $BUILD_PREFIX/include/llvm-c/*
     rm -f $BUILD_PREFIX/bin/llvm-config
     export LDFLAGS="$LDFLAGS -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
+    export LDFLAGS="$(echo $LDFLAGS | sed 's/-Wl,-dead_strip_dylibs//g')"
 elif [ "$(uname)" == "Linux" ]
 then
 	# On linux the released version of libunwind has issues building julia
