@@ -28,9 +28,9 @@ requirements:
 #    - llvmdev 8
 #    - pcre2
 #    - dsfmt
-#    - libblas
+    - libblas
 #    - libcblas
-#    - liblapack
+    - liblapack
 #    - suitesparse 5.4.0
 #    - openlibm
 #    - libosxunwind 0.0.5  # [osx]
@@ -49,9 +49,9 @@ requirements:
 #    - llvm 8
 #    - pcre2
 #    - dsfmt
-#    - libblas
+    - libblas
 #    - libcblas
-#    - liblapack
+    - liblapack
 #    - suitesparse 5.4.0
 #    - openlibm
 #    - libosxunwind 0.0.5  # [osx]
