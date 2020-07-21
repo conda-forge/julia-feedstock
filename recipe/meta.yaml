@@ -13,7 +13,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 4
+  number: 5
   features:
 
 requirements:
@@ -40,7 +40,7 @@ requirements:
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
-    - pcre2 10.23
+    - pcre2 10.31
 
   run:
     - zlib
@@ -54,7 +54,7 @@ requirements:
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.23
+    - pcre2 10.31
 
 test:
   commands:
