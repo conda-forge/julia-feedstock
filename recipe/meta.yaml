@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.1.1" %}
-{% set sha256 = "0155a33448cb2334ae7487a35a2416a4205da4541b90fc9f97208da11e273c9e" %}
+{% set version = "1.4.2" %}
+{% set sha256 = "21a242a5f63db6e25e808e9662416b62004f39b111b3afb751efd760bcc34dc2" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 
 build:
   skip: True  # [win]
-  number: 4
+  number: 0
   features:
 
 requirements:
@@ -25,36 +25,46 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+#    - llvmdev 8
+#    - pcre2
+#    - dsfmt
     - libblas
-    - libcblas
+#    - libcblas
     - liblapack
-    - patchelf  # [linux]
-    - zlib
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
-    - fftw
-    - gmp
-    - mpfr
+#    - suitesparse 5.4.0
+#    - openlibm
+#    - libosxunwind 0.0.5  # [osx]
+#    - gmp 6.1.2
+#    - mpfr
+#    - patchelf 0.9  # [linux]
+#    - libssh2
     - curl
-    - libgit2 0.27
-    - libosxunwind  # [osx]
-    - arpack
-    - suitesparse
-    - pcre2 10.23
+#    - libgit2 0.28.2
+#    - libuv
+#    - zlib
+#    - p7zip
+#    - libutf8proc
 
   run:
-    - zlib
-    - {{ pin_compatible("libgit2", max_pin="x.x") }}
-    - libosxunwind  # [osx]
-    - fftw
-    - gmp
-    - mpfr
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
-    - arpack
-    - suitesparse
+#    - llvm 8
+#    - pcre2
+#    - dsfmt
+    - libblas
+#    - libcblas
+    - liblapack
+#    - suitesparse 5.4.0
+#    - openlibm
+#    - libosxunwind 0.0.5  # [osx]
+#    - gmp 6.1.2
+#    - mpfr
+#    - patchelf 0.9  # [linux]
+#    - libssh2
     - curl
-    - pcre2 10.23
+#    - libgit2 0.28.2
+#    - libuv
+#    - zlib
+#    - p7zip
+#    - libutf8proc
 
 test:
   commands:
