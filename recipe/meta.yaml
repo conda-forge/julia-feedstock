@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.1.1" %}
-{% set sha256 = "0155a33448cb2334ae7487a35a2416a4205da4541b90fc9f97208da11e273c9e" %}
+{% set version = "1.5.0" %}
+{% set sha256 = "cd5e03ff9d8572a4b236bddca97d2692305dc3145a479245002eda130bb2d8cd" %}
 
 package:
   name: {{ name|lower }}
@@ -20,7 +20,7 @@ requirements:
   build:
     - cmake-binary
     - perl
-    - python 2.7.*
+    - python
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -30,17 +30,17 @@ requirements:
     - liblapack
     - patchelf  # [linux]
     - zlib
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
+    - openlibm
+    - openspecfun
     - fftw
     - gmp
     - mpfr
     - curl
-    - libgit2 0.27
+    - libgit2
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
-    - pcre2 10.23
+    - pcre2
 
   run:
     - zlib
@@ -49,12 +49,12 @@ requirements:
     - fftw
     - gmp
     - mpfr
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
+    - openlibm
+    - openspecfun
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.23
+    - pcre2
 
 test:
   commands:
