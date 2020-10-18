@@ -59,6 +59,8 @@ requirements:
 test:
   commands:
     - touch /home/conda/.gitconfig   # [linux and CI == "azure"]
+    - git config --global user.name "John Doe"
+    - git config --global user.email johndoe@example.com
     - julia -e 'Base.runtests("LibGit2/online Pkg/pkg")'
   requires:
     - perl
