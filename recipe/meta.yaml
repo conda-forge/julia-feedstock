@@ -36,8 +36,7 @@ requirements:
     - gmp
     - mpfr
     - curl
-    - libgit2 0.*
-    - libosxunwind  # [osx]
+    - libgit2 0.28.*
     - arpack
     - suitesparse
     - pcre2
@@ -45,7 +44,6 @@ requirements:
   run:
     - zlib
     - {{ pin_compatible("libgit2", max_pin="x.x") }}
-    - libosxunwind  # [osx]
     - fftw
     - gmp
     - mpfr
