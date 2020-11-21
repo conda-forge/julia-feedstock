@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.1.1" %}
-{% set sha256 = "0155a33448cb2334ae7487a35a2416a4205da4541b90fc9f97208da11e273c9e" %}
+{% set version = "1.4.2" %}
+{% set sha256 = "ed2fdafeb0cc80ae162be4e3eec021104c692c5e6edde77e8ef52861aca5bfb2" %}
 
 package:
   name: {{ name|lower }}
@@ -13,8 +13,10 @@ source:
 
 build:
   skip: True  # [win]
-  number: 6
+  number: 0
   features:
+
+# Fix versions based on https://github.com/JuliaLang/julia/blob/v1.4.2/deps/Versions.make
 
 requirements:
   build:
@@ -25,36 +27,46 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libblas
-    - libcblas
-    - liblapack
-    - patchelf  # [linux]
-    - zlib
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
-    - fftw
-    - gmp
-    - mpfr
-    - curl
-    - libgit2 1.1.0
-    - libosxunwind  # [osx]
-    - arpack
-    - suitesparse
-    - pcre2 10.35
+    - llvm-openmp 8.0.1
+    - pcre2 10.31
+    - dsfmt 2.2.3
+    - openblas 0.3.5
+    - liblapack 3.5.0
+    - suitesparse 5.4.0
+    - openlibm 0.6.0
+    - libunwind 1.3.1  # [linux]
+    - libosxunwind 0.0.5  # [osx]
+    - gmp 6.1.2
+    - mpfr 4.0.2
+    - patchelf 0.9  # [linux]
+    # - mbedtls  # not available on conda 
+    - libssh2 1.9.0
+    - curl 7.66.0
+    - libgit2 0.28.2
+    - libuv 1.29.1
+    - objconv 2.49
+    - zlib 1.2.11
 
   run:
-    - zlib
-    - {{ pin_compatible("libgit2", max_pin="x.x") }}
-    - libosxunwind  # [osx]
-    - fftw
-    - gmp
-    - mpfr
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
-    - arpack
-    - suitesparse
-    - curl
-    - pcre2 10.35
+    - llvm-openmp 8.0.1
+    - pcre2 10.31
+    - dsfmt 2.2.3
+    - openblas 0.3.5
+    - liblapack 3.5.0
+    - suitesparse 5.4.0
+    - openlibm 0.6.0
+    - libunwind 1.3.1  # [linux]
+    - libosxunwind 0.0.5  # [osx]
+    - gmp 6.1.2
+    - mpfr 4.0.2
+    - patchelf 0.9  # [linux]
+    # - mbedtls  # not available on conda 
+    - libssh2 1.9.0
+    - curl 7.66.0
+    - libgit2 0.28.2
+    - libuv 1.29.1
+    - objconv 2.49
+    - zlib 1.2.11
 
 test:
   commands:
