@@ -42,7 +42,7 @@ requirements:
     # - mbedtls  # not available on conda 
     - libssh2 1.9.0
     - curl   # 7.66.0
-    - libgit2 0.28.2
+    - libgit2 0.28.4
     - libuv 1.29.1
     - objconv 2.49
     - zlib 1.2.11
@@ -63,7 +63,7 @@ requirements:
     # - mbedtls  # not available on conda 
     - libssh2 1.9.0
     - curl  # 7.66.0
-    - libgit2 0.28.2
+    - libgit2 0.28.4
     - libuv 1.29.1
     - objconv 2.49
     - zlib 1.2.11
