@@ -20,7 +20,6 @@ requirements:
   build:
     - cmake-binary
     - perl
-    - python 2.7.*
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
