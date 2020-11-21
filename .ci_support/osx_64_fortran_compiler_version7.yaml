@@ -5,7 +5,7 @@ arpack:
 c_compiler:
 - clang
 c_compiler_version:
-- '10'
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -15,7 +15,7 @@ curl:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '10'
+- '11'
 fftw:
 - '3'
 fortran_compiler:
@@ -29,7 +29,7 @@ libblas:
 libcblas:
 - 3.8 *netlib
 liblapack:
-- 3.8.0 *netlib
+- 3.8 *netlib
 macos_machine:
 - x86_64-apple-darwin13.4.0
 mpfr:
