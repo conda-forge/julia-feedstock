@@ -43,6 +43,7 @@ requirements:
     - pcre2 10.23
 
   run:
+    - python
     - zlib
     - {{ pin_compatible("libgit2", max_pin="x.x") }}
     - libosxunwind  # [osx]
