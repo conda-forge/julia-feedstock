@@ -54,7 +54,7 @@ requirements:
     - arpack
     - suitesparse
     - curl
-    - pcre2 10.23
+    - pcre2 10.35
 
 test:
   commands:
