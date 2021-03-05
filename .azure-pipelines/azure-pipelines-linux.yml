@@ -8,14 +8,10 @@ jobs:
     vmImage: ubuntu-16.04
   strategy:
     matrix:
-      linux_64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7:
-        CONFIG: linux_64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7
+      linux_64_:
+        CONFIG: linux_64_
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9:
-        CONFIG: linux_64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
   timeoutInMinutes: 360
 
   steps:

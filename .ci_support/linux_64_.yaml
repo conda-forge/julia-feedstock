@@ -1,11 +1,11 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 arpack:
 - '3.7'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '10'
+- '9'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -13,9 +13,11 @@ channel_targets:
 curl:
 - '7'
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '10'
+- '9'
+docker_image:
+- quay.io/condaforge/linux-anvil-comp7
 fftw:
 - '3'
 fortran_compiler:
@@ -29,9 +31,7 @@ libblas:
 libcblas:
 - 3.8 *netlib
 liblapack:
-- 3.8.0 *netlib
-macos_machine:
-- x86_64-apple-darwin13.4.0
+- 3.8 *netlib
 mpfr:
 - '4'
 perl:
@@ -54,10 +54,12 @@ pin_run_as_build:
 suitesparse:
 - '5.6'
 target_platform:
-- osx-64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
   - fortran_compiler_version
+- - cdt_name
+  - docker_image
 zlib:
 - '1.2'
