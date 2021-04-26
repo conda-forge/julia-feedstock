@@ -6,6 +6,15 @@ export LIBRARY_PATH=${PREFIX}/lib
 export CMAKE_PREFIX_PATH=${PREFIX}
 export PATH="${PREFIX}/bin:${PATH}"
 
+#set JULIA_DEPOT_PATH in conda env
+export JULIA_DEPOT_PATH="${PREFIX}/share/julia/site:$JULIA_DEPOT_PATH" 
+
+for CHANGE in "activate" "deactivate"
+do
+    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
+    cp "${RECIPE_DIR}/scripts/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
+done
+
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
 html :	
@@ -49,6 +58,3 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  CC=$CC CXX=$CXX FC=$FC \
  install
-
-# Configure juliarc to use conda environment
-cat "${RECIPE_DIR}/juliarc.jl" >> "${PREFIX}/etc/julia/juliarc.jl"
