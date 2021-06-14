@@ -28,7 +28,6 @@ then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
 fi
 
-make cleanall  # attempted resolution of build error on PCRE from Azure
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  LIBBLAS=-lblas LIBBLASNAME=libblas LIBLAPACK=-llapack LIBLAPACKNAME=liblapack \
  USE_SYSTEM_ARPACK=1 \
@@ -46,7 +45,6 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_PATCHELF=1 \
  USE_SYSTEM_PCRE=1 \
  USE_SYSTEM_SUITESPARSE=1 \
- USE_SYSTEM_NGHTTP2=1 \
  ${EXTRA_MAKEFLAGS}	\
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  CC=$CC CXX=$CXX FC=$FC \
