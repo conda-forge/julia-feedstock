@@ -24,13 +24,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libblas
-    - libcblas
+    - libopenblas
     - liblapack
     - patchelf  # [linux]
-    - zlib
     - openlibm 0.5.4
-    - openspecfun 0.5.3
     - gmp
     - mpfr
     - curl
@@ -41,13 +38,11 @@ requirements:
     - pcre2 10.36
 
   run:
-    - zlib
-    - {{ pin_compatible("libgit2", max_pin="x.x") }}
+    - libopenblas
     - libosxunwind  # [osx]
     - gmp
     - mpfr
     - openlibm 0.5.4
-    - openspecfun 0.5.3
     - arpack
     - suitesparse
     - pcre2 10.36

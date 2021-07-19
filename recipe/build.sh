@@ -12,10 +12,7 @@ html :
 	mkdir -p _build/html
 EOF
 
-# Julia sets this to unix makefiles later on in its build process
-export CMAKE_GENERATOR="make"
-
-NO_GIT=1 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
+make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
@@ -28,8 +25,8 @@ then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
 fi
 
-make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
- LIBBLAS=-lblas LIBBLASNAME=libblas LIBLAPACK=-llapack LIBLAPACKNAME=liblapack \
+make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
+ LIBBLAS=-lopenblas LIBBLASNAME=libopenblas LIBLAPACK=-llapack LIBLAPACKNAME=liblapack \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
  USE_SYSTEM_CURL=0 \
@@ -40,7 +37,6 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc NO_GIT=1 \
  USE_SYSTEM_LLVM=0 \
  USE_SYSTEM_MPFR=1 \
  USE_SYSTEM_OPENLIBM=1 \
- USE_SYSTEM_OPENSPECFUN=1 \
  USE_SYSTEM_PATCHELF=1 \
  USE_SYSTEM_PCRE=1 \
  USE_SYSTEM_SUITESPARSE=1 \
