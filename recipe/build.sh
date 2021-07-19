@@ -12,6 +12,10 @@ html :
 	mkdir -p _build/html
 EOF
 
+
+# Julia sets this to unix makefiles later on in its build process
+export CMAKE_GENERATOR="make"
+
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
