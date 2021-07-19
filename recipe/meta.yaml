@@ -18,9 +18,8 @@ build:
 
 requirements:
   build:
-    - cmake-binary
     - perl
-    - python 2.7.*
+    - python 3.*
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -32,7 +31,6 @@ requirements:
     - zlib
     - openlibm 0.5.4
     - openspecfun 0.5.3
-    - fftw
     - gmp
     - mpfr
     - curl
@@ -46,14 +44,12 @@ requirements:
     - zlib
     - {{ pin_compatible("libgit2", max_pin="x.x") }}
     - libosxunwind  # [osx]
-    - fftw
     - gmp
     - mpfr
     - openlibm 0.5.4
     - openspecfun 0.5.3
     - arpack
     - suitesparse
-    - curl
     - pcre2 10.36
 
 test:
