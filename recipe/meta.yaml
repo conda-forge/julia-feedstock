@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.1.1" %}
-{% set sha256 = "0155a33448cb2334ae7487a35a2416a4205da4541b90fc9f97208da11e273c9e" %}
+{% set version = "1.6.2" %}
+{% set sha256 = "ca62270db9f4e5e4af60f2e2495e430833f1293ca6f0ec66022bc6beb0c1e133" %}
 
 package:
   name: {{ name|lower }}
@@ -12,8 +12,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [win]
-  number: 7
+  skip: true  # [win]
+  number: 0
   features:
 
 requirements:
