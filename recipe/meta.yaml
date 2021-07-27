@@ -33,6 +33,7 @@ requirements:
     - arpack
     - suitesparse
     - pcre2 10.36
+    - git
 
   run:
     - openblas-ilp64
@@ -45,6 +46,7 @@ requirements:
     - pcre2 10.36
     - curl
     - libgit2
+    - git
 
 test:
   commands:
