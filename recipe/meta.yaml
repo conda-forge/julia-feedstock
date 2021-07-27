@@ -22,21 +22,21 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libopenblas
-    - liblapack
+    - openblas-ilp64
     - patchelf  # [linux]
     - openlibm 0.5.4
     - gmp
     - mpfr
     - curl
-    - libgit2 0.27
+    - libgit2
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
     - pcre2 10.36
+    - git
 
   run:
-    - libopenblas
+    - openblas-ilp64
     - libosxunwind  # [osx]
     - gmp
     - mpfr
@@ -44,6 +44,9 @@ requirements:
     - arpack
     - suitesparse
     - pcre2 10.36
+    - curl
+    - libgit2
+    - git
 
 test:
   commands:
