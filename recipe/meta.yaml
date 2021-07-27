@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libopenblas
+    - openblas
     - liblapack
     - patchelf  # [linux]
     - openlibm 0.5.4
@@ -36,7 +36,7 @@ requirements:
     - pcre2 10.36
 
   run:
-    - libopenblas
+    - openblas
     - libosxunwind  # [osx]
     - gmp
     - mpfr
