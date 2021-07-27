@@ -23,13 +23,12 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - openblas-ilp64
-    - liblapack
     - patchelf  # [linux]
     - openlibm 0.5.4
     - gmp
     - mpfr
     - curl
-    - libgit2 0.27
+    - libgit2
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
@@ -44,6 +43,8 @@ requirements:
     - arpack
     - suitesparse
     - pcre2 10.36
+    - curl
+    - libgit2
 
 test:
   commands:
