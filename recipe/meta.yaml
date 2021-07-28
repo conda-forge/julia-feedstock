@@ -50,7 +50,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests("LibGit2/online Pkg/pkg")'
+    - julia -e 'Base.runtests(["core"])'
   requires:
     - perl
 
