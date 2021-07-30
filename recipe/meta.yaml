@@ -50,7 +50,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests(["core"])'
+    - julia -e 'Base.runtests(["core","Downloads"])'
   requires:
     - perl
 
