@@ -17,14 +17,14 @@ build:
 requirements:
   build:
     - perl
-    - python 3.*
+    - python 3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - openblas-ilp64
     - patchelf  # [linux]
-    - openlibm 0.5.4
+    - openlibm
     - gmp
     - mpfr
     - curl
@@ -32,7 +32,7 @@ requirements:
     - libosxunwind  # [osx]
     - arpack
     - suitesparse
-    - pcre2 10.36
+    - pcre2
     - git
 
   run:
@@ -40,17 +40,17 @@ requirements:
     - libosxunwind  # [osx]
     - gmp
     - mpfr
-    - openlibm 0.5.4
+    - openlibm
     - arpack
     - suitesparse
-    - pcre2 10.36
+    - pcre2
     - curl
     - libgit2
     - git
 
 test:
   commands:
-    - julia -e 'Base.runtests(["core","Downloads"])'
+    - julia -e 'Base.runtests(["core", "regex", "Downloads"])'
   requires:
     - perl
 
