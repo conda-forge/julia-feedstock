@@ -27,6 +27,7 @@ then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
 fi
 
+# using system utf8proc can be enabled in 1.7.0. See https://github.com/JuliaLang/julia/commit/ba653ecb1c81f1465505c2cea38b4f8149dd20b3
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
  USE_SYSTEM_ARPACK=1 \
