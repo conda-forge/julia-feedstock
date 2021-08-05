@@ -38,7 +38,6 @@ requirements:
     - suitesparse
     - pcre2
     - git
-    - libutf8proc
     - libnghttp2
     - zlib
     - p7zip
@@ -57,7 +56,6 @@ requirements:
     - libgit2
     - libssh2
     - git
-    - libutf8proc
     - libnghttp2
     - zlib
     - p7zip
