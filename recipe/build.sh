@@ -20,11 +20,11 @@ make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
-    export EXTRA_MAKE_FLAGS = "USE_SYSTEM_LIBGIT2=0"
 then
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0"
 elif [ "$(uname)" == "Linux" ]
-    export EXTRA_MAKE_FLAGS = "USE_SYSTEM_LIBGIT2=1"
 then
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
 fi
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
