@@ -33,6 +33,7 @@ requirements:
     - libgit2
     - libssh2
     - libosxunwind  # [osx]
+    - libunwind # [linux]
     - arpack
     - suitesparse
     - pcre2
@@ -41,6 +42,7 @@ requirements:
   run:
     - openblas-ilp64
     - libosxunwind  # [osx]
+    - libunwind # [linux]
     - gmp
     - mpfr
     - openlibm
