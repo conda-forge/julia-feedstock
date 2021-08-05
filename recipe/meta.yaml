@@ -1,13 +1,15 @@
 {% set name = "julia" %}
 {% set version = "1.6.1" %}
+{% set sha256 = "71d8e40611361370654e8934c407b2dec04944cf3917c5ecb6482d6b85ed767f" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/JuliaLang/julia.git
-  git_tag: v{{ version }}
+  fn: julia-{{ version }}-full.tar.gz
+  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   skip: True  # [win]
