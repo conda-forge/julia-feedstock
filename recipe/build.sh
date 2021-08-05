@@ -20,8 +20,10 @@ make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
+    export EXTRA_MAKE_FLAGS = "USE_SYSTEM_LIBGIT2=0"
 then
 elif [ "$(uname)" == "Linux" ]
+    export EXTRA_MAKE_FLAGS = "USE_SYSTEM_LIBGIT2=1"
 then
 fi
 
@@ -33,7 +35,6 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_CURL=1 \
  USE_SYSTEM_GMP=1 \
  USE_SYSTEM_LAPACK=1 \
- USE_SYSTEM_LIBGIT2=0 \
  USE_SYSTEM_LIBSSH2=1 \
  USE_SYSTEM_LLVM=0 \
  USE_SYSTEM_MPFR=1 \
