@@ -21,12 +21,8 @@ make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 export EXTRA_MAKEFLAGS="" 
 if [ "$(uname)" == "Darwin" ]
 then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=1"
 elif [ "$(uname)" == "Linux" ]
 then
-	# On linux the released version of libunwind has issues building julia
-	# See: https://github.com/JuliaLang/julia/issues/23615
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBUNWIND=0"
 fi
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
@@ -45,6 +41,14 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_PATCHELF=1 \
  USE_SYSTEM_PCRE=1 \
  USE_SYSTEM_SUITESPARSE=1 \
+ USE_SYSTEM_CSL=0 \
+ USE_SYSTEM_LIBUNWIND=1 \
+ USE_SYSTEM_LIBUV=0 \
+ USE_SYSTEM_UTF8PROC=0 \
+ USE_SYSTEM_MBEDTLS=0 \
+ USE_SYSTEM_NGHTTP2=0 \
+ USE_SYSTEM_ZLIB=0 \
+ USE_SYSTEM_P7ZIP=0 \
  ${EXTRA_MAKEFLAGS}	\
  TAGGED_RELEASE_BANNER="conda-forge-julia release" \
  CC=$CC CXX=$CXX FC=$FC \
