@@ -1,64 +1,68 @@
 {% set name = "julia" %}
-{% set version = "1.1.1" %}
-{% set sha256 = "0155a33448cb2334ae7487a35a2416a4205da4541b90fc9f97208da11e273c9e" %}
+{% set version = "1.6.1" %}
+{% set sha256 = "71d8e40611361370654e8934c407b2dec04944cf3917c5ecb6482d6b85ed767f" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: v{{ version }}.tar.gz
-  url: https://github.com/JuliaLang/julia/archive/v{{ version }}.tar.gz
+  fn: julia-{{ version }}-full.tar.gz
+  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
   sha256: {{ sha256 }}
 
 build:
   skip: True  # [win]
-  number: 7
+  number: 0
   features:
 
 requirements:
   build:
-    - cmake-binary
     - perl
-    - python 2.7.*
+    - python 3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libblas
-    - libcblas
-    - liblapack
+    - openblas-ilp64
     - patchelf  # [linux]
-    - zlib
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
-    - fftw
+    - openlibm
     - gmp
     - mpfr
     - curl
-    - libgit2 0.27
+    - libgit2  # [not osx]
+    - libssh2
     - libosxunwind  # [osx]
+    - libunwind  # [linux]
     - arpack
     - suitesparse
-    - pcre2 10.23
+    - pcre2
+    - git
+    - libnghttp2
+    - zlib
+    - p7zip
 
   run:
-    - zlib
-    - {{ pin_compatible("libgit2", max_pin="x.x") }}
+    - openblas-ilp64
     - libosxunwind  # [osx]
-    - fftw
+    - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm 0.5.4
-    - openspecfun 0.5.3
+    - openlibm
     - arpack
     - suitesparse
+    - pcre2
     - curl
-    - pcre2 10.23
+    - libgit2  # [not osx]
+    - libssh2
+    - git
+    - libnghttp2
+    - zlib
+    - p7zip
 
 test:
   commands:
-    - julia -e 'Base.runtests("LibGit2/online Pkg/pkg")'
+    - julia -e 'Base.runtests(["core", "regex", "Downloads"])'
   requires:
     - perl
 
