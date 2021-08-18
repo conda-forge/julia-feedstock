@@ -56,7 +56,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "atomics",
+    - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds",
         "keywordargs", "numbers", "subtype",
         "char", "strings", "triplequote", "unicode", "intrinsics",
         "dict", "hashing", "iobuffer", "staged", "offsetarray",
@@ -78,7 +78,7 @@ test:
         "boundscheck", "error", "ambiguous", "cartesian", "osutils",
         "channels", "iostream", "secretbuffer", "specificity",
         "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap",
-        "smallarrayshrink", "opaque_closure", "filesystem", "download"])' # all except stdlib
+        "smallarrayshrink", "filesystem", "download"])' # all except stdlib
   requires:
     - perl
 
