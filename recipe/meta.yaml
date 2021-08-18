@@ -78,7 +78,7 @@ test:
         "boundscheck", "error", "ambiguous", "cartesian", "osutils",
         "channels", "iostream", "secretbuffer", "specificity",
         "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap",
-        "smallarrayshrink", "filesystem", "download"])' # all except stdlib
+        "smallarrayshrink", "download"])' # all except stdlib, add "opaque_closure", "filesystem" with 1.7
   requires:
     - perl
 
