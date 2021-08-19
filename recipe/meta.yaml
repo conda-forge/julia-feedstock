@@ -38,6 +38,7 @@ requirements:
     - suitesparse
     - pcre2
     - git
+    - libutf8proc
     - libnghttp2
     - zlib
     - p7zip
@@ -56,6 +57,7 @@ requirements:
     - libgit2  # [not osx]
     - libssh2
     - git
+    - libutf8proc
     - libnghttp2
     - zlib
     - p7zip
