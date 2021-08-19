@@ -28,7 +28,7 @@ requirements:
     - patchelf  # [linux]
     - openlibm
     - gmp
-    - mpfr  # [not osx]
+    - mpfr
     - curl
     - libgit2  # [not osx]
     - libssh2
@@ -47,7 +47,7 @@ requirements:
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
-    - mpfr  # [not osx]
+    - mpfr
     - openlibm
     - arpack
     - suitesparse
