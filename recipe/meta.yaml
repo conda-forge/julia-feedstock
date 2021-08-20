@@ -1,15 +1,12 @@
 {% set name = "julia" %}
-{% set version = "1.6.2" %}
-{% set sha256 = "01241120515cb9435b96179cf301fbd2c24d4405f252588108d13ceac0f41c0a" %}
+{% set version = "1.8.0-DEV" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: julia-{{ version }}-full.tar.gz
-  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
-  sha256: {{ sha256 }}
+  git_url: https://github.com/JuliaLang/julia.git
 
 build:
   skip: true  # [win]
@@ -64,7 +61,7 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds",
+    - julia -e 'Base.runtests(["Downloads", "subarray", "core", "compiler", "worlds",
         "keywordargs", "numbers", "subtype",
         "char", "strings", "triplequote", "unicode", "intrinsics",
         "dict", "hashing", "iobuffer", "staged", "offsetarray",
