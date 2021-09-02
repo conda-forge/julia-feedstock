@@ -26,6 +26,8 @@ elif [ "$(uname)" == "Linux" ]
 then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
 fi
+# Do this only for x86_64, target platform is not osx-arm64
+export JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
