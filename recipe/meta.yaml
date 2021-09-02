@@ -35,7 +35,7 @@ requirements:
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - arpack
-    - suitesparse
+    - suitesparse =5.4.0
     - pcre2
     - git
     - libutf8proc
