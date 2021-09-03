@@ -25,7 +25,7 @@ fortran_compiler_version:
 gmp:
 - '6'
 libgit2:
-- '1.1'
+- '1.2'
 libssh2:
 - '1'
 libunwind:
