@@ -24,8 +24,8 @@ if [[ "${target_platform}" == osx-* ]]; then
 elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
 fi
-# Do this only for x86_64, target platform is not osx-arm64
-https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
+# See the following link for how official Julia sets JULIA_CPU_TARGET
+# https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
 if [[ "${target_platform}" == *-64 ]]; then
     export JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
 elif [[ "${target_platform}" == linux-aarch64 ]]; then
@@ -39,7 +39,7 @@ else
     exit 1
 fi    
 
-make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
+make -j 4 prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
