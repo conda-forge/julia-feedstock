@@ -19,16 +19,27 @@ export CMAKE_GENERATOR="make"
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
-if [ "$(uname)" == "Darwin" ]
-then
+if [[ "${target_platform}" == osx-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0"
-elif [ "$(uname)" == "Linux" ]
-then
+elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
 fi
+# See the following link for how official Julia sets JULIA_CPU_TARGET
+# https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
+if [[ "${target_platform}" == *-64 ]]; then
+    export JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
+elif [[ "${target_platform}" == linux-aarch64 ]]; then
+    export JULIA_CPU_TARGET="generic;cortex-a57;thunderx2t99;armv8.2-a,crypto,fullfp16,lse,rdm"
+elif [[ "${target_platform}" == osx-arm64 ]]; then
+    export JULIA_CPU_TARGET="generic;armv8.2-a,crypto,fullfp16,lse,rdm"
+elif [[ "${target_platform}" == linux-ppc64le ]]; then
+    export JULIA_CPU_TARGET="pwr8"
+else
+    echo "Unknown target ${target_platform}"
+    exit 1
+fi    
 
-# using system utf8proc can be enabled in 1.7.0. See https://github.com/JuliaLang/julia/commit/ba653ecb1c81f1465505c2cea38b4f8149dd20b3
-make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
+make -j 4 prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
@@ -46,7 +57,7 @@ make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_CSL=0 \
  USE_SYSTEM_LIBUNWIND=1 \
  USE_SYSTEM_LIBUV=0 \
- USE_SYSTEM_UTF8PROC=0 \
+ USE_SYSTEM_UTF8PROC=1 \
  USE_SYSTEM_MBEDTLS=0 \
  USE_SYSTEM_NGHTTP2=1 \
  USE_SYSTEM_ZLIB=1 \
