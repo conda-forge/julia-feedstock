@@ -19,15 +19,25 @@ export CMAKE_GENERATOR="make"
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
-if [ "$(uname)" == "Darwin" ]
-then
+if [[ "${target_platform}" == osx-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0"
-elif [ "$(uname)" == "Linux" ]
-then
+elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
 fi
 # Do this only for x86_64, target platform is not osx-arm64
-export JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
+https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
+if [[ "${target_platform}" == *-64 ]]; then
+    export JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
+elif [[ "${target_platform}" == linux-aarch64 ]]; then
+    export JULIA_CPU_TARGET="generic;cortex-a57;thunderx2t99;armv8.2-a,crypto,fullfp16,lse,rdm"
+elif [[ "${target_platform}" == osx-arm64 ]]; then
+    export JULIA_CPU_TARGET="generic;armv8.2-a,crypto,fullfp16,lse,rdm"
+elif [[ "${target_platform}" == linux-ppc64le ]]; then
+    export JULIA_CPU_TARGET="pwr8"
+else
+    echo "Unknown target ${target_platform}"
+    exit 1
+fi    
 
 make -j 4 prefix=${PREFIX} MARCH=core2 sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
