@@ -51,7 +51,7 @@ requirements:
     - mpfr
     - openlibm
     - arpack
-    - suitesparse
+    - suitesparse =5.4.0
     - pcre2
     - curl
     - libgit2  # [not osx]
