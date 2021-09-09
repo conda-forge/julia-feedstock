@@ -147,4 +147,5 @@ Feedstock Maintainers
 * [@bgruening](https://github.com/bgruening/)
 * [@dfornika](https://github.com/dfornika/)
 * [@mariusvniekerk](https://github.com/mariusvniekerk/)
+* [@mkitti](https://github.com/mkitti/)
 
