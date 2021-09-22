@@ -10,10 +10,13 @@ source:
   fn: julia-{{ version }}-full.tar.gz
   url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
+    - julia-hardcoded-libs.patch
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 3
   features:
 
 requirements:
@@ -34,8 +37,9 @@ requirements:
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
+    - mbedtls  # [not osx]
     - arpack
-    - suitesparse =5.4.0
+    - suitesparse
     - pcre2
     - git
     - libutf8proc
@@ -51,11 +55,12 @@ requirements:
     - mpfr
     - openlibm
     - arpack
-    - suitesparse =5.4.0
+    - suitesparse
     - pcre2
     - curl
     - libgit2  # [not osx]
     - libssh2
+    - mbedtls  # [not osx]
     - git
     - libutf8proc
     - libnghttp2
@@ -88,6 +93,8 @@ test:
         "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap",
         "smallarrayshrink", "download"])' # all except stdlib, add "opaque_closure", "filesystem" with 1.7
     - julia -e 'Base.runtests(["math"])'  # [not osx] due to failure on math.jl:296, pre-haswell processor
+    - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
+    - julia -e 'import Pkg;Pkg.add("Sundials")'
   requires:
     - perl
 
