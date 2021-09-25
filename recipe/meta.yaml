@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.6.2" %}
-{% set sha256 = "01241120515cb9435b96179cf301fbd2c24d4405f252588108d13ceac0f41c0a" %}
+{% set version = "1.6.3" %}
+{% set sha256 = "29aad934582fb4c6dd9f9dd558ad649921f43bc7320eab54407fdf6dd3270a33" %}
 
 package:
   name: {{ name|lower }}
@@ -16,7 +16,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 3
+  number: 0
   features:
 
 requirements:
@@ -69,29 +69,10 @@ requirements:
 
 test:
   commands:
-    - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds",
-        "keywordargs", "numbers", "subtype",
-        "char", "strings", "triplequote", "unicode", "intrinsics",
-        "dict", "hashing", "iobuffer", "staged", "offsetarray",
-        "arrayops", "tuple", "reduce", "reducedim", "abstractarray",
-        "intfuncs", "simdloop", "vecelement", "rational",
-        "bitarray", "copy", "fastmath", "functional", "iterators",
-        "operators", "ordering", "path", "ccall", "parse", "loading", "gmp",
-        "sorting", "spawn", "backtrace", "exceptions",
-        "file", "read", "version", "namedtuple",
-        "mpfr", "broadcast", "complex",
-        "floatapprox", "reflection", "regex", "float16",
-        "combinatorics", "sysinfo", "env", "rounding", "ranges", "mod2pi",
-        "euler", "show", "client",
-        "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu",
-        "some", "meta", "stacktraces", "docs",
-        "misc", "threads", "stress", "binaryplatforms", "atexit",
-        "enums", "cmdlineargs", "int", "interpreter",
-        "checked", "bitset", "floatfuncs", "precompile",
-        "boundscheck", "error", "ambiguous", "cartesian", "osutils",
-        "channels", "iostream", "secretbuffer", "specificity",
-        "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap",
-        "smallarrayshrink", "download"])' # all except stdlib, add "opaque_closure", "filesystem" with 1.7
+    - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "keywordargs", "numbers", "subtype", "char", "strings", "triplequote", "unicode", "intrinsics", "dict", "hashing", "iobuffer", "staged", "offsetarray", "arrayops", "tuple", "reduce", "reducedim", "abstractarray", "intfuncs", "simdloop", "vecelement",
+      "rational", "bitarray", "copy", "fastmath", "functional", "iterators", "operators", "ordering", "path", "ccall", "parse", "loading", "gmp", "sorting", "spawn", "backtrace", "exceptions", "file", "read", "version", "namedtuple", "mpfr", "broadcast", "complex", "floatapprox", "reflection", "regex", "float16", "combinatorics",
+      "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "threads", "stress", "binaryplatforms", "atexit", "enums", "cmdlineargs", "int", "interpreter", "checked", "bitset", "floatfuncs",
+      "precompile", "boundscheck", "error", "ambiguous", "cartesian", "osutils", "channels", "iostream", "secretbuffer", "specificity", "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap", "smallarrayshrink", "download"])' # all except stdlib, add "opaque_closure", "filesystem" with 1.7
     - julia -e 'Base.runtests(["math"])'  # [not osx] due to failure on math.jl:296, pre-haswell processor
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
