@@ -149,4 +149,5 @@ Feedstock Maintainers
 * [@dfornika](https://github.com/dfornika/)
 * [@mariusvniekerk](https://github.com/mariusvniekerk/)
 * [@mkitti](https://github.com/mkitti/)
+* [@ngam](https://github.com/ngam/)
 
