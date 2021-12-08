@@ -39,6 +39,8 @@ else
     exit 1
 fi    
 
+make cleanall
+
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
  USE_SYSTEM_ARPACK=1 \
