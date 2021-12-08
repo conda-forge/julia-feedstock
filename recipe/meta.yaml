@@ -26,6 +26,8 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make
+    - cmake
 
   host:
     - openblas-ilp64
@@ -37,7 +39,7 @@ requirements:
     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
-    - libunwind <=1.5  # [linux]
+    - libunwind =1.3  # [linux]
     - mbedtls  # [not osx]
     - arpack
     - suitesparse
@@ -51,7 +53,7 @@ requirements:
   run:
     - openblas-ilp64
     - libosxunwind  # [osx]
-    - libunwind <=1.5  # [linux]
+    - libunwind =1.3  # [linux]
     - gmp
     - mpfr
     - openlibm
