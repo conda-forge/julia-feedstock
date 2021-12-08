@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 export C_INCLUDE_PATH=${PREFIX}/include
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export LIBRARY_PATH=${PREFIX}/lib
@@ -15,6 +16,8 @@ EOF
 
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
+
+make cleanall
 
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
@@ -38,8 +41,6 @@ else
     echo "Unknown target ${target_platform}"
     exit 1
 fi    
-
-make clean
 
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
