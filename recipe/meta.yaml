@@ -16,7 +16,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   features:
 
 requirements:
@@ -26,8 +26,7 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - make
-    - cmake
+
   host:
     - openblas-ilp64
     - patchelf  # [linux]
