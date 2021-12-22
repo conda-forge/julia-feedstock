@@ -28,6 +28,8 @@ libgit2:
 - '1.3'
 libssh2:
 - '1'
+libunwind:
+- '1.5'
 mpfr:
 - '4'
 pcre2:
