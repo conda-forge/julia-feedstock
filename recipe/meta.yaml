@@ -51,7 +51,7 @@ requirements:
   run:
     - openblas-ilp64
     - libosxunwind  # [osx]
-    - libunwind  # [linux]
+    - {{ pin_compatible('libunwind') }} # [linux]
     - gmp
     - mpfr
     - openlibm
