@@ -34,7 +34,7 @@ requirements:
     - gmp
     - mpfr
     - curl
-    - libgit2  # [not osx]
+    - libgit2 <1.2.0  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
