@@ -13,13 +13,14 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - julia-hardcoded-libs.patch
-    - julia-llvm-patchelf.patch
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
     - 0001-fixing-core.jl-tests.patch
     ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
     - libgit2-patch.diff
+    ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
+    - 0002-Baz.baz-temporary-deletion.patch
 
 build:
   skip: true  # [win]
