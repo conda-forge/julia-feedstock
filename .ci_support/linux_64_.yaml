@@ -43,6 +43,8 @@ pin_run_as_build:
     max_pin: x
   gmp:
     max_pin: x
+  libunwind:
+    max_pin: x.x
   mpfr:
     max_pin: x
   zlib:
