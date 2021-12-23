@@ -16,7 +16,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 0
   features:
 
 requirements:
