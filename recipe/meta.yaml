@@ -16,11 +16,12 @@ source:
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 2
   features:
 
 requirements:
   build:
+    - make
     - perl
     - python 3
     - {{ compiler('fortran') }}
@@ -94,3 +95,4 @@ extra:
     - mariusvniekerk
     - abhi18av
     - mkitti
+    - ngam
