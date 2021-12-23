@@ -90,6 +90,13 @@ about:
   license_file: LICENSE.md
   summary: A high-performance dynamic programming language for data science
 
+  description: |
+    Julia is a high-level, high-performance dynamic language for technical computing. 
+    The main homepage for Julia can be found at julialang.org.
+    
+  dev_url: https://github.com/JuliaLang/julia
+  doc_url: https://docs.julialang.org
+
 extra:
   recipe-maintainers:
     - SylvainCorlay
