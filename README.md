@@ -9,6 +9,14 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/julia-feedstock
 
 Summary: A high-performance dynamic programming language for data science
 
+Development: https://github.com/JuliaLang/julia
+
+Documentation: https://docs.julialang.org
+
+Julia is a high-level, high-performance dynamic language for technical computing.
+The main homepage for Julia can be found at julialang.org.
+
+
 Current build status
 ====================
 
