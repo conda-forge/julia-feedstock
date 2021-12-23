@@ -13,6 +13,10 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - julia-hardcoded-libs.patch
+    ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
+    ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
+    - patch-libgit2-from-archlinux-svg-people.diff
+
 
 build:
   skip: true  # [win]
@@ -34,7 +38,7 @@ requirements:
     - gmp
     - mpfr
     - curl
-    - libgit2 <1.2.0  # [not osx]
+    - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
