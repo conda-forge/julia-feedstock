@@ -13,6 +13,7 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - julia-hardcoded-libs.patch
+    - julia-llvm-patchelf.patch
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
     - 0001-fixing-core.jl-tests.patch
