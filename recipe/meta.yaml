@@ -31,22 +31,24 @@ requirements:
   build:
     - make
     - perl
-    - python 3
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    # - python 3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - openblas-ilp64
     - patchelf  # [linux]
-    - openlibm
+    # - openlibm
     - gmp
     - mpfr
     - curl
     - libgit2  # [not osx]
     - libssh2
-    - libosxunwind  # [osx]
-    - libunwind  # [linux]
-    - mbedtls  # [not osx]
+    # - libosxunwind  # [osx]
+    # - libunwind  # [linux]
+    # - mbedtls  # [not osx]
     - arpack
     - suitesparse
     - pcre2
@@ -54,27 +56,27 @@ requirements:
     - libutf8proc
     - libnghttp2
     - zlib
-    - p7zip
+    # - p7zip
 
   run:
     - openblas-ilp64
-    - libosxunwind  # [osx]
-    - libunwind  # [linux]
+    # - libosxunwind  # [osx]
+    # - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm
+    # - openlibm
     - arpack
     - suitesparse
     - pcre2
     - curl
     - libgit2  # [not osx]
     - libssh2
-    - mbedtls  # [not osx]
+    # - mbedtls  # [not osx]
     - git
     - libutf8proc
     - libnghttp2
     - zlib
-    - p7zip
+    # - p7zip
 
 test:
   commands:
