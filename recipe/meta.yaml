@@ -15,12 +15,12 @@ source:
     - julia-hardcoded-libs.patch
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
-    - 0001-fixing-core.jl-tests.patch
+    - 0001-fixing-core.jl-tests.patch  # [linux]
     ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - libgit2-patch.diff
+    - libgit2-patch.diff  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
-    - 0002-Baz.baz-temporary-deletion.patch
+    - 0002-Baz.baz-temporary-deletion.patch  # [linux]
 
 build:
   skip: true  # [win]
