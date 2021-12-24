@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.6.4" %}
-{% set sha256 = "954578b973fdb891c88fa1eedd931129e215ab928ecc416dd0bdf6c70549d2fc" %}
+{% set version = "1.7.0" %}
+{% set sha256 = "d40d83944f8e1709de1d6f7544e1a6721e091f70ba06b44c25b89bdba754dfa6" %}
 
 package:
   name: {{ name|lower }}
@@ -13,10 +13,18 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - julia-hardcoded-libs.patch
+    ## unreliable tests:
+    ## see: https://github.com/JuliaLang/julia/issues/43004
+    - 0001-fixing-core.jl-tests.patch
+    ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
+    ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
+    - libgit2-patch.diff
+    ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
+    - 0002-Baz.baz-temporary-deletion.patch
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 0
   features:
 
 requirements:
@@ -85,6 +93,11 @@ about:
   license: MIT
   license_file: LICENSE.md
   summary: A high-performance dynamic programming language for data science
+  description: |
+     Julia is a high-level, high-performance dynamic language for technical computing.
+     The main homepage for Julia can be found at julialang.org.
+  dev_url: https://github.com/JuliaLang/julia
+  doc_url: https://docs.julialang.org
 
 extra:
   recipe-maintainers:
