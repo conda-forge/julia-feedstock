@@ -67,4 +67,4 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  install
 
 # Configure juliarc to use conda environment
-cat "${RECIPE_DIR}/juliarc.jl" >> "${PREFIX}/etc/julia/juliarc.jl"
+# cat "${RECIPE_DIR}/juliarc.jl" >> "${PREFIX}/etc/julia/juliarc.jl"
