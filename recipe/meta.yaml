@@ -46,7 +46,8 @@ requirements:
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - mbedtls  # [not osx]
+    # - mbedtls  # [not osx]
+    - mbedtls
     - arpack
     - suitesparse
     - pcre2
@@ -69,7 +70,8 @@ requirements:
     - curl
     - libgit2  # [not osx]
     - libssh2
-    - mbedtls  # [not osx]
+    # - mbedtls  # [not osx]
+    - mbedtls
     - git
     - libutf8proc
     - libnghttp2
