@@ -9,13 +9,6 @@ export PATH="${PREFIX}/bin:${PATH}"
 #set JULIA_DEPOT_PATH in conda env
 export JULIA_DEPOT_PATH="${PREFIX}/share/julia/site:$JULIA_DEPOT_PATH" 
 
-# Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
-# This will allow them to be run on environment activation.
-for CHANGE in "activate" "deactivate"
-do
-    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
-    cp "${RECIPE_DIR}/scripts/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
-done
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
 html :	
@@ -78,3 +71,11 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
 
 # Configure juliarc to use conda environment
 # cat "${RECIPE_DIR}/juliarc.jl" >> "${PREFIX}/etc/julia/juliarc.jl"
+
+# Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
+# This will allow them to be run on environment activation.
+for CHANGE in "activate" "deactivate"
+do
+    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
+    cp "${RECIPE_DIR}/scripts/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
+done
