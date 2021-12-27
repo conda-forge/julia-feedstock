@@ -18,9 +18,11 @@ source:
     - libgit2-patch.diff  # [linux]
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
-    - 0001-fixing-core.jl-tests.patch  # [linux]
+    - 0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
-    - 0002-Baz.baz-temporary-deletion.patch  # [linux]
+    - 0002-disable-testing-Baz.baz-1.patch  # [linux]
+    ## see PR upstream: https://github.com/JuliaLang/julia/pull/43560
+    - 0003-correctly-point-in-projectname-project.patch
 
 build:
   skip: true  # [win]
