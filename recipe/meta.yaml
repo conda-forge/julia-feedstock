@@ -22,7 +22,7 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - 0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/43560
-    - 0003-correctly-point-in-projectname-project.patch
+    - 0004-another-occurence-of-pointing.patch
 
 build:
   skip: true  # [win]
