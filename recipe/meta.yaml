@@ -14,7 +14,7 @@ source:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - julia-hardcoded-libs.patch
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/43560
-    - 0003-correctly-point-in-projectname-project.patch
+    - 0001-correctly-point-in-projectname-project.patch
 build:
   skip: true  # [win]
   number: 1
