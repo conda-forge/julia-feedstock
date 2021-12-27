@@ -1,7 +1,7 @@
 From 67f620177ee9f321cd62b9e86114439761542dcb Mon Sep 17 00:00:00 2001
-From: ngam <67342040+ngam@users.noreply.github.com>
+From: ngam <ngam@users.noreply.github.com>
 Date: Mon, 27 Dec 2021 01:37:48 +0000
-Subject: [PATCH 3/3] correctly point in @projectname --project
+Subject: [PATCH 3/4] correctly point in @projectname --project
 
 ---
  test/cmdlineargs.jl | 2 +-
