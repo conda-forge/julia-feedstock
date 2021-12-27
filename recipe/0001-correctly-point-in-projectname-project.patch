@@ -16,7 +16,7 @@ index 7f075e231e..75a8a53ee1 100644
          expanded = abspath(expanduser("~/foo"))
          @test occursin(expanded, readchomp(`$exename --project='~/foo' -E 'Base.active_project()'`))
 -        @test occursin(expanded, readchomp(setenv(`$exename -E 'Base.active_project()'`, "JULIA_PROJECT" => "~/foo", "HOME" => homedir())))
-+        @test occursin(expanded, readchomp(setenv(`$exename -E 'Base.active_project()'`, "JULIA_PROJECT" => "~/foo", "HOME" => homedir(), "JULIA_DEPOT_PATH" => ENV["JULIA_DEPOT_PATH"])))
++        @test occursin(expanded, readchomp(addenv(`$exename -E 'Base.active_project()'`, "JULIA_PROJECT" => "~/foo", "HOME" => homedir())))
      end
  
      # --quiet, --banner
