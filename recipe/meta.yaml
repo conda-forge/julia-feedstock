@@ -21,8 +21,8 @@ source:
     - 0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - 0002-disable-testing-Baz.baz-1.patch  # [linux]
-    ## see PR upstream: https://github.com/JuliaLang/julia/pull/43560
-    - 0004-another-occurence-of-pointing.patch
+    ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
+    - 0003-correct-test-for-julia-depot-path.patch
 
 build:
   skip: true  # [win]
