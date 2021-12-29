@@ -12,17 +12,17 @@ source:
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
-    - julia-hardcoded-libs.patch
+    - patches/julia-hardcoded-libs.patch
     ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - libgit2-patch.diff  # [linux]
+    - patches/libgit2-patch.diff  # [linux]
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
-    - 0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
+    - patches/0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
-    - 0002-disable-testing-Baz.baz-1.patch  # [linux]
+    - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
-    - 0003-correct-test-for-julia-depot-path.patch
+    - patches/0003-correct-test-for-julia-depot-path.patch
 
 build:
   skip: true  # [win]
