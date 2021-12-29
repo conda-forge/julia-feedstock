@@ -50,7 +50,6 @@ requirements:
     - pcre2
     - git
     - libutf8proc
-    - libnghttp2
     - zlib
     - p7zip
 
@@ -68,7 +67,6 @@ requirements:
     - mbedtls  # [not osx]
     - git
     - libutf8proc
-    - libnghttp2
     - zlib
     - p7zip
 
