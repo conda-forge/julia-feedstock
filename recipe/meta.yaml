@@ -16,7 +16,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
   features:
 
 requirements:
@@ -30,7 +30,7 @@ requirements:
   host:
     - openblas-ilp64
     - patchelf  # [linux]
-    - openlibm
+    - openlibm  <0.8.0
     - gmp
     - mpfr
     - curl
@@ -54,7 +54,7 @@ requirements:
     - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm
+    - openlibm <0.8.0
     - arpack
     - suitesparse
     - pcre2
