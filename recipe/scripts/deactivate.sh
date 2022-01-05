@@ -15,3 +15,6 @@ fi
 if [ -z $JULIA_LOAD_PATH ]; then
     unset JULIA_LOAD_PATH
 fi
+if [ -z $JULIA_SSL_CA_ROOTS_PATH ]; then
+    unset JULIA_SSL_CA_ROOTS_PATH
+fi
