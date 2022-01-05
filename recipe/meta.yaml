@@ -54,7 +54,7 @@ requirements:
     - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm <0.8.0
+    - openlibm  <0.8.0
     - arpack
     - suitesparse
     - pcre2
