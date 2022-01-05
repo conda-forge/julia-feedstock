@@ -65,7 +65,7 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_ZLIB=1 \
  USE_SYSTEM_P7ZIP=1 \
  ${EXTRA_MAKEFLAGS} \
- TAGGED_RELEASE_BANNER="By github.com/conda-forge/julia-feedstock" \
+ TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
  CC=$CC CXX=$CXX FC=$FC \
  install
 
