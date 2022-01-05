@@ -92,7 +92,7 @@ index fa45e75..b51812e 100644
  elseif Sys.isapple()
      const libLLVM = "@rpath/libLLVM.dylib"
  else
--    const libLLVM = "libLLVM-12jl.so"
+-    const libLLVM = "libLLVM-11jl.so"
 +    const libLLVM = "libLLVM.so"
  end
  
@@ -115,4 +115,3 @@ index 8b98c76..d926449 100644
  function __init__()
 -- 
 2.33.0
-
