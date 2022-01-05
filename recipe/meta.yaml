@@ -25,8 +25,7 @@ source:
     - patches/0003-correct-test-for-julia-depot-path.patch
 
 build:
-  skip: true  # [win]
-  number: 1
+  number: 2
   features:
 
 requirements:
