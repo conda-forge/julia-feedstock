@@ -12,3 +12,6 @@ export JULIA_DEPOT_PATH="$CONDA_PREFIX/share/julia:$JULIA_DEPOT_PATH"
 export JULIA_PROJECT="@${CONDA_PREFIX##*/}"
 # Modify load path so that projects stack on the conda-named environment
 export JULIA_LOAD_PATH="@:$JULIA_PROJECT:@stdlib"
+
+# make julia use same cert
+ export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
