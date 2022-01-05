@@ -5,6 +5,7 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 export LIBRARY_PATH=${PREFIX}/lib
 export CMAKE_PREFIX_PATH=${PREFIX}
 export PATH="${PREFIX}/bin:${PATH}"
+export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
 
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
