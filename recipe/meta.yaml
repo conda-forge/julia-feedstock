@@ -37,31 +37,33 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - openblas-ilp64
+    - openblas-ilp64  # [not win]
+    - openblas  # [win]
     - patchelf  # [linux]
     - openlibm
-    - gmp
+    - gmp  # [not win]
     - mpfr
     - curl
     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - mbedtls  # [not osx]
+    - mbedtls  # [not (osx or win)]
     - arpack
     - suitesparse
     - pcre2
     - git
     - libutf8proc
-    - libnghttp2
+    - libnghttp2  # [not win]
     - zlib
-    - p7zip
+    - p7zip  # [not win]
 
   run:
-    - openblas-ilp64
+    - openblas-ilp64  # [not win]
+    - openblas  # [win]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - gmp
+    - gmp  # [not win]
     - mpfr
     - openlibm
     - arpack
@@ -70,12 +72,12 @@ requirements:
     - curl
     - libgit2  # [not osx]
     - libssh2
-    - mbedtls  # [not osx]
+    - mbedtls  # [not (osx or win)]
     - git
     - libutf8proc
-    - libnghttp2
+    - libnghttp2  # [not win]
     - zlib
-    - p7zip
+    - p7zip  # [not win]
 
 test:
   commands:
