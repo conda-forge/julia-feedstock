@@ -1,0 +1,117 @@
+From 620661455ec175ecd50c49f08e1ac4f6fdb84a78 Mon Sep 17 00:00:00 2001
+From: Ista Zahn <istazahn@gmail.com>
+Date: Mon, 20 Sep 2021 10:56:40 -0400
+Subject: [PATCH] remove more hard coded libraries
+
+---
+ stdlib/LibGit2_jll/src/LibGit2_jll.jl   |  4 ++--
+ stdlib/LibSSH2_jll/src/LibSSH2_jll.jl   |  4 ++--
+ stdlib/MbedTLS_jll/src/MbedTLS_jll.jl   | 12 ++++++------
+ stdlib/OpenLibm_jll/src/OpenLibm_jll.jl |  4 ++--
+ stdlib/libLLVM_jll/src/libLLVM_jll.jl   |  2 +-
+ stdlib/nghttp2_jll/src/nghttp2_jll.jl   |  4 ++--
+ 6 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/stdlib/LibGit2_jll/src/LibGit2_jll.jl b/stdlib/LibGit2_jll/src/LibGit2_jll.jl
+index 8d1629e..b5a3b60 100644
+--- a/stdlib/LibGit2_jll/src/LibGit2_jll.jl
++++ b/stdlib/LibGit2_jll/src/LibGit2_jll.jl
+@@ -21,9 +21,9 @@ libgit2_path = ""
+ if Sys.iswindows()
+     const libgit2 = "libgit2.dll"
+ elseif Sys.isapple()
+-    const libgit2 = "@rpath/libgit2.1.1.dylib"
++    const libgit2 = "@rpath/libgit2.dylib"
+ else
+-    const libgit2 = "libgit2.so.1.1"
++    const libgit2 = "libgit2.so"
+ end
+ 
+ function __init__()
+diff --git a/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl b/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
+index 69a2fe6..6bd21b3 100644
+--- a/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
++++ b/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
+@@ -21,9 +21,9 @@ libssh2_path = ""
+ if Sys.iswindows()
+     const libssh2 = "libssh2.dll"
+ elseif Sys.isapple()
+-    const libssh2 = "@rpath/libssh2.1.dylib"
++    const libssh2 = "@rpath/libssh2.dylib"
+ else
+-    const libssh2 = "libssh2.so.1"
++    const libssh2 = "libssh2.so"
+ end
+ 
+ function __init__()
+diff --git a/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl b/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl
+index a7ca666..62774b9 100644
+--- a/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl
++++ b/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl
+@@ -27,13 +27,13 @@ if Sys.iswindows()
+     const libmbedtls = "libmbedtls.dll"
+     const libmbedx509 = "libmbedx509.dll"
+ elseif Sys.isapple()
+-    const libmbedcrypto = "@rpath/libmbedcrypto.5.dylib"
+-    const libmbedtls = "@rpath/libmbedtls.13.dylib"
+-    const libmbedx509 = "@rpath/libmbedx509.1.dylib"
++    const libmbedcrypto = "@rpath/libmbedcrypto.dylib"
++    const libmbedtls = "@rpath/libmbedtls.dylib"
++    const libmbedx509 = "@rpath/libmbedx509.dylib"
+ else
+-    const libmbedcrypto = "libmbedcrypto.so.5"
+-    const libmbedtls = "libmbedtls.so.13"
+-    const libmbedx509 = "libmbedx509.so.1"
++    const libmbedcrypto = "libmbedcrypto.so"
++    const libmbedtls = "libmbedtls.so"
++    const libmbedx509 = "libmbedx509.so"
+ end
+ 
+ function __init__()
+diff --git a/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl b/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
+index e0ac190..1f64e24 100644
+--- a/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
++++ b/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
+@@ -20,9 +20,9 @@ libopenlibm_path = ""
+ if Sys.iswindows()
+     const libopenlibm = "libopenlibm.dll"
+ elseif Sys.isapple()
+-    const libopenlibm = "@rpath/libopenlibm.3.dylib"
++    const libopenlibm = "@rpath/libopenlibm.dylib"
+ else
+-    const libopenlibm = "libopenlibm.so.3"
++    const libopenlibm = "libopenlibm.so"
+ end
+ 
+ function __init__()
+diff --git a/stdlib/libLLVM_jll/src/libLLVM_jll.jl b/stdlib/libLLVM_jll/src/libLLVM_jll.jl
+index fa45e75..b51812e 100644
+--- a/stdlib/libLLVM_jll/src/libLLVM_jll.jl
++++ b/stdlib/libLLVM_jll/src/libLLVM_jll.jl
+@@ -23,7 +23,7 @@ if Sys.iswindows()
+ elseif Sys.isapple()
+     const libLLVM = "@rpath/libLLVM.dylib"
+ else
+-    const libLLVM = "libLLVM-11jl.so"
++    const libLLVM = "libLLVM.so"
+ end
+ 
+ function __init__()
+diff --git a/stdlib/nghttp2_jll/src/nghttp2_jll.jl b/stdlib/nghttp2_jll/src/nghttp2_jll.jl
+index 8b98c76..d926449 100644
+--- a/stdlib/nghttp2_jll/src/nghttp2_jll.jl
++++ b/stdlib/nghttp2_jll/src/nghttp2_jll.jl
+@@ -20,9 +20,9 @@ libnghttp2_path = ""
+ if Sys.iswindows()
+     const libnghttp2 = "libnghttp2-14.dll"
+ elseif Sys.isapple()
+-    const libnghttp2 = "@rpath/libnghttp2.14.dylib"
++    const libnghttp2 = "@rpath/libnghttp2.dylib"
+ else
+-    const libnghttp2 = "libnghttp2.so.14"
++    const libnghttp2 = "libnghttp2.so"
+ end
+ 
+ function __init__()
+-- 
+2.33.0
