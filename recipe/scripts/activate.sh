@@ -14,4 +14,5 @@ export JULIA_PROJECT="@${CONDA_PREFIX##*/}"
 export JULIA_LOAD_PATH="@:$JULIA_PROJECT:@stdlib"
 
 # make julia use same cert
+ export JULIA_SSL_CA_ROOTS_PATH_BACKUP=${JULIA_SSL_CA_ROOTS_PATH:-}
  export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
