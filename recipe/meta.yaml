@@ -23,10 +23,12 @@ source:
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
     - patches/0003-correct-test-for-julia-depot-path.patch
-
+    ## fix the curl issues:
+    ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
+    - fix_curl_temp.patch
 build:
   skip: true  # [win]
-  number: 2
+  number: 3
   features:
 
 requirements:
