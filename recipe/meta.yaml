@@ -43,11 +43,11 @@ requirements:
     - openlibm <0.8.0
     - gmp
     - mpfr
-    - libgit2  # [not osx]
+#     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - mbedtls  # [not osx]
+#     - mbedtls  # [not osx]
     - arpack
     - suitesparse
     - pcre2
@@ -67,9 +67,9 @@ requirements:
     - arpack
     - suitesparse
     - pcre2
-    - libgit2  # [not osx]
+#     - libgit2  # [not osx]
     - libssh2
-    - mbedtls  # [not osx]
+#     - mbedtls  # [not osx]
     - git
     - libutf8proc
     - libnghttp2
