@@ -26,7 +26,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 3
   features:
 
 requirements:
@@ -43,7 +43,6 @@ requirements:
     - openlibm <0.8.0
     - gmp
     - mpfr
-    - curl
     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
@@ -68,7 +67,6 @@ requirements:
     - arpack
     - suitesparse
     - pcre2
-    - curl
     - libgit2  # [not osx]
     - libssh2
     - mbedtls  # [not osx]
