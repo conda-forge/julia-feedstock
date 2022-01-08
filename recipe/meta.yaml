@@ -25,7 +25,7 @@ source:
     - patches/0003-correct-test-for-julia-depot-path.patch
     ## fix the curl issues:
     ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
-    - fix_curl_temp.patch
+    - patches/fix_curl_temp.patch
 build:
   skip: true  # [win]
   number: 3
