@@ -40,11 +40,9 @@ pin_run_as_build:
   arpack:
     max_pin: x.x.x
   curl:
-    max_pin: x
+    max_pin: '7.80'
   gmp:
     max_pin: x
-  libunwind:
-    max_pin: x.x
   mpfr:
     max_pin: x
   zlib:
