@@ -36,7 +36,7 @@ pin_run_as_build:
   arpack:
     max_pin: x.x.x
   curl:
-    max_pin: 7.80.0
+    max_pin: x
   gmp:
     max_pin: x
   mpfr:
