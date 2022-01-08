@@ -1,0 +1,25 @@
+From 685747156949e0a88398abb0826d58e2ce786c53 Mon Sep 17 00:00:00 2001
+From: Mark Kittisopikul <markkitt@gmail.com>
+Date: Sat, 8 Jan 2022 14:01:06 -0500
+Subject: [PATCH] Make precompile verbose
+
+---
+ contrib/generate_precompile.jl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/generate_precompile.jl b/contrib/generate_precompile.jl
+index bb760f70ab..5410e953a4 100644
+--- a/contrib/generate_precompile.jl
++++ b/contrib/generate_precompile.jl
+@@ -228,7 +228,7 @@ end
+ 
+ function generate_precompile_statements()
+     start_time = time_ns()
+-    debug_output = devnull # or stdout
++    debug_output = stdout # or stdout
+     sysimg = Base.unsafe_string(Base.JLOptions().image_file)
+ 
+     # Extract the precompile statements from the precompile file
+-- 
+2.34.1
+
