@@ -43,7 +43,7 @@ requirements:
     - openlibm <0.8.0
     - gmp
     - mpfr
-    - curl
+    - curl <7.81.0
     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
@@ -68,7 +68,7 @@ requirements:
     - arpack
     - suitesparse
     - pcre2
-    - curl
+    - curl <7.81.0
     - libgit2  # [not osx]
     - libssh2
     - mbedtls  # [not osx]
