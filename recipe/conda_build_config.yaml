@@ -4,3 +4,8 @@ pin_run_as_build:  # [linux]
     libunwind:  # [linux]
       max_pin: x.x  # [linux]
 
+curl:
+  - 7
+pin_run_as_build:
+    curl:
+      max_pin: 7.80
