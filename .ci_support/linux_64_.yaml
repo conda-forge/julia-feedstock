@@ -10,8 +10,6 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
-curl:
-- '7'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -39,8 +37,6 @@ perl:
 pin_run_as_build:
   arpack:
     max_pin: x.x.x
-  curl:
-    max_pin: x
   gmp:
     max_pin: x
   libunwind:
