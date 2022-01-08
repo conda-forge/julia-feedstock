@@ -26,6 +26,7 @@ source:
     ## fix the curl issues:
     ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
     - patches/fix_curl_issues.patch
+    - patches/checksums.patch
 
 build:
   skip: true  # [win]
