@@ -38,9 +38,9 @@ else
     echo "Unknown target ${target_platform}"
     exit 1
 fi    
-     
+
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
- LIBBLAS=-libblas LIBBLASNAME=libblas LIBLAPACK=-liblapack LIBLAPACKNAME=liblapack \
+ LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
  USE_BLAS64=1 \
