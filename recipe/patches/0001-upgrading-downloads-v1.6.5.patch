@@ -1,0 +1,57 @@
+From 9ca7b1967bfa1f29477424e89255c642ec410607 Mon Sep 17 00:00:00 2001
+From: ngam <67342040+ngam@users.noreply.github.com>
+Date: Sat, 8 Jan 2022 19:28:53 -0500
+Subject: [PATCH] upgrading downloads v1.6.5
+
+---
+ .../md5                                                       | 1 +
+ .../sha512                                                    | 1 +
+ .../md5                                                       | 1 -
+ .../sha512                                                    | 1 -
+ stdlib/Downloads.version                                      | 4 ++--
+ 5 files changed, 4 insertions(+), 4 deletions(-)
+ create mode 100644 deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/md5
+ create mode 100644 deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/sha512
+ delete mode 100644 deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/md5
+ delete mode 100644 deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/sha512
+
+diff --git a/deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/md5 b/deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/md5
+new file mode 100644
+index 0000000000..eaadf785c8
+--- /dev/null
++++ b/deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/md5
+@@ -0,0 +1 @@
++32aa90dbb437530c9da687340339c1aa
+diff --git a/deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/sha512 b/deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/sha512
+new file mode 100644
+index 0000000000..278d52a7c8
+--- /dev/null
++++ b/deps/checksums/Downloads-43899e71eed709866f96dd624f1c369a1c8e26a3.tar.gz/sha512
+@@ -0,0 +1 @@
++b433a964ec78fdfdc0c159a6330ca465b62c2911d84de4a020a78aa2f8dd2f760ae9313e3b64c72937dfbb30bde23ad8effa0ce3179488cdd7e05af2c101bb0c
+diff --git a/deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/md5 b/deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/md5
+deleted file mode 100644
+index 2afbb9d0e6..0000000000
+--- a/deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/md5
++++ /dev/null
+@@ -1 +0,0 @@
+-4355616cfaa57276d9873dd96387aca4
+diff --git a/deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/sha512 b/deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/sha512
+deleted file mode 100644
+index 9a65a12573..0000000000
+--- a/deps/checksums/Downloads-b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8.tar.gz/sha512
++++ /dev/null
+@@ -1 +0,0 @@
+-902d82694a77d153f1327dcc469ac6bd9913f30e67db8c81ccfd1c8dc2a6eeae69437218e28ced646a92f7c80dd5e0a338eb739c3c3d35021bc999b4371218a7
+diff --git a/stdlib/Downloads.version b/stdlib/Downloads.version
+index cf98e7d232..2d99b025ab 100644
+--- a/stdlib/Downloads.version
++++ b/stdlib/Downloads.version
+@@ -1,2 +1,2 @@
+-DOWNLOADS_BRANCH = release-1.4
+-DOWNLOADS_SHA1 = b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8
++DOWNLOADS_BRANCH = release-1.6
++DOWNLOADS_SHA1 = 43899e71eed709866f96dd624f1c369a1c8e26a3
+-- 
+2.34.1
+
