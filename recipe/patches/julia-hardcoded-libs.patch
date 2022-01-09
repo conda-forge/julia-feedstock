@@ -92,7 +92,7 @@ index fa45e75..b51812e 100644
  elseif Sys.isapple()
      const libLLVM = "@rpath/libLLVM.dylib"
  else
--    const libLLVM = "libLLVM-12jl.so"
+-    const libLLVM = "libLLVM-13jl.so"
 +    const libLLVM = "libLLVM.so"
  end
  

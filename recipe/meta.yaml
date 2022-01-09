@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.7.1" %}
-{% set sha256 = "add869121b7e788ff487a234fd39484469dbb3ded29b17041c63c4757515dd58" %}
+{% set version = "1.8.0.dev.1258" %}
+{% set sha256 = "e8397259d928c5cc7af467d1b452f548e5b99a549173c44bda51bfe491af07a5" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: julia-{{ version }}-full.tar.gz
-  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
+  url: https://github.com/JuliaLang/julia/archive/5f6b8a1767f72c6b86ae391ece9c0ca52cd73c6b.tar.gz
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
@@ -22,11 +22,13 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
-    - patches/0003-correct-test-for-julia-depot-path.patch
+    ## - patches/0003-correct-test-for-julia-depot-path.patch
+    ## see PR upstream: https://github.com/JuliaLang/julia/pull/43717
+    - patches/0004-base-version_git.sh-fix-the-default-value-for-Base.G.patch
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 0
   features:
 
 requirements:
