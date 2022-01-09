@@ -12,11 +12,9 @@ index 056fc38d82..92b057c3b6 100644
 --- a/stdlib/Downloads.version
 +++ b/stdlib/Downloads.version
 @@ -1,4 +1,4 @@
--DOWNLOADS_BRANCH = release-1.5
--DOWNLOADS_SHA1 = 26d79afcde9cf837a331fce023b31f1d3699700c
+-DOWNLOADS_BRANCH = release-1.4
+-DOWNLOADS_SHA1 = b07b4cf3b20b77faa7efbe29c0adfa8b4b7ee8d8
 +DOWNLOADS_BRANCH = release-1.6
 +DOWNLOADS_SHA1 = 43899e71eed709866f96dd624f1c369a1c8e26a3
- DOWNLOADS_GIT_URL := git://github.com/JuliaLang/Downloads.jl.git
- DOWNLOADS_TAR_URL = https://api.github.com/repos/JuliaLang/Downloads.jl/tarball/$1
 -- 
 2.34.1
