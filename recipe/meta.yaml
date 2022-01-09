@@ -23,6 +23,8 @@ source:
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
     ## - patches/0003-correct-test-for-julia-depot-path.patch
+    ## see PR upstream: https://github.com/JuliaLang/julia/pull/43717
+    - patches/0004-base-version_git.sh-fix-the-default-value-for-Base.G.patch
 
 build:
   skip: true  # [win]
