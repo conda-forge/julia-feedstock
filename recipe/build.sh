@@ -39,11 +39,12 @@ else
     exit 1
 fi    
 
+
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
- LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
+ LIBBLAS=-libblas LIBBLASNAME=libblas LIBLAPACK=-liblapack LIBLAPACKNAME=liblapack \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
- USE_BLAS64=1 \
+ USE_BLAS64=0 \
  USE_SYSTEM_CURL=1 \
  USE_SYSTEM_GMP=1 \
  USE_SYSTEM_LAPACK=1 \
