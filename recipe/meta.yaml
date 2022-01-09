@@ -27,6 +27,7 @@ source:
     ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
     - patches/fix_curl_temp.patch
     - patches/checksums.patch
+    - patches/checksums2.patch
 
 build:
   skip: true  # [win]
