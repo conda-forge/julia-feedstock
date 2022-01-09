@@ -22,7 +22,7 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
-    - patches/0003-correct-test-for-julia-depot-path.patch
+    ## - patches/0003-correct-test-for-julia-depot-path.patch
 
 build:
   skip: true  # [win]
