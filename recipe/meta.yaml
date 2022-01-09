@@ -41,8 +41,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libblas
-    - liblapack
+    - openblas-ilp64
     - patchelf  # [linux]
     - openlibm <0.8.0
     - gmp
@@ -63,8 +62,7 @@ requirements:
     - p7zip
 
   run:
-    - libblas
-    - liblapack
+    - openblas-ilp64
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
