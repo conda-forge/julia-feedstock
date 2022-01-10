@@ -89,6 +89,7 @@ else
 	 TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
 	 CC=$CC CXX=$CXX FC=$FC \
 	 install
+fi
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
