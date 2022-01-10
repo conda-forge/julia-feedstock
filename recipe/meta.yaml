@@ -37,6 +37,7 @@ requirements:
     - make
     - perl
     - python 3
+    - curl
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
