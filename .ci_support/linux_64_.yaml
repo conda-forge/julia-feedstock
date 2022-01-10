@@ -9,7 +9,7 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge julia_dev
 curl:
 - '7'
 cxx_compiler:
