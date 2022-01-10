@@ -39,33 +39,56 @@ else
     exit 1
 fi    
 
-
-make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
- LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
- USE_SYSTEM_ARPACK=1 \
- USE_SYSTEM_BLAS=1 \
- USE_BLAS64=1 \
- USE_SYSTEM_CURL=1 \
- USE_SYSTEM_GMP=1 \
- USE_SYSTEM_LAPACK=1 \
- USE_SYSTEM_LIBSSH2=1 \
- USE_SYSTEM_LLVM=0 \
- USE_SYSTEM_MPFR=1 \
- USE_SYSTEM_OPENLIBM=1 \
- USE_SYSTEM_PATCHELF=1 \
- USE_SYSTEM_PCRE=1 \
- USE_SYSTEM_LIBSUITESPARSE=1 \
- USE_SYSTEM_CSL=0 \
- USE_SYSTEM_LIBUNWIND=1 \
- USE_SYSTEM_LIBUV=0 \
- USE_SYSTEM_UTF8PROC=1 \
- USE_SYSTEM_NGHTTP2=1 \
- USE_SYSTEM_ZLIB=1 \
- USE_SYSTEM_P7ZIP=1 \
- ${EXTRA_MAKEFLAGS} \
- TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
- CC=$CC CXX=$CXX FC=$FC \
- install
+if [[ "${target_platform}" == osx-arm64 ]]; then
+	make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
+	 USE_SYSTEM_ARPACK=1 \
+	 USE_SYSTEM_CURL=1 \
+	 USE_SYSTEM_GMP=1 \
+	 USE_SYSTEM_LIBSSH2=1 \
+	 USE_SYSTEM_LLVM=0 \
+	 USE_SYSTEM_MPFR=1 \
+	 USE_SYSTEM_OPENLIBM=1 \
+	 USE_SYSTEM_PATCHELF=1 \
+	 USE_SYSTEM_PCRE=1 \
+	 USE_SYSTEM_LIBSUITESPARSE=1 \
+	 USE_SYSTEM_CSL=0 \
+	 USE_SYSTEM_LIBUNWIND=1 \
+	 USE_SYSTEM_LIBUV=0 \
+	 USE_SYSTEM_UTF8PROC=1 \
+	 USE_SYSTEM_NGHTTP2=1 \
+	 USE_SYSTEM_ZLIB=1 \
+	 USE_SYSTEM_P7ZIP=1 \
+	 ${EXTRA_MAKEFLAGS} \
+	 TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
+	 CC=$CC CXX=$CXX FC=$FC \
+	 install
+else
+	make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
+	 LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
+	 USE_SYSTEM_ARPACK=1 \
+	 USE_SYSTEM_BLAS=1 \
+	 USE_BLAS64=1 \
+	 USE_SYSTEM_CURL=1 \
+	 USE_SYSTEM_GMP=1 \
+	 USE_SYSTEM_LAPACK=1 \
+	 USE_SYSTEM_LIBSSH2=1 \
+	 USE_SYSTEM_LLVM=0 \
+	 USE_SYSTEM_MPFR=1 \
+	 USE_SYSTEM_OPENLIBM=1 \
+	 USE_SYSTEM_PATCHELF=1 \
+	 USE_SYSTEM_PCRE=1 \
+	 USE_SYSTEM_LIBSUITESPARSE=1 \
+	 USE_SYSTEM_CSL=0 \
+	 USE_SYSTEM_LIBUNWIND=1 \
+	 USE_SYSTEM_LIBUV=0 \
+	 USE_SYSTEM_UTF8PROC=1 \
+	 USE_SYSTEM_NGHTTP2=1 \
+	 USE_SYSTEM_ZLIB=1 \
+	 USE_SYSTEM_P7ZIP=1 \
+	 ${EXTRA_MAKEFLAGS} \
+	 TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
+	 CC=$CC CXX=$CXX FC=$FC \
+	 install
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
