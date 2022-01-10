@@ -1,15 +1,17 @@
 {% set name = "julia" %}
-{% set version = "1.8.0.dev.1261" %}
-{% set sha256 = "685a7d1309effca53d4d243a359b217889cdbaed3c42281f94ca8a7c668c1b71" %}
+{% set buildnum_jl = "1261" %}
+{% set version = "1.8.0.dev." ~ buildnum_jl %}
+{% set git_rev = "709bc5c4d4774eaefd36f4e2a99d5042aa37e206" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: julia-{{ version }}-full.tar.gz
-  url: https://github.com/JuliaLang/julia/archive/709bc5c4d4774eaefd36f4e2a99d5042aa37e206.tar.gz
-  sha256: {{ sha256 }}
+  git_url: https://github.com/JuliaLang/julia.git
+  git_rev: {{ git_rev }}
+  ## Increase if the build number gets close to this value
+  git_depth: 2000
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
