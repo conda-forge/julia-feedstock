@@ -41,7 +41,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - openblas-ilp64  # [not ("${target_platform}" == osx-arm64)]
+    - openblas-ilp64  # [build_platform == target_platform]
     - patchelf  # [linux]
     - openlibm <0.8.0
     - gmp
@@ -62,7 +62,7 @@ requirements:
     - p7zip
 
   run:
-    - openblas-ilp64  # [not ("${target_platform}" == osx-arm64)]
+    - openblas-ilp64  # [build_platform == target_platform]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
