@@ -29,7 +29,6 @@ build:
 
 requirements:
   build:
-    - gcc  # [osx]
     - make
     - perl
     - python 3
