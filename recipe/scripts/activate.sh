@@ -16,3 +16,10 @@ export JULIA_LOAD_PATH="@:$JULIA_PROJECT:@stdlib"
 # make julia use same cert
  export JULIA_SSL_CA_ROOTS_PATH_BACKUP=${JULIA_SSL_CA_ROOTS_PATH:-}
  export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
+
+# Setup variables for Conda.jl
+conda_path=$(which conda)
+export CONDA_JL_HOME_BACKUP=${CONDA_JL_HOME:-}
+export CONDA_JL_HOME = $CONDA_PREFIX
+export CONDA_JL_CONDA_EXE_BACKUP=${CONDA_JL_CONDA_EXE:-}
+export CONDA_JL_CONDA_EXE = ${conda_path%/*/*}
