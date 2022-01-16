@@ -99,6 +99,4 @@ index 8b98c76..d926449 100644
  end
  
  function __init__()
-#-- 
-#2.33.0
 
