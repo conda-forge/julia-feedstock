@@ -11,5 +11,4 @@ index 51b25b8325..8abd491a63 100644
  
      # Issue #12720
      FooBar1_file = joinpath(dir, "FooBar1.jl")
-#2.34.1
 
