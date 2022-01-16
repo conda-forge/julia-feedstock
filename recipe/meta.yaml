@@ -78,6 +78,7 @@ requirements:
 
 test:
   commands:
+    - julia -e 'using InteractiveUtils; InteractiveUtils.versioninfo()'
     - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "keywordargs", "numbers", "subtype", "char", "strings", "triplequote", "unicode", "intrinsics", "dict", "hashing", "iobuffer", "staged", "offsetarray", "arrayops", "tuple", "reduce", "reducedim", "abstractarray", "intfuncs", "simdloop", "vecelement",
       "rational", "bitarray", "copy", "math", "fastmath", "functional", "iterators", "operators", "ordering", "path", "ccall", "parse", "gmp", "sorting", "spawn", "backtrace", "exceptions", "file", "read", "version", "namedtuple", "mpfr", "broadcast", "complex", "floatapprox", "reflection", "regex", "float16", "combinatorics",
       "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "threads", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs",
