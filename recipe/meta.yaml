@@ -29,6 +29,7 @@ build:
 
 requirements:
   build:
+    - gcc  # [osx]
     - make
     - perl
     - python 3
@@ -36,6 +37,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - gfortran_osx-64  # [osx]
     - openblas-ilp64
     - patchelf  # [linux]
     - openlibm <0.8.0
@@ -57,6 +59,7 @@ requirements:
     - p7zip
 
   run:
+    - gfortran_osx-64  # [osx]
     - openblas-ilp64
     - libosxunwind  # [osx]
     - libunwind  # [linux]
