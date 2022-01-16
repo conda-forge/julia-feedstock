@@ -20,6 +20,6 @@ export JULIA_LOAD_PATH="@:$JULIA_PROJECT:@stdlib"
 # Setup variables for Conda.jl
 conda_path=$(which conda)
 export CONDA_JL_HOME_BACKUP=${CONDA_JL_HOME:-}
-export CONDA_JL_HOME = $CONDA_PREFIX
+export CONDA_JL_HOME=$CONDA_PREFIX
 export CONDA_JL_CONDA_EXE_BACKUP=${CONDA_JL_CONDA_EXE:-}
-export CONDA_JL_CONDA_EXE = ${conda_path%/*/*}
+export CONDA_JL_CONDA_EXE=${conda_path%/*/*}
