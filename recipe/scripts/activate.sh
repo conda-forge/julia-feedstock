@@ -18,8 +18,7 @@ export JULIA_LOAD_PATH="@:$JULIA_PROJECT:@stdlib"
  export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
 
 # Setup variables for Conda.jl
-conda_path=${CONDA_EXE}
 export CONDA_JL_HOME_BACKUP=${CONDA_JL_HOME:-}
 export CONDA_JL_HOME=$CONDA_PREFIX
 export CONDA_JL_CONDA_EXE_BACKUP=${CONDA_JL_CONDA_EXE:-}
-export CONDA_JL_CONDA_EXE=${conda_path%/*/*}
+export CONDA_JL_CONDA_EXE=$CONDA_EXE
