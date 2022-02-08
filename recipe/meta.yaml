@@ -7,10 +7,9 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/JuliaLang/julia.git
-  git_rev: {{ git_rev }}
-  ## Increase if the build number gets close to this value
-  git_depth: 2000
+  fn: julia-{{ version }}-full.tar.gz
+  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
+  sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
