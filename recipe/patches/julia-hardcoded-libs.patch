@@ -1,17 +1,3 @@
-From 620661455ec175ecd50c49f08e1ac4f6fdb84a78 Mon Sep 17 00:00:00 2001
-From: Ista Zahn <istazahn@gmail.com>
-Date: Mon, 20 Sep 2021 10:56:40 -0400
-Subject: [PATCH] remove more hard coded libraries
-
----
- stdlib/LibGit2_jll/src/LibGit2_jll.jl   |  4 ++--
- stdlib/LibSSH2_jll/src/LibSSH2_jll.jl   |  4 ++--
- stdlib/MbedTLS_jll/src/MbedTLS_jll.jl   | 12 ++++++------
- stdlib/OpenLibm_jll/src/OpenLibm_jll.jl |  4 ++--
- stdlib/libLLVM_jll/src/libLLVM_jll.jl   |  2 +-
- stdlib/nghttp2_jll/src/nghttp2_jll.jl   |  4 ++--
- 6 files changed, 15 insertions(+), 15 deletions(-)
-
 diff --git a/stdlib/LibGit2_jll/src/LibGit2_jll.jl b/stdlib/LibGit2_jll/src/LibGit2_jll.jl
 index 8d1629e..b5a3b60 100644
 --- a/stdlib/LibGit2_jll/src/LibGit2_jll.jl
@@ -92,7 +78,7 @@ index fa45e75..b51812e 100644
  elseif Sys.isapple()
      const libLLVM = "@rpath/libLLVM.dylib"
  else
--    const libLLVM = "libLLVM-12jl.so"
+-    const libLLVM = "libLLVM-13jl.so"
 +    const libLLVM = "libLLVM.so"
  end
  
@@ -113,6 +99,4 @@ index 8b98c76..d926449 100644
  end
  
  function __init__()
--- 
-2.33.0
 
