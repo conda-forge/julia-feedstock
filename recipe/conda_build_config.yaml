@@ -3,6 +3,3 @@ libunwind:  # [linux]
 pin_run_as_build:  # [linux]
     libunwind:  # [linux]
       max_pin: x.x  # [linux]
-
-channel_targets:
-  - conda-forge julia_dev
