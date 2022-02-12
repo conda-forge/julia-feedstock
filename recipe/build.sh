@@ -44,7 +44,6 @@ if [[ "${target_platform}" == osx-arm64 ]]; then
 elif [[ "${target_platform}" != osx-arm64 ]]; then
     export EXTRA_MAKEFLAGS="$EXTRA_MAKEFLAGS USE_SYSTEM_BLAS=1 USE_BLAS64=1 USE_SYSTEM_ARPACK=1 USE_SYSTEM_LAPACK=1"
     export EXTRA_MAKEFLAGS="$EXTRA_MAKEFLAGS LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_"
-"
 fi
 
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
