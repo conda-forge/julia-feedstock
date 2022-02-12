@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.7.2" %}
-{% set sha256 = "c1b4f1f75aac34c40e81805cba2d87f1e72f9ce1405a525273c3688eee12366f" %}
+{% set version = "1.7.1" %}
+{% set sha256 = "add869121b7e788ff487a234fd39484469dbb3ded29b17041c63c4757515dd58" %}
 
 package:
   name: {{ name|lower }}
@@ -17,12 +17,20 @@ source:
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
     - patches/libgit2-patch.diff  # [linux]
     ## unreliable tests:
+    ## see: https://github.com/JuliaLang/julia/issues/43004
+    - patches/0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
+    ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
+    - patches/0003-correct-test-for-julia-depot-path.patch
+    ## fix the curl issues:
+    ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
+    - patches/0001-upgrading-downloads-v1.7.1.patch
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 3
+  features:
 
 requirements:
   build:
@@ -75,20 +83,13 @@ requirements:
 
 test:
   commands:
-    # check out versioninfo
-    - julia -e 'using InteractiveUtils; InteractiveUtils.versioninfo()'
-    # see if env vars are defined correctly
-    - echo $CONDA_JL_HOME
-    - echo $CONDA_JL_CONDA_EXE
-    # run julia tests
     - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "keywordargs", "numbers", "subtype", "char", "strings", "triplequote", "unicode", "intrinsics", "dict", "hashing", "iobuffer", "staged", "offsetarray", "arrayops", "tuple", "reduce", "reducedim", "abstractarray", "intfuncs", "simdloop", "vecelement",
       "rational", "bitarray", "copy", "math", "fastmath", "functional", "iterators", "operators", "ordering", "path", "ccall", "parse", "gmp", "sorting", "spawn", "backtrace", "exceptions", "file", "read", "version", "namedtuple", "mpfr", "broadcast", "complex", "floatapprox", "reflection", "regex", "float16", "combinatorics",
-      "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "threads", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs", "precompile", "boundscheck",
-      "error", "ambiguous", "cartesian", "osutils", "channels", "iostream", "secretbuffer", "specificity", "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap", "smallarrayshrink", "download", "opaque_closure", "filesystem"]; ncores=ceil(Int, Sys.CPU_THREADS))'                               # all except stdlib?
+      "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "threads", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs",
+      "precompile", "boundscheck", "error", "ambiguous", "cartesian", "osutils", "channels", "iostream", "secretbuffer", "specificity", "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap", "smallarrayshrink", "download", "opaque_closure", "filesystem"]; ncores=ceil(Int, Sys.CPU_THREADS))'  # all except stdlib?
     - julia --project -e 'delete!(ENV, "JULIA_PROJECT"); delete!(ENV, "JULIA_LOAD_PATH"); Base.runtests(["loading", "cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
-    #- julia -e 'import PKg;Pkg.add("Conda"); using Conda; ENV["CONDA_EXE"] == Conda.conda && isfile(Conda.conda) ? exit(0) : exit(1)'
   requires:
     - perl
 
@@ -98,8 +99,8 @@ about:
   license_file: LICENSE.md
   summary: A high-performance dynamic programming language for data science
   description: |
-    Julia is a high-level, high-performance dynamic language for technical computing.
-    The main homepage for Julia can be found at julialang.org.
+     Julia is a high-level, high-performance dynamic language for technical computing.
+     The main homepage for Julia can be found at julialang.org.
   dev_url: https://github.com/JuliaLang/julia
   doc_url: https://docs.julialang.org
 
