@@ -35,6 +35,7 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - curl  # [osx and (build_platform != target_platform)]
   host:
     - openblas-ilp64  # [x86]
     - patchelf  # [linux]
