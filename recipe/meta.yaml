@@ -18,7 +18,7 @@ source:
     - patches/libgit2-patch.diff  # [linux]
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
-    - patches/0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
+    ## - patches/0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     ## see PR upstream: https://github.com/JuliaLang/julia/pull/42358
