@@ -35,14 +35,13 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - curl  # [osx and (build_platform != target_platform)]
   host:
     - openblas-ilp64  # [x86]
     - patchelf  # [linux]
     - openlibm <0.8.0
     - gmp
     - mpfr
-    - curl
+    - curl  # [build_platform == target_platform]
     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
@@ -67,7 +66,7 @@ requirements:
     - arpack
     - suitesparse
     - pcre2
-    - curl
+    - curl  # [build_platform == target_platform]
     - libgit2  # [not osx]
     - libssh2
     - mbedtls  # [not osx]
