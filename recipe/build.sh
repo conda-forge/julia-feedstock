@@ -20,7 +20,7 @@ make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [[ "${target_platform}" == osx-* ]]; then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0"
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0"    
 elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=1"
 fi
@@ -37,16 +37,19 @@ elif [[ "${target_platform}" == linux-ppc64le ]]; then
 else
     echo "Unknown target ${target_platform}"
     exit 1
-fi    
+fi
+
+if [[ "${target_platform}" == osx-arm64 ]]; then
+    export EXTRA_MAKEFLAGS="$EXTRA_MAKEFLAGS USE_SYSTEM_BLAS=0 USE_BLAS64=0 USE_SYSTEM_ARPACK=0 USE_SYSTEM_LAPACK=0"
+elif [[ "${target_platform}" != osx-arm64 ]]; then
+    export EXTRA_MAKEFLAGS="$EXTRA_MAKEFLAGS USE_SYSTEM_BLAS=1 USE_BLAS64=1 USE_SYSTEM_ARPACK=1 USE_SYSTEM_LAPACK=1"
+    export EXTRA_MAKEFLAGS="$EXTRA_MAKEFLAGS LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_"
+"
+fi
 
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
- LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
- USE_SYSTEM_ARPACK=1 \
- USE_SYSTEM_BLAS=1 \
- USE_BLAS64=1 \
  USE_SYSTEM_CURL=1 \
  USE_SYSTEM_GMP=1 \
- USE_SYSTEM_LAPACK=1 \
  USE_SYSTEM_LIBSSH2=1 \
  USE_SYSTEM_LLVM=0 \
  USE_SYSTEM_MPFR=1 \
