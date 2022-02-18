@@ -22,8 +22,10 @@ source:
     ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
     - patches/0001-upgrading-downloads-v1.7.1.patch
 
+## just do win until we get the recipe to work
 build:
   number: 0
+  skip: true # [not win] 
   features:
 
 requirements:
@@ -35,7 +37,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - python 3
     - m2-bash  # [win]
+    - m2-base  # [win]
     - openblas-ilp64  # [not win]
     - openblas  # [win]
     - patchelf  # [linux]
