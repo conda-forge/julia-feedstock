@@ -25,7 +25,7 @@ source:
 ## just do win until we get the recipe to work
 build:
   number: 0
-  skip: true # [not win] 
+  skip: true  # [not win] 
   features:
 
 requirements:
