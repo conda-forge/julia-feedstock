@@ -32,7 +32,6 @@ requirements:
   build:
     - make
     - perl
-    - python 3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
