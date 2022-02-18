@@ -37,6 +37,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - git-bash  # [win]
     - openblas-ilp64  # [not win]
     - openblas  # [win]
     - patchelf  # [linux]
