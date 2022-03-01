@@ -11,7 +11,7 @@ diff --git a/test/precompile.jl b/test/precompile.jl
 index 51b25b8325..8abd491a63 100644
 --- a/test/precompile.jl
 +++ b/test/precompile.jl
-@@ -421,7 +421,7 @@ precompile_test_harness(false) do dir
+@@ -471,7 +471,7 @@ precompile_test_harness(false) do dir
  
      @test Base.compilecache(Base.PkgId("Baz")) == Base.PrecompilableError() # due to __precompile__(false)
      @eval using Baz
