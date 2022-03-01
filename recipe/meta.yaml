@@ -1,7 +1,7 @@
 {% set name = "julia" %}
-{% set buildnum_jl = "1328" %}
-{% set version = "1.8.0.dev." ~ buildnum_jl %}
-{% set git_rev = "352266160f14d9d0fcfc3552c6f83f86d9bd4944" %}
+{% set buildnum_jl = "108" %}
+{% set version = "1.9.0.dev." ~ buildnum_jl %}
+{% set git_rev = "3a5dc09ce452117c174830deefec85c25c693ea2" %}
 
 package:
   name: {{ name|lower }}
@@ -15,16 +15,12 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
-    ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
-    ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - patches/libgit2-patch.diff  # [linux]
-    ## unreliable tests:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   features:
 
 requirements:
