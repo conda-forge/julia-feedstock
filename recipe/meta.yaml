@@ -1,7 +1,7 @@
 {% set name = "julia" %}
 {% set version = "1.8.0.beta1" %}
 {% set version_url = "1.8.0-beta1" %}
-{% set sha256 = "40b6370b6a7b3b055f061170ebd989b58f83ca71eb72d0833e387f88affef6a4" %}
+{% set sha256 = "5afbdd99bbec4c6dd0227cdd5432ae6bf0b39fff428f09282d6e38485918397c" %}
 
 package:
   name: {{ name|lower }}
