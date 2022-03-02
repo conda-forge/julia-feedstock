@@ -88,7 +88,7 @@ test:
     # splitting cmdlineargs as it is stuck... 
     - julia --project -e 'Base.runtests(["cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
-    - julia -e 'import Pkg;Pkg.add("Sundials")'
+#     - julia -e 'import Pkg;Pkg.add("Sundials")'
     #- julia -e 'import PKg;Pkg.add("Conda"); using Conda; ENV["CONDA_EXE"] == Conda.conda && isfile(Conda.conda) ? exit(0) : exit(1)'
   requires:
     - perl
