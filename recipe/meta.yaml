@@ -84,7 +84,7 @@ test:
 #       "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "threads", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs",
 #       "precompile", "boundscheck", "error", "ambiguous", "cartesian", "osutils", "channels", "iostream", "secretbuffer", "specificity", "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap", "smallarrayshrink", "download", "opaque_closure", "filesystem"]; ncores=ceil(Int, Sys.CPU_THREADS))'  # all except stdlib?
 #    - julia --project -e 'delete!(ENV, "JULIA_PROJECT"); delete!(ENV, "JULIA_LOAD_PATH"); Base.runtests(["loading", "cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
-    - julia --project -e 'delete!(ENV, "JULIA_PROJECT"); delete!(ENV, "JULIA_LOAD_PATH"); Base.runtests(["all"]; ncores=ceil(Int, Sys.CPU_THREADS))' 
+    - julia --project -e 'delete!(ENV, "JULIA_PROJECT"); delete!(ENV, "JULIA_LOAD_PATH"); Base.runtests(["cmdlineargs"]; ncores=ceil(Int, Sys.CPU_THREADS))' 
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
   requires:
