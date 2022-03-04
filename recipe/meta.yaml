@@ -1,7 +1,7 @@
 {% set name = "julia" %}
-{% set buildnum_jl = "132" %}
+{% set buildnum_jl = "137" %}
 {% set version = "1.9.0.dev." ~ buildnum_jl %}
-{% set git_rev = "fb4118a37b8ebb199962629ac54471ce6e19be9e" %}
+{% set git_rev = "b63ae3b88a838b050aca60c819557d80a4b4ca48" %}
 
 package:
   name: {{ name|lower }}
