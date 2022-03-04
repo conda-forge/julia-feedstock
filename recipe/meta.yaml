@@ -17,6 +17,7 @@ source:
     - patches/julia-hardcoded-libs.patch
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
+    - patches/0001-fixing-tests.patch
 
 build:
   skip: true  # [win]
