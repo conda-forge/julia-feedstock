@@ -90,7 +90,7 @@ test:
 #     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
 #     - julia -e 'import Pkg;Pkg.add("Sundials")'
 #     #- julia -e 'import PKg;Pkg.add("Conda"); using Conda; ENV["CONDA_EXE"] == Conda.conda && isfile(Conda.conda) ? exit(0) : exit(1)'
-     - julia -e 'Base.runtests(["all"];  ncores=ceil(Int, Sys.CPU_THREADS))'
+    - julia -e 'Base.runtests(["all"];  ncores=ceil(Int, Sys.CPU_THREADS))'
   requires:
     - perl
 
