@@ -92,8 +92,9 @@ test:
 #     - julia -e 'import Pkg;Pkg.add("Sundials")'
 #     #- julia -e 'import PKg;Pkg.add("Conda"); using Conda; ENV["CONDA_EXE"] == Conda.conda && isfile(Conda.conda) ? exit(0) : exit(1)'
     - export JULIA_SSL_CA_ROOTS_PATH=""
-    - sed -i.old '/Curl.SYSTEM_SSL/d' $CONDA_PREFIX/share/julia/stdlib/v1.9/Downloads/test/runtests.jl
-    - julia -e 'Base.runtests(["all"];  ncores=ceil(Int, Sys.CPU_THREADS))'
+    - sed -i.old '/Curl.SYSTEM_SSL/d' $CONDA_PREFIX/share/julia/stdlib/*/Downloads/test/runtests.jl
+    - julia -e 'Base.runtests(["all"];  ncores=ceil(Int, Sys.CPU_THREADS))'  # [osx]
+    - julia -e 'Base.runtests(["all"])'  # [linux]
   requires:
     - perl
 
