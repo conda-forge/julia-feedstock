@@ -1,7 +1,7 @@
 {% set name = "julia" %}
-{% set buildnum_jl = "1328" %}
-{% set version = "1.8.0.dev." ~ buildnum_jl %}
-{% set git_rev = "352266160f14d9d0fcfc3552c6f83f86d9bd4944" %}
+{% set buildnum_jl = "132" %}
+{% set version = "1.9.0.dev." ~ buildnum_jl %}
+{% set git_rev = "fb4118a37b8ebb199962629ac54471ce6e19be9e" %}
 
 package:
   name: {{ name|lower }}
@@ -15,16 +15,12 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
-    ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
-    ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - patches/libgit2-patch.diff  # [linux]
-    ## unreliable tests:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   features:
 
 requirements:
@@ -38,7 +34,7 @@ requirements:
   host:
     - openblas-ilp64
     - patchelf  # [linux]
-    - openlibm <0.8.0
+    - openlibm
     - gmp
     - mpfr
     - curl
@@ -62,7 +58,7 @@ requirements:
     - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm <0.8.0
+    - openlibm
     - arpack
     - suitesparse
     - pcre2
@@ -88,7 +84,9 @@ test:
       "rational", "bitarray", "copy", "math", "fastmath", "functional", "iterators", "operators", "ordering", "path", "ccall", "parse", "gmp", "sorting", "spawn", "backtrace", "exceptions", "file", "read", "version", "namedtuple", "mpfr", "broadcast", "complex", "floatapprox", "reflection", "regex", "float16", "combinatorics",
       "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "threads", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs",
       "precompile", "boundscheck", "error", "ambiguous", "cartesian", "osutils", "channels", "iostream", "secretbuffer", "specificity", "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap", "smallarrayshrink", "download", "opaque_closure", "filesystem"]; ncores=ceil(Int, Sys.CPU_THREADS))'  # all except stdlib?
-    - julia --project -e 'Base.runtests(["loading", "cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
+    - julia --project -e 'Base.runtests(["loading"])' # Julia 1.7.1 tests error here when a project is defined
+    # splitting cmdlineargs as it is stuck... 
+    - julia --project -e 'Base.runtests(["cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
     #- julia -e 'import PKg;Pkg.add("Conda"); using Conda; ENV["CONDA_EXE"] == Conda.conda && isfile(Conda.conda) ? exit(0) : exit(1)'
