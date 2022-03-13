@@ -21,6 +21,7 @@ source:
     ## fix the curl issues:
     ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
     - patches/0001-upgrading-downloads-v1.7.1.patch
+    - patches/julia-libunwind-1.6.patch  # [linux]
 
 build:
   skip: true  # [win]
