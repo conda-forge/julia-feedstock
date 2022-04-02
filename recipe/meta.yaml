@@ -16,6 +16,7 @@ source:
     ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
     - patches/libgit2-patch.diff  # [linux]
+    - patches/julia-libgit-1.4.patch  # [linux]
     ## unreliable tests:
     ## see: https://github.com/JuliaLang/julia/issues/43004
     ## - patches/0001-disable-testing-Vararg-Int-N-where.patch  # [linux]
