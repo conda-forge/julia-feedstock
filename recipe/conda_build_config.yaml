@@ -4,3 +4,9 @@ pin_run_as_build:  # [linux]
     libunwind:  # [linux]
       max_pin: x.x  # [linux]
 
+c_compiler_version:
+  - 9  # [linux]
+  - 11  # [osx]
+cxx_compiler_version:
+  - 9  # [linux]
+  - 11  # [osx]
