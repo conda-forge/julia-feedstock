@@ -21,7 +21,7 @@ docker_image:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '10'
+- '9'
 gmp:
 - '6'
 libgit2:
