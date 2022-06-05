@@ -19,9 +19,6 @@ source:
     - patches/julia-libgit-1.4.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
-    ## fix the curl issues:
-    ## see: https://github.com/JuliaLang/Downloads.jl/issues/172
-    - patches/0001-upgrading-downloads-v1.7.1.patch
     - patches/julia-libunwind-1.6.patch  # [linux]
 
 build:
