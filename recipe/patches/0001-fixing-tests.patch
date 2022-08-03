@@ -34,8 +34,8 @@ index b2446e7e5c..907df74506 100644
      vstr = zeros(UInt8, 32)
      @test ccall((:pcre2_config_8, libpcre2_8), Cint, (UInt32, Ref{UInt8}), 11, vstr) > 0
      vn = VersionNumber(split(unsafe_string(pointer(vstr)), " ")[1])
--    @test vn == v"10.36.0"
-+    # @test vn == v"10.36.0"
+-    @test vn == v"10.40.0"
++    # @test vn == v"10.40.0"
  end
 diff --git a/stdlib/nghttp2_jll/test/runtests.jl b/stdlib/nghttp2_jll/test/runtests.jl
 index 07e0a3b8c7..f9cc867789 100644
@@ -45,8 +45,8 @@ index 07e0a3b8c7..f9cc867789 100644
  
  @testset "nghttp2_jll" begin
      info = unsafe_load(ccall((:nghttp2_version,libnghttp2), Ptr{nghttp2_info}, (Cint,), 0))
--    @test VersionNumber(unsafe_string(info.version_str)) == v"1.41.0"
-+    # @test VersionNumber(unsafe_string(info.version_str)) == v"1.41.0"
+-    @test VersionNumber(unsafe_string(info.version_str)) == v"1.48.0"
++    # @test VersionNumber(unsafe_string(info.version_str)) == v"1.48.0"
  end
 -- 
 2.32.0 (Apple Git-132)
