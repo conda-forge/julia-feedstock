@@ -80,6 +80,8 @@ test:
     # see if env vars are defined correctly
     - echo $CONDA_JL_HOME
     - echo $CONDA_JL_CONDA_EXE
+    # try to run all julia tests on linux though ... linux ci isn't as powerful as osx
+    - julia -e 'Base.runtests(["all"];  ncores=ceil(Int, Sys.CPU_THREADS))'  # [linux]
     # run julia tests (linux-64 ci is struggling...)
     - julia --project -e 'Base.runtests(["loading"])'  # [linux]
     # splitting cmdlineargs as it is stuck... 
