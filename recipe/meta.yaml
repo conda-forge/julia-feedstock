@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.7.3" %}
-{% set sha256 = "4be529b0716de1ec48ba52e83a0fafd4be2269be9cc43074ad15ce788aeca093" %}
+{% set version = "1.8.0.rc4" %}
+{% set sha256 = "f6fcc88be1000edf76d622deacc75114ce5eb3bd1e8a662391b247843fe7c834" %}
 
 package:
   name: {{ name|lower }}
@@ -8,14 +8,13 @@ package:
 
 source:
   fn: julia-{{ version }}-full.tar.gz
-  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
+  url: https://github.com/JuliaLang/julia/releases/download/v{{ version.replace(".rc", "-rc") }}/julia-{{ version.replace(".rc", "-rc") }}-full.tar.gz
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
     ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - patches/libgit2-patch.diff  # [linux]
     - patches/julia-libgit-1.4.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
@@ -23,7 +22,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   features:
 
 requirements:
