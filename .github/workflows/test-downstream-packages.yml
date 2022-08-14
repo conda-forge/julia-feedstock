@@ -1,0 +1,30 @@
+name: Test Downstream Packages
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Set up Python"
+        uses: actions/setup-python@v1
+      - name: "Check out PySR"
+        uses: actions/checkout@v3
+        with:
+          repository: conda-forge/pysr-feedstock
+          path: pysr
+      - name: "Build PySR Package"
+        run: |
+          cd pysr
+          python build-locally.py
