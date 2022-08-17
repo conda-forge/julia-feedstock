@@ -8,7 +8,8 @@ package:
 
 source:
   fn: julia-{{ version }}-full.tar.gz
-  url: https://github.com/JuliaLang/julia/releases/download/v{{ version.replace(".rc", "-rc") }}/julia-{{ version.replace(".rc", "-rc") }}-full.tar.gz
+  
+  url: https://github.com/JuliaLang/julia/archive/refs/tags/v {{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
