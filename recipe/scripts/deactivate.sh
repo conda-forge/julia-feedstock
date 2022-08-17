@@ -30,3 +30,6 @@ fi
 if [ -z $CONDA_JL_CONDA_EXE ]; then
     unset CONDA_JL_CONDA_EXE
 fi
+if [ -z $JULIA_CONDAPKG_BACKEND ]; then
+    unset JULIA_CONDAPKG_BACKEND
+fi
