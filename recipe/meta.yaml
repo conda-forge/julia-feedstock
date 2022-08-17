@@ -90,6 +90,8 @@ test:
     - julia --project -e 'delete!(ENV, "JULIA_PROJECT"); delete!(ENV, "JULIA_LOAD_PATH"); Base.runtests(["loading", "cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
+    - echo $JULIA_CONDAPKG_BACKEND
+    - julia -e 'import Pkg;Pkg.add("CondaPkg");conda status'
   requires:
     - perl
 
