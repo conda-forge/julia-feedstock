@@ -22,3 +22,7 @@ export CONDA_JL_HOME_BACKUP=${CONDA_JL_HOME:-}
 export CONDA_JL_HOME=$CONDA_PREFIX
 export CONDA_JL_CONDA_EXE_BACKUP=${CONDA_JL_CONDA_EXE:-}
 export CONDA_JL_CONDA_EXE=$CONDA_EXE
+
+# Setup CondaPkg.jl, see:
+# https://github.com/cjdoris/CondaPkg.jl/issues/19
+export JULIA_CONDAPKG_BACKEND="System"
