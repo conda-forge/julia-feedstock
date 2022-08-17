@@ -91,7 +91,8 @@ test:
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
     - echo $JULIA_CONDAPKG_BACKEND
-    - julia -e 'import Pkg;Pkg.add("CondaPkg");conda status'
+    - julia -e 'import Pkg; Pkg.add("CondaPkg"); using CondaPkg; CondaPkg.status(); CondaPkg.current_packages()'
+    - julia -e 'import Pkg; Pkg.add("CondaPkg"); using CondaPkg; print(CondaPkg.conda_cmd())'
   requires:
     - perl
 
