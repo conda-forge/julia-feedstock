@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.7.3" %}
-{% set sha256 = "4be529b0716de1ec48ba52e83a0fafd4be2269be9cc43074ad15ce788aeca093" %}
+{% set version = "1.8.0" %}
+{% set sha256 = "fba888fdf86ab3e7c0a0d1247e78946fee1f7f5b4930588606a8ac6a13f92491" %}
 
 package:
   name: {{ name|lower }}
@@ -8,14 +8,14 @@ package:
 
 source:
   fn: julia-{{ version }}-full.tar.gz
-  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
+  
+  url: https://github.com/JuliaLang/julia/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
     ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
     ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - patches/libgit2-patch.diff  # [linux]
     - patches/julia-libgit-1.4.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
@@ -23,7 +23,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   features:
 
 requirements:
@@ -90,6 +90,9 @@ test:
     - julia --project -e 'delete!(ENV, "JULIA_PROJECT"); delete!(ENV, "JULIA_LOAD_PATH"); Base.runtests(["loading", "cmdlineargs"])' # Julia 1.7.1 tests error here when a project is defined
     - julia -e 'import Pkg;Pkg.add("LibSSH2_jll")'
     - julia -e 'import Pkg;Pkg.add("Sundials")'
+    - echo $JULIA_CONDAPKG_BACKEND
+    - julia -e 'import Pkg; Pkg.add("CondaPkg"); using CondaPkg; CondaPkg.add_channel("conda-forge"); CondaPkg.status(); CondaPkg.current_packages()'
+    - julia -e 'import Pkg; Pkg.add("CondaPkg"); using CondaPkg; CondaPkg.add_channel("conda-forge"); print(CondaPkg.conda_cmd())'
   requires:
     - perl
 

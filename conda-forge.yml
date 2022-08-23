@@ -1,6 +1,7 @@
-conda_forge_output_validation: true
 azure:
   store_build_artifacts: true
+conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
+test: native_and_emulated
