@@ -23,7 +23,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
   features:
 
 requirements:
@@ -35,7 +35,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - openblas-ilp64
     - patchelf  # [linux]
     - openlibm <0.8.0
     - gmp
@@ -56,7 +55,6 @@ requirements:
     - p7zip
 
   run:
-    - openblas-ilp64
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
