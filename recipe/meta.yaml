@@ -31,7 +31,7 @@ requirements:
     - make
     - perl
     - python 3
-    - curl
+    - wget
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -40,6 +40,7 @@ requirements:
     - openlibm <0.8.0
     - gmp
     - mpfr
+    - wget
     - curl
     - libgit2  # [not osx]
     - libssh2
