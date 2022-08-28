@@ -31,10 +31,32 @@ requirements:
     - make
     - perl
     - python 3
-    - curl
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - curl                                   # [build_platform != target_platform]
+    - wget                                   # [build_platform != target_platform]
+    - git                                    # [build_platform != target_platform]
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    # add all host stuff wholesale for now...
+    - patchelf  # [linux]
+    - openlibm <0.8.0
+    - gmp
+    - mpfr
+    - wget
+    - libgit2  # [not osx]
+    - libssh2
+    - libosxunwind  # [osx]
+    - libunwind  # [linux]
+    - mbedtls  # [not osx]
+    - arpack
+    - suitesparse
+    - pcre2
+    - git
+    - libutf8proc
+    - libnghttp2
+    - zlib
+    - p7zip
   host:
     - patchelf  # [linux]
     - openlibm <0.8.0
