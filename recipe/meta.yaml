@@ -20,6 +20,8 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
+    ## Make precompilation verbose to evaluate stalled build
+    - patches/0003-Debug-precompile.patch
 
 build:
   skip: true  # [win]
@@ -41,7 +43,7 @@ requirements:
     - gmp
     - mpfr
     - curl
-    - libgit2  # [not osx]
+    - libgit2
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
@@ -66,7 +68,7 @@ requirements:
     - suitesparse
     - pcre2
     - curl
-    - libgit2  # [not osx]
+    - libgit2
     - libssh2
     - mbedtls  # [not osx]
     - git
