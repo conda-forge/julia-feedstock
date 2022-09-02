@@ -20,7 +20,7 @@ make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
 if [[ "${target_platform}" == osx-* ]]; then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0"
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=0"
 elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=1"
 fi
