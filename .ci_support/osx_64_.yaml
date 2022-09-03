@@ -19,7 +19,7 @@ cxx_compiler_version:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '9'
+- '11'
 gmp:
 - '6'
 libssh2:
