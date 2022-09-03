@@ -1,4 +1,4 @@
-From 0e18d48de53e453a5d9f524844091f4c95500ecc Mon Sep 17 00:00:00 2001
+From ecc0f490f8a4700407c336b425713fabb9e907a7 Mon Sep 17 00:00:00 2001
 From: Mark Kittisopikul <kittisopikulm@janelia.hhmi.org>
 Date: Fri, 2 Sep 2022 20:45:50 -0400
 Subject: [PATCH] Force use of build env curl
