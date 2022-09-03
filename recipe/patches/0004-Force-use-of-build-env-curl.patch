@@ -1,0 +1,29 @@
+From 0e18d48de53e453a5d9f524844091f4c95500ecc Mon Sep 17 00:00:00 2001
+From: Mark Kittisopikul <kittisopikulm@janelia.hhmi.org>
+Date: Fri, 2 Sep 2022 20:45:50 -0400
+Subject: [PATCH] Force use of build env curl
+
+---
+ deps/tools/jldownload | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/deps/tools/jldownload b/deps/tools/jldownload
+index 99822195fe..72f36532b6 100755
+--- a/deps/tools/jldownload
++++ b/deps/tools/jldownload
+@@ -5,8 +5,11 @@
+ 
+ CACHE_HOST=https://cache.julialang.org
+ 
++which -a curl
++
+ WGET=$(which wget 2>/dev/null)
+-CURL=$(which curl 2>/dev/null)
++#CURL=$(which curl 2>/dev/null)
++CURL=$CONDA_PREFIX/bin/curl
+ FETCH=$(which fetch 2>/dev/null)
+ 
+ TIMEOUT=15 # seconds
+-- 
+2.32.1 (Apple Git-133)
+
