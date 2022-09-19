@@ -40,7 +40,7 @@ else
 fi    
 
 # Remove custom conda-forge codesign binary
-rm -f $BUILD_PREFIX/bin/codesign
+rm -f "${PREFIX}/bin/codesign"
 
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
