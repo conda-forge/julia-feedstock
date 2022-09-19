@@ -38,7 +38,7 @@ requirements:
   host:
     - openblas-ilp64
     - patchelf  # [linux]
-    - openlibm <0.8.0
+    - openlibm
     - gmp
     - mpfr
     - curl
@@ -62,7 +62,7 @@ requirements:
     - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm <0.8.0
+    - openlibm
     - arpack
     - suitesparse
     - pcre2
