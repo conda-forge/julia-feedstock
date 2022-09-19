@@ -1,7 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 MACOSX_SDK_VERSION:
-- '10.12'
+- '11.3'
 arpack:
 - '3.7'
 c_compiler:
