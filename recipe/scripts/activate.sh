@@ -38,3 +38,9 @@ export JULIA_CONDAPKG_BACKEND_BACKUP=${JULIA_CONDAPKG_BACKEND:-}
 export JULIA_CONDAPKG_BACKEND="System"
 export JULIA_CONDAPKG_EXE_BACKUP=${JULIA_CONDAPKG_EXE:-}
 export JULIA_CONDAPKG_EXE=$CONDA_EXE
+
+# Setup PythonCall.jl
+# Use the current Python rather than trying to setup a new conda environment
+# https://discourse.julialang.org/t/how-to-use-pythoncall-with-a-previous-conda-environment/87419/8?u=mkitti
+export JULIA_PYTHONCALL_EXE_BACKUP=${JULIA_PYTHONCALL_EXE:-}
+export JULIA_PYTHONCALL_EXE=`which python`
