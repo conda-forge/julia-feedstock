@@ -1,3 +1,5 @@
+#!/bin/sh
+
 export JULIA_DEPOT_PATH_BACKUP=${JULIA_DEPOT_PATH:-}
 export JULIA_PROJECT_BACKUP=${JULIA_PROJECT:-}
 export JULIA_LOAD_PATH_BACKUP=${JULIA_LOAD_PATH:-}
@@ -15,7 +17,14 @@ export JULIA_LOAD_PATH="@:$JULIA_PROJECT:@stdlib"
 
 # make julia use same cert
 export JULIA_SSL_CA_ROOTS_PATH_BACKUP=${JULIA_SSL_CA_ROOTS_PATH:-}
-export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
+if [[ $OSTYPE != 'darwin'* ]]; then
+  export JULIA_SSL_CA_ROOTS_PATH=$CONDA_PREFIX/ssl/cacert.pem
+fi
+# Otherwise, do nothing since we get the following error on macos:
+# Your Julia is built with a SSL/TLS engine that libgit2 doesn't know
+# how to configure to use a file or directory of certificate authority
+# roots.
+
 
 # Setup variables for Conda.jl
 export CONDA_JL_HOME_BACKUP=${CONDA_JL_HOME:-}
@@ -27,5 +36,5 @@ export CONDA_JL_CONDA_EXE=$CONDA_EXE
 # https://github.com/cjdoris/CondaPkg.jl/issues/19
 export JULIA_CONDAPKG_BACKEND_BACKUP=${JULIA_CONDAPKG_BACKEND:-}
 export JULIA_CONDAPKG_BACKEND="System"
-export JULIA_CONDAPKG_EXE_BACKUP=${ULIA_CONDAPKG_EXE:-}
+export JULIA_CONDAPKG_EXE_BACKUP=${JULIA_CONDAPKG_EXE:-}
 export JULIA_CONDAPKG_EXE=$CONDA_EXE

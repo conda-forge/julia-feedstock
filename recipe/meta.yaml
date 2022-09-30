@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.8.0" %}
-{% set sha256 = "fba888fdf86ab3e7c0a0d1247e78946fee1f7f5b4930588606a8ac6a13f92491" %}
+{% set version = "1.8.1" %}
+{% set sha256 = "4433b5d8c6ff4c09440323dbf0895aeb1e0c4e2000514f2f70bf8989173c80fb" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: julia-{{ version }}-full.tar.gz
-  
+
   url: https://github.com/JuliaLang/julia/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
@@ -21,6 +21,7 @@ source:
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
     - patches/0004-Force-use-of-build-env-curl.patch
+    - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
 
 build:
   skip: true  # [win]
@@ -39,7 +40,7 @@ requirements:
   host:
     - openblas-ilp64
     - patchelf  # [linux]
-    - openlibm <0.8.0
+    - openlibm
     - gmp
     - mpfr
     - libgit2  # [not osx]
@@ -62,7 +63,7 @@ requirements:
     - libunwind  # [linux]
     - gmp
     - mpfr
-    - openlibm <0.8.0
+    - openlibm
     - arpack
     - suitesparse
     - pcre2
