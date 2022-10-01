@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.8.1" %}
-{% set sha256 = "4433b5d8c6ff4c09440323dbf0895aeb1e0c4e2000514f2f70bf8989173c80fb" %}
+{% set version = "1.8.2" %}
+{% set sha256 = "38882010297c42f6fd71dbe9d6eee836f40b97d218cdf628128e597dd252f468" %}
 
 package:
   name: {{ name|lower }}
@@ -14,9 +14,6 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
-    ## see: https://github.com/JuliaLang/julia/issues/43249#issuecomment-981147025
-    ## and: https://github.com/archlinux/svntogit-community/blob/packages/julia/trunk/julia-libgit-1.2.patch
-    - patches/julia-libgit-1.4.patch  # [linux]
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
