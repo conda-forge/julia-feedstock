@@ -37,17 +37,7 @@ pcre2:
 perl:
 - 5.32.1
 pin_run_as_build:
-  arpack:
-    max_pin: x.x.x
-  curl:
-    max_pin: x
-  gmp:
-    max_pin: x
   libunwind:
-    max_pin: x.x
-  mpfr:
-    max_pin: x
-  zlib:
     max_pin: x.x
 suitesparse:
 - '5'
