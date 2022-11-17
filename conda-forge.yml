@@ -1,3 +1,5 @@
 conda_forge_output_validation: true
 azure:
-    store_build_artifacts: True
+  store_build_artifacts: true
+conda_build:
+  pkg_format: '2'
