@@ -5,21 +5,21 @@ arpack:
 c_compiler:
 - clang
 c_compiler_version:
-- '14'
+- '15'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 curl:
-- '7'
+- '8'
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '14'
+- '15'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '11'
+- '12'
 gmp:
 - '6'
 libssh2:

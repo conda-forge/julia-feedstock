@@ -1,11 +1,11 @@
-About julia
-===========
+About julia-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/julia-feedstock/blob/main/LICENSE.txt)
 
 Home: http://julialang.org/
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/julia-feedstock/blob/main/LICENSE.txt)
 
 Summary: A high-performance dynamic programming language for data science
 
