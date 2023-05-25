@@ -6,6 +6,7 @@ html :
 	mkdir -p _build/html
 EOF
 
+export PATCHELF_SET_RPATH_ARG="--add-rpath"
 
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
