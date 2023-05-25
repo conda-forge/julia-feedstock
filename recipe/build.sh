@@ -1,11 +1,5 @@
 #!/bin/sh
 
-export C_INCLUDE_PATH=${PREFIX}/include
-export LD_LIBRARY_PATH=${PREFIX}/lib
-export LIBRARY_PATH=${PREFIX}/lib
-export CMAKE_PREFIX_PATH=${PREFIX}
-export PATH="${PREFIX}/bin:${PATH}"
-
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
 html :	
