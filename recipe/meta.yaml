@@ -1,6 +1,6 @@
 {% set name = "julia" %}
 {% set version = "1.9.0" %}
-{% set sha256 = "5c9f09d701ae9c875b0b5e77a82aa7f29689821e2eccd349109c1ed8620be508" %}
+{% set sha256 = "222eb533c9dc54734949eb3a4169f54aefa1bc20be385fc1cf798c8219fe6400" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 source:
   fn: julia-{{ version }}-full.tar.gz
 
-  url: https://github.com/JuliaLang/julia/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
