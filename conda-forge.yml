@@ -7,3 +7,6 @@ github:
 test: native_and_emulated
 conda_build:
   pkg_format: '2'
+remote_ci_setup:
+  - conda-forge-ci-setup=3
+  - py-lief<0.12
