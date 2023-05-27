@@ -61,6 +61,9 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  CC=$CC CXX=$CXX FC=$FC \
  install
 
+# Address some runpath issues
+rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so}
+
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
 for CHANGE in "activate" "deactivate"
