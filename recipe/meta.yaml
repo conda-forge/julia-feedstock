@@ -22,6 +22,7 @@ source:
 build:
   skip: true  # [win]
   number: 0
+  binary_relocation: false
   features:
 
 requirements:
