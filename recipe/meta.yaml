@@ -76,7 +76,7 @@ requirements:
 test:
   commands:
     # check out versioninfo
-    - julia -e 'using InteractiveUtils; InteractiveUtils.versioninfo()'
+    - LD_DEBUG=libs julia -e 'using InteractiveUtils; InteractiveUtils.versioninfo()'
     # see if env vars are defined correctly
     - echo $CONDA_JL_HOME
     - echo $CONDA_JL_CONDA_EXE
