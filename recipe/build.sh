@@ -6,6 +6,8 @@ html :
 	mkdir -p _build/html
 EOF
 
+export PATCHELF_SET_RPATH_ARG="--add-rpath"
+
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
 
@@ -58,6 +60,11 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
  CC=$CC CXX=$CXX FC=$FC \
  install
+
+# Address some runpath issues
+if [[ "${target_platform}" == linux-* ]]; then
+    rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so}
+fi
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
