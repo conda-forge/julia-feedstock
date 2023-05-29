@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.8.5" %}
-{% set sha256 = "66602534f36dc7e096228369af57ed8f70b3b98600c51e3364a5d89a5f78ba34" %}
+{% set version = "1.9.0" %}
+{% set sha256 = "222eb533c9dc54734949eb3a4169f54aefa1bc20be385fc1cf798c8219fe6400" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 source:
   fn: julia-{{ version }}-full.tar.gz
 
-  url: https://github.com/JuliaLang/julia/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/JuliaLang/julia/releases/download/v{{ version }}/julia-{{ version }}-full.tar.gz
   sha256: {{ sha256 }}
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
@@ -22,6 +22,7 @@ source:
 build:
   skip: true  # [win]
   number: 0
+  binary_relocation: false
   features:
 
 requirements:
@@ -37,7 +38,6 @@ requirements:
     - patchelf  # [linux]
     - openlibm
     - gmp
-    - mpfr
     - curl
     - libgit2  # [not osx]
     - libssh2
@@ -58,7 +58,6 @@ requirements:
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
-    - mpfr
     - openlibm
     - arpack
     - suitesparse
