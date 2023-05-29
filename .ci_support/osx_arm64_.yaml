@@ -1,11 +1,11 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
 arpack:
 - '3.7'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '12'
-cdt_name:
-- cos6
+- '15'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,34 +13,27 @@ channel_targets:
 curl:
 - '8'
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '12'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- '15'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '12'
 gmp:
 - '6'
-libgit2:
-- '1.6'
 libssh2:
 - '1'
-libunwind:
-- '1.6'
+macos_machine:
+- arm64-apple-darwin20.0.0
 pcre2:
 - '10.40'
 perl:
 - 5.32.1
-pin_run_as_build:
-  libunwind:
-    max_pin: x.x
 suitesparse:
 - '5'
 target_platform:
-- linux-64
+- osx-arm64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
