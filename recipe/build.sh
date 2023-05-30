@@ -16,9 +16,6 @@ if [[ "${target_platform}" == osx-arm64 ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_OPENLIBM=0"   
 elif [[ "${target_platform}" == osx-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_OPENLIBM=1"
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_OPENLIBM=1"
-elif [[ "${target_platform}" == osx-arm64 ]]; then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_OPENLIBM=0"   
 elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=1  USE_SYSTEM_OPENLIBM=1"
 fi
