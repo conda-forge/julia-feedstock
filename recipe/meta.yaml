@@ -30,10 +30,10 @@ requirements:
   build:
     - make
     - perl
+    - curl
     - python 3
     - cross-python_{{ target_platform }}       # [build_platform != target_platform]
     - git                                      # [build_platform != target_platform]
-    - curl                                     # [build_platform != target_platform]
     - openlibm                                 # [build_platform != target_platform]
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
