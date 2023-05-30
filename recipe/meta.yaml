@@ -17,6 +17,7 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
+    - patches/0004-Force-use-of-build-env-curl.patch
     - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
 
 build:
@@ -29,7 +30,11 @@ requirements:
   build:
     - make
     - perl
+    - curl
     - python 3
+    - cross-python_{{ target_platform }}       # [build_platform != target_platform]
+    - git                                      # [build_platform != target_platform]
+    - openlibm                                 # [build_platform != target_platform]
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
