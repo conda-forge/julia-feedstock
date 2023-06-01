@@ -21,7 +21,7 @@ source:
     - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
     - patches/debug-precompilation.patch  # [osx]
     ## Issues with precompilation hitting while loop
-    - patches/0001-Prevent-while-loop-in-profiler-precompilation.patch
+    - patches/0001-move-out-Profile-from-the-sysimage-49132.patch
 
 build:
   skip: true  # [win]

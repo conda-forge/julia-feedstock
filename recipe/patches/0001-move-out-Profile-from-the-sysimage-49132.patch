@@ -1,0 +1,229 @@
+From b258051f65a1d90084376839e0974901f9afbdd1 Mon Sep 17 00:00:00 2001
+From: Kristoffer Carlsson <kcarlsson89@gmail.com>
+Date: Tue, 4 Apr 2023 06:42:50 +0200
+Subject: [PATCH] move out Profile from the sysimage (#49132)
+
+---
+ base/Base.jl                     | 34 ++++++++++++++++++++++++++
+ base/sysimg.jl                   |  1 -
+ contrib/generate_precompile.jl   | 14 -----------
+ pkgimage.mk                      |  3 +--
+ stdlib/Profile/src/Profile.jl    | 42 ++------------------------------
+ stdlib/Profile/src/precompile.jl |  6 +++++
+ test/precompile.jl               |  2 +-
+ 7 files changed, 44 insertions(+), 58 deletions(-)
+ create mode 100644 stdlib/Profile/src/precompile.jl
+
+diff --git a/base/Base.jl b/base/Base.jl
+index 5e3e64a104..5dd029e166 100644
+--- a/base/Base.jl
++++ b/base/Base.jl
+@@ -529,6 +529,31 @@ for match = _methods(+, (Int, Int), -1, get_world_counter())
+ end
+ 
+ if is_primary_base_module
++
++# Profiling helper
++# triggers printing the report and (optionally) saving a heap snapshot after a SIGINFO/SIGUSR1 profile request
++# Needs to be in Base because Profile is no longer loaded on boot
++const PROFILE_PRINT_COND = Ref{Base.AsyncCondition}()
++function profile_printing_listener()
++    profile = nothing
++    try
++        while true
++            wait(PROFILE_PRINT_COND[])
++            profile = @something(profile, require(Base, :Profile))
++            invokelatest(profile.peek_report[])
++            if Base.get_bool_env("JULIA_PROFILE_PEEK_HEAP_SNAPSHOT", false) === true
++                println(stderr, "Saving heap snapshot...")
++                fname = invokelatest(profile.take_heap_snapshot)
++                println(stderr, "Heap snapshot saved to `$(fname)`")
++            end
++        end
++    catch ex
++        if !isa(ex, InterruptException)
++            @error "Profile printing listener crashed" exception=ex,catch_backtrace()
++        end
++    end
++end
++
+ function __init__()
+     # Base library init
+     reinit_stdio()
+@@ -541,6 +566,15 @@ function __init__()
+     if haskey(ENV, "JULIA_MAX_NUM_PRECOMPILE_FILES")
+         MAX_NUM_PRECOMPILE_FILES[] = parse(Int, ENV["JULIA_MAX_NUM_PRECOMPILE_FILES"])
+     end
++    # Profiling helper
++    @static if !Sys.iswindows()
++        # triggering a profile via signals is not implemented on windows
++        cond = Base.AsyncCondition()
++        Base.uv_unref(cond.handle)
++        PROFILE_PRINT_COND[] = cond
++        ccall(:jl_set_peek_cond, Cvoid, (Ptr{Cvoid},), PROFILE_PRINT_COND[].handle)
++        errormonitor(Threads.@spawn(profile_printing_listener()))
++    end
+     nothing
+ end
+ 
+diff --git a/base/sysimg.jl b/base/sysimg.jl
+index 6f7219afda..d64b463e9a 100644
+--- a/base/sysimg.jl
++++ b/base/sysimg.jl
+@@ -60,7 +60,6 @@ let
+         :Future,
+         :InteractiveUtils,
+         :LibGit2,
+-        :Profile,
+         :UUIDs,
+ 
+         # 3-depth packages
+diff --git a/contrib/generate_precompile.jl b/contrib/generate_precompile.jl
+index 862820a944..a7d3bfafdd 100644
+--- a/contrib/generate_precompile.jl
++++ b/contrib/generate_precompile.jl
+@@ -233,20 +233,6 @@ if Test !== nothing
+     """
+ end
+ 
+-Profile = get(Base.loaded_modules,
+-          Base.PkgId(Base.UUID("9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"), "Profile"),
+-          nothing)
+-if Profile !== nothing
+-    repl_script = Profile.precompile_script * repl_script # do larger workloads first for better parallelization
+-    hardcoded_precompile_statements *= """
+-    precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Int, UInt})
+-    precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Int, UnitRange{UInt}})
+-    precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UInt})
+-    precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UnitRange{UInt}})
+-    precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Vector{Int}, Vector{UInt}})
+-    """
+-end
+-
+ const JULIA_PROMPT = "julia> "
+ const PKG_PROMPT = "pkg> "
+ const SHELL_PROMPT = "shell> "
+diff --git a/pkgimage.mk b/pkgimage.mk
+index d3a0238dd0..8d4d522f22 100644
+--- a/pkgimage.mk
++++ b/pkgimage.mk
+@@ -65,6 +65,7 @@ $(eval $(call sysimg_builder,SHA,))
+ $(eval $(call sysimg_builder,Serialization,))
+ $(eval $(call sysimg_builder,Sockets,))
+ $(eval $(call sysimg_builder,Unicode,))
++$(eval $(call pkgimg_builder,Profile,))
+ 
+ # 1-depth packages
+ $(eval $(call pkgimg_builder,GMP_jll,Artifacts Libdl))
+@@ -96,10 +97,8 @@ $(eval $(call sysimg_builder,Distributed,Random Serialization Sockets))
+ $(eval $(call sysimg_builder,Future,Random))
+ $(eval $(call sysimg_builder,InteractiveUtils,Markdown))
+ $(eval $(call sysimg_builder,LibGit2,NetworkOptions Printf SHA Base64))
+-$(eval $(call sysimg_builder,Profile,Printf))
+ $(eval $(call sysimg_builder,UUIDs,Random SHA))
+ 
+-
+  # 3-depth packages
+  # LibGit2_jll
+ $(eval $(call pkgimg_builder,LibCURL_jll,LibSSH2_jll nghttp2_jll MbedTLS_jll Zlib_jll Artifacts Libdl))
+diff --git a/stdlib/Profile/src/Profile.jl b/stdlib/Profile/src/Profile.jl
+index 518dc54c7f..4bce0c4fec 100644
+--- a/stdlib/Profile/src/Profile.jl
++++ b/stdlib/Profile/src/Profile.jl
+@@ -31,26 +31,6 @@ macro profile(ex)
+     end
+ end
+ 
+-# triggers printing the report and (optionally) saving a heap snapshot after a SIGINFO/SIGUSR1 profile request
+-const PROFILE_PRINT_COND = Ref{Base.AsyncCondition}()
+-function profile_printing_listener()
+-    try
+-        while true
+-            wait(PROFILE_PRINT_COND[])
+-            peek_report[]()
+-            if Base.get_bool_env("JULIA_PROFILE_PEEK_HEAP_SNAPSHOT", false) === true
+-                println(stderr, "Saving heap snapshot...")
+-                fname = take_heap_snapshot()
+-                println(stderr, "Heap snapshot saved to `$(fname)`")
+-            end
+-        end
+-    catch ex
+-        if !isa(ex, InterruptException)
+-            @error "Profile printing listener crashed" exception=ex,catch_backtrace()
+-        end
+-    end
+-end
+-
+ # An internal function called to show the report after an information request (SIGINFO or SIGUSR1).
+ function _peek_report()
+     iob = IOBuffer()
+@@ -74,12 +54,7 @@ Set the duration in seconds of the profile "peek" that is triggered via `SIGINFO
+ """
+ set_peek_duration(t::Float64) = ccall(:jl_set_profile_peek_duration, Cvoid, (Float64,), t)
+ 
+-precompile_script = """
+-import Profile
+-Profile.@profile while Profile.len_data() < 1000; rand(10,10) * rand(10,10); end
+-Profile.peek_report[]()
+-Profile.clear()
+-"""
++
+ 
+ ####
+ #### User-level functions
+@@ -150,20 +125,6 @@ function check_init()
+     end
+ end
+ 
+-function __init__()
+-    # Note: The profile buffer is no longer initialized during __init__ because Profile is in the sysimage,
+-    # thus __init__ is called every startup. The buffer is lazily initialized the first time `@profile` is
+-    # used, if not manually initialized before that.
+-    @static if !Sys.iswindows()
+-        # triggering a profile via signals is not implemented on windows
+-        cond = Base.AsyncCondition()
+-        Base.uv_unref(cond.handle)
+-        PROFILE_PRINT_COND[] = cond
+-        ccall(:jl_set_peek_cond, Cvoid, (Ptr{Cvoid},), PROFILE_PRINT_COND[].handle)
+-        errormonitor(Threads.@spawn(profile_printing_listener()))
+-    end
+-end
+-
+ """
+     clear()
+ 
+@@ -1267,5 +1228,6 @@ end
+ 
+ 
+ include("Allocs.jl")
++include("precompile.jl")
+ 
+ end # module
+diff --git a/stdlib/Profile/src/precompile.jl b/stdlib/Profile/src/precompile.jl
+new file mode 100644
+index 0000000000..7817cdd2fb
+--- /dev/null
++++ b/stdlib/Profile/src/precompile.jl
+@@ -0,0 +1,6 @@
++precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Int, UInt})
++precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Int, UnitRange{UInt}})
++precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UInt})
++precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UnitRange{UInt}})
++precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Vector{Int}, Vector{UInt}})
++precompile(Tuple{typeof(Profile._peek_report)})
+diff --git a/test/precompile.jl b/test/precompile.jl
+index 50dfe329d3..9ca3d26864 100644
+--- a/test/precompile.jl
++++ b/test/precompile.jl
+@@ -398,7 +398,7 @@ precompile_test_harness(false) do dir
+                  :Distributed, :Downloads, :FileWatching, :Future, :InteractiveUtils, :libblastrampoline_jll,
+                  :LazyArtifacts, :LibCURL, :LibCURL_jll, :LibGit2, :Libdl, :LinearAlgebra,
+                  :Logging, :Markdown, :Mmap, :MozillaCACerts_jll, :NetworkOptions, :OpenBLAS_jll, :Pkg, :Printf,
+-                 :Profile, :p7zip_jll, :REPL, :Random, :SHA, :Serialization, :SharedArrays, :Sockets,
++                 :p7zip_jll, :REPL, :Random, :SHA, :Serialization, :SharedArrays, :Sockets,
+                  :TOML, :Tar, :Test, :UUIDs, :Unicode,
+                  :nghttp2_jll]
+             ),
+-- 
+2.40.1
+
