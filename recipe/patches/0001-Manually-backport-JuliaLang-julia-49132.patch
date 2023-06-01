@@ -22,20 +22,16 @@ index d04b6ff666..c1caeb5282 100644
  
  if is_primary_base_module
 +
-+# Profiling helper
 +# triggers printing the report and (optionally) saving a heap snapshot after a SIGINFO/SIGUSR1 profile request
-+# Needs to be in Base because Profile is no longer loaded on boot
 +const PROFILE_PRINT_COND = Ref{Base.AsyncCondition}()
 +function profile_printing_listener()
-+    profile = nothing
 +    try
 +        while true
 +            wait(PROFILE_PRINT_COND[])
-+            profile = @something(profile, require(Base, :Profile))
-+            invokelatest(profile.peek_report[])
-+            if Base.get_bool_env("JULIA_PROFILE_PEEK_HEAP_SNAPSHOT", false) === true
++            peek_report[]()
++            if get(ENV, "JULIA_PROFILE_PEEK_HEAP_SNAPSHOT", nothing) === "1"
 +                println(stderr, "Saving heap snapshot...")
-+                fname = invokelatest(profile.take_heap_snapshot)
++                fname = take_heap_snapshot()
 +                println(stderr, "Heap snapshot saved to `$(fname)`")
 +            end
 +        end
@@ -56,9 +52,7 @@ index d04b6ff666..c1caeb5282 100644
 +    # Profiling helper
 +    @static if !Sys.iswindows()
 +        # triggering a profile via signals is not implemented on windows
-+        cond = Base.AsyncCondition()
-+        Base.uv_unref(cond.handle)
-+        PROFILE_PRINT_COND[] = cond
++        PROFILE_PRINT_COND[] = Base.AsyncCondition()
 +        ccall(:jl_set_peek_cond, Cvoid, (Ptr{Cvoid},), PROFILE_PRINT_COND[].handle)
 +        errormonitor(Threads.@spawn(profile_printing_listener()))
 +    end
@@ -184,7 +178,6 @@ index 0000000000..cc750937af
 +precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UInt})
 +precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UnitRange{UInt}})
 +precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Vector{Int}, Vector{UInt}})
-+precompile(Tuple{typeof(Profile._peek_report)})
 \ No newline at end of file
 diff --git a/test/precompile.jl b/test/precompile.jl
 index 006c0ae06c..030bbb5c53 100644
