@@ -1,0 +1,25 @@
+From 127be6629dfcb5457a4f55648b9a5d52381aa4cc Mon Sep 17 00:00:00 2001
+From: MilesCranmer <miles.cranmer@gmail.com>
+Date: Thu, 1 Jun 2023 16:22:43 -0400
+Subject: [PATCH] Prevent while loop in profiler precompilation
+
+---
+ stdlib/Profile/src/Profile.jl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/stdlib/Profile/src/Profile.jl b/stdlib/Profile/src/Profile.jl
+index ba2d7390a2..ed13786429 100644
+--- a/stdlib/Profile/src/Profile.jl
++++ b/stdlib/Profile/src/Profile.jl
+@@ -76,7 +76,7 @@ set_peek_duration(t::Float64) = ccall(:jl_set_profile_peek_duration, Cvoid, (Flo
+ 
+ precompile_script = """
+ import Profile
+-Profile.@profile while Profile.len_data() < 1000; rand(10,10) * rand(10,10); end
++Profile.@profile for i=1:10_000; rand(10,10) * rand(10,10); end
+ Profile.peek_report[]()
+ Profile.clear()
+ """
+-- 
+2.40.1
+

@@ -20,6 +20,8 @@ source:
     - patches/0004-Force-use-of-build-env-curl.patch
     - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
     - patches/debug-precompilation.patch  # [osx]
+    ## Issues with precompilation hitting while loop
+    - patches/0001-Prevent-while-loop-in-profiler-precompilation.patch
 
 build:
   skip: true  # [win]
