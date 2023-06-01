@@ -7,7 +7,6 @@ Subject: [PATCH] move out Profile from the sysimage (#49132)
  base/Base.jl                     | 34 ++++++++++++++++++++++++++
  base/sysimg.jl                   |  1 -
  contrib/generate_precompile.jl   | 14 -----------
- pkgimage.mk                      |  3 +--
  stdlib/Profile/src/Profile.jl    | 42 ++------------------------------
  stdlib/Profile/src/precompile.jl |  6 +++++
  test/precompile.jl               |  2 +-
@@ -103,29 +102,6 @@ index 862820a944..a7d3bfafdd 100644
  const JULIA_PROMPT = "julia> "
  const PKG_PROMPT = "pkg> "
  const SHELL_PROMPT = "shell> "
-diff --git a/pkgimage.mk b/pkgimage.mk
-index d3a0238dd0..8d4d522f22 100644
---- a/pkgimage.mk
-+++ b/pkgimage.mk
-@@ -65,6 +65,7 @@ $(eval $(call sysimg_builder,SHA,))
- $(eval $(call sysimg_builder,Serialization,))
- $(eval $(call sysimg_builder,Sockets,))
- $(eval $(call sysimg_builder,Unicode,))
-+$(eval $(call pkgimg_builder,Profile,))
- 
- # 1-depth packages
- $(eval $(call pkgimg_builder,GMP_jll,Artifacts Libdl))
-@@ -96,10 +97,8 @@ $(eval $(call sysimg_builder,Distributed,Random Serialization Sockets))
- $(eval $(call sysimg_builder,Future,Random))
- $(eval $(call sysimg_builder,InteractiveUtils,Markdown))
- $(eval $(call sysimg_builder,LibGit2,NetworkOptions Printf SHA Base64))
--$(eval $(call sysimg_builder,Profile,Printf))
- $(eval $(call sysimg_builder,UUIDs,Random SHA))
- 
--
-  # 3-depth packages
-  # LibGit2_jll
- $(eval $(call pkgimg_builder,LibCURL_jll,LibSSH2_jll nghttp2_jll MbedTLS_jll Zlib_jll Artifacts Libdl))
 diff --git a/stdlib/Profile/src/Profile.jl b/stdlib/Profile/src/Profile.jl
 index 518dc54c7f..4bce0c4fec 100644
 --- a/stdlib/Profile/src/Profile.jl
