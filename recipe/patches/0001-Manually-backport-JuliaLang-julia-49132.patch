@@ -4,20 +4,20 @@ Date: Thu, 1 Jun 2023 17:52:58 -0400
 Subject: [PATCH] Manually backport JuliaLang/julia#49132
 
 ---
- base/Base.jl                     | 34 +++++++++++++++++++++++++++
+ base/Base.jl                     | 28 +++++++++++++++++++++
  base/sysimg.jl                   |  1 -
  contrib/generate_precompile.jl   | 14 -----------
  stdlib/Profile/src/Profile.jl    | 40 +-------------------------------
- stdlib/Profile/src/precompile.jl |  6 +++++
+ stdlib/Profile/src/precompile.jl |  5 ++++
  test/precompile.jl               |  2 +-
- 6 files changed, 42 insertions(+), 55 deletions(-)
+ 6 files changed, 35 insertions(+), 55 deletions(-)
  create mode 100644 stdlib/Profile/src/precompile.jl
 
 diff --git a/base/Base.jl b/base/Base.jl
 index d04b6ff666..c1caeb5282 100644
 --- a/base/Base.jl
 +++ b/base/Base.jl
-@@ -518,6 +518,31 @@ for match = _methods(+, (Int, Int), -1, get_world_counter())
+@@ -518,6 +518,27 @@ for match = _methods(+, (Int, Int), -1, get_world_counter())
  end
  
  if is_primary_base_module
@@ -45,7 +45,7 @@ index d04b6ff666..c1caeb5282 100644
  function __init__()
      # Base library init
      reinit_stdio()
-@@ -530,6 +555,15 @@ function __init__()
+@@ -530,6 +555,13 @@ function __init__()
      if haskey(ENV, "JULIA_MAX_NUM_PRECOMPILE_FILES")
          MAX_NUM_PRECOMPILE_FILES[] = parse(Int, ENV["JULIA_MAX_NUM_PRECOMPILE_FILES"])
      end
@@ -172,7 +172,7 @@ new file mode 100644
 index 0000000000..cc750937af
 --- /dev/null
 +++ b/stdlib/Profile/src/precompile.jl
-@@ -0,0 +1,6 @@
+@@ -0,0 +1,5 @@
 +precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Int, UInt})
 +precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, Int, UnitRange{UInt}})
 +precompile(Tuple{typeof(Profile.tree!), Profile.StackFrameTree{UInt64}, Vector{UInt64}, Dict{UInt64, Vector{Base.StackTraces.StackFrame}}, Bool, Symbol, UnitRange{Int}, UInt})
