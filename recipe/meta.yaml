@@ -19,6 +19,7 @@ source:
     - patches/julia-libunwind-1.6.patch  # [linux]
     - patches/0004-Force-use-of-build-env-curl.patch
     - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
+    - patches/debug-precompilation.patch  # [osx]
 
 build:
   skip: true  # [win]

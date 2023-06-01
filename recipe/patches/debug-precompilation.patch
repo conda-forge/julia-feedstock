@@ -1,0 +1,25 @@
+From e3b2478912cd3263e6be1fcb1b59d13d5552a2a9 Mon Sep 17 00:00:00 2001
+From: MilesCranmer <miles.cranmer@gmail.com>
+Date: Thu, 1 Jun 2023 16:10:27 -0400
+Subject: [PATCH] Precompilation debug
+
+---
+ contrib/generate_precompile.jl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/generate_precompile.jl b/contrib/generate_precompile.jl
+index 0a0941aa97..c7ef660eb7 100644
+--- a/contrib/generate_precompile.jl
++++ b/contrib/generate_precompile.jl
+@@ -243,7 +243,7 @@ const HELP_PROMPT = "help?> "
+ 
+ function generate_precompile_statements()
+     start_time = time_ns()
+-    debug_output = devnull # or stdout
++    debug_output = stdout
+     sysimg = Base.unsafe_string(Base.JLOptions().image_file)
+ 
+     # Extract the precompile statements from the precompile file
+-- 
+2.40.1
+
