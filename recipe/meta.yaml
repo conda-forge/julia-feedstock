@@ -59,6 +59,7 @@ requirements:
     - libnghttp2
     - zlib
     - p7zip
+    - mpfr
 
   run:
     - openblas-ilp64
@@ -78,6 +79,7 @@ requirements:
     - libnghttp2
     - zlib
     - p7zip
+    - mpfr
 
 test:
   commands:
