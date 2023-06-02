@@ -31,7 +31,7 @@ libssh2:
 libunwind:
 - '1.6'
 mpfr:
-- '4'
+- '4.1.1'
 pcre2:
 - '10.40'
 perl:

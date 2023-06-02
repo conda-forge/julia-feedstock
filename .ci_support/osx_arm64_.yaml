@@ -27,7 +27,7 @@ libssh2:
 macos_machine:
 - arm64-apple-darwin20.0.0
 mpfr:
-- '4'
+- '4.1.1'
 pcre2:
 - '10.40'
 perl:
