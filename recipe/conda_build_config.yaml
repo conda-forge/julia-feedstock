@@ -3,3 +3,5 @@ libunwind:  # [linux]
 pin_run_as_build:  # [linux]
     libunwind:  # [linux]
       max_pin: x.x  # [linux]
+mpfr:
+  - 4.1.0
