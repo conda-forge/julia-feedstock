@@ -29,11 +29,11 @@ requirements:
   build:
     - make
     - perl
+    - python 3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - python 3
     - m2-bash  # [win]
     - m2-base  # [win]
     - openblas-ilp64  # [not win]
