@@ -1,4 +1,5 @@
 copy "%RECIPE_DIR%\build.sh" .
+copy "%RECIPE_DIR%\windows.sh" .
 FOR /F "delims=" %%i IN ('cygpath.exe -u "%LIBRARY_PREFIX%"') DO set "LIBRARY_PREFIX=%%i"
 SET PREFIXW=%PREFIX%
 FOR /F "delims=" %%i IN ('cygpath.exe -u "%PREFIX%"') DO set "PREFIX=%%i"
