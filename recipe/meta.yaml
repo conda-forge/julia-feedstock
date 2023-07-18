@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.9.0" %}
-{% set sha256 = "222eb533c9dc54734949eb3a4169f54aefa1bc20be385fc1cf798c8219fe6400" %}
+{% set version = "1.9.2" %}
+{% set sha256 = "87063d4c2ea41c736aa2e8cbbc7c2f1a062e223955157f8404553ced764913cd" %}
 
 package:
   name: {{ name|lower }}
@@ -49,6 +49,7 @@ requirements:
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - mbedtls  # [not (osx or win)]
+    - mpfr
     - arpack
     - suitesparse
     - pcre2
@@ -73,6 +74,7 @@ requirements:
     - libgit2  # [not osx]
     - libssh2
     - mbedtls  # [not (osx or win)]
+    - mpfr
     - git
     - libutf8proc
     - libnghttp2  # [not win]
