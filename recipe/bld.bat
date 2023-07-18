@@ -10,6 +10,6 @@ FOR /F "delims=" %%i IN ('cygpath.exe -u "%STDLIB_DIR%"') DO set "STDLIB_DIR=%%i
 set MSYSTEM=MINGW%ARCH%
 set MSYS2_PATH_TYPE=inherit
 set CHERE_INVOKING=1
-bash -lc ./build.sh
+CALL bash -lc ./build.sh
 if %errorlevel% neq 0 exit /b %errorlevel%
 exit /b 0
