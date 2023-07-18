@@ -1,17 +1,10 @@
 #!/bin/sh
 
-export C_INCLUDE_PATH=${PREFIX}/include
-export LD_LIBRARY_PATH=${PREFIX}/lib
-export LIBRARY_PATH=${PREFIX}/lib
-export CMAKE_PREFIX_PATH=${PREFIX}
-export PATH="${PREFIX}/bin:${PATH}"
-
 # Hack to suppress building docs
 cat > doc/Makefile << EOF
 html :	
 	mkdir -p _build/html
 EOF
-
 
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
@@ -51,7 +44,7 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_LAPACK=1 \
  USE_SYSTEM_LIBSSH2=1 \
  USE_SYSTEM_LLVM=0 \
- USE_SYSTEM_MPFR=1 \
+ USE_SYSTEM_MPFR=0 \
  USE_SYSTEM_OPENLIBM=1 \
  USE_SYSTEM_PATCHELF=1 \
  USE_SYSTEM_PCRE=1 \
@@ -67,6 +60,11 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
  CC=$CC CXX=$CXX FC=$FC \
  install
+
+# Address some runpath issues
+if [[ "${target_platform}" == linux-* ]]; then
+    rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so}
+fi
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
