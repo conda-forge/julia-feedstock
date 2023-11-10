@@ -17,6 +17,7 @@ if [[ "${target_platform}" == osx-* ]]; then
 elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=1"
 fi
+
 # See the following link for how official Julia sets JULIA_CPU_TARGET
 # https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
 if [[ "${target_platform}" == *-64 ]]; then
