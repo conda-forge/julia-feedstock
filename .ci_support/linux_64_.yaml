@@ -1,5 +1,5 @@
 arpack:
-- '3.7'
+- '3.8'
 c_compiler:
 - gcc
 c_compiler_version:
@@ -33,7 +33,7 @@ libunwind:
 mpfr:
 - '4'
 pcre2:
-- '10.40'
+- '10.42'
 perl:
 - 5.32.1
 pin_run_as_build:
