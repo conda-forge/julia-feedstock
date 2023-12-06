@@ -19,8 +19,8 @@ source:
     - patches/julia-libunwind-1.6.patch  # [linux]
     - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
 
+## just do win until we get the recipe to work
 build:
-  skip: true  # [win]
   number: 0
   binary_relocation: false
   features:
@@ -34,45 +34,52 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - openblas-ilp64
+    - m2-bash  # [win]
+    - m2-base  # [win]
+    - openblas-ilp64  # [not win]
+    - openblas  # [win]
     - patchelf  # [linux]
     - openlibm
-    - gmp
+    - gmp  # [not win]
+    - openlibm <0.8.0
+    - mpfr
     - curl
     - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - mbedtls  # [not osx]
+    - mbedtls  # [not (osx or win)]
     - mpfr
     - arpack
     - suitesparse
     - pcre2
     - git
     - libutf8proc
-    - libnghttp2
+    - libnghttp2  # [not win]
     - zlib
-    - p7zip
+    - p7zip  # [not win]
 
   run:
-    - openblas-ilp64
+    - openblas-ilp64  # [not win]
+    - openblas  # [win]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - gmp
-    - openlibm
+    - gmp  # [not win]
+    - mpfr
+    - openlibm <0.8.0
     - arpack
     - suitesparse
     - pcre2
     - curl
     - libgit2  # [not osx]
     - libssh2
-    - mbedtls  # [not osx]
+    - mbedtls  # [not (osx or win)]
     - mpfr
     - git
     - libutf8proc
-    - libnghttp2
+    - libnghttp2  # [not win]
     - zlib
-    - p7zip
+    - p7zip  # [not win]
 
 test:
   commands:
