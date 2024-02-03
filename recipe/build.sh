@@ -15,7 +15,9 @@ export EXTRA_MAKEFLAGS=""
 if [[ "${target_platform}" == osx-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_MBEDTLS=0"
 elif [[ "${target_platform}" == linux-* ]]; then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=1"
+    # FIXME: turn mbedtls back on
+    # temporarily disable due to error with dlopen...?
+    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=0"
 fi
 # See the following link for how official Julia sets JULIA_CPU_TARGET
 # https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py

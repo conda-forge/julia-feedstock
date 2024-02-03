@@ -17,7 +17,11 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
+    ## to keep using suitesparse 5, we need to patch some stuff ...
+    ## see e.g. https://github.com/JuliaLang/julia/pull/48977
     - patches/revert-suitesparse-to-5.patch
+    ## these gmp tests return DivideError rather than OutOfMemoryError on cf ci
+    - patches/disable-some-gmp-tests.patch
 
 build:
   skip: true  # [win]
@@ -43,7 +47,6 @@ requirements:
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - mbedtls  # [not osx]
     - mpfr
     - arpack
     - suitesparse
@@ -66,7 +69,6 @@ requirements:
     - curl
     - libgit2  # [not osx]
     - libssh2
-    - mbedtls  # [not osx]
     - mpfr
     - git
     - libutf8proc
