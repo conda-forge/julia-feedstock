@@ -17,7 +17,6 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
-    - patches/0003-Defer-codesigning-to-conda-forge.patch  # [osx]
 
 build:
   skip: true  # [win]
