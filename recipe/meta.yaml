@@ -17,7 +17,7 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
-    - patches/52577.patch
+    - patches/remove-cuda-from-suitesparse-stuff.patch
 
 build:
   skip: true  # [win]
