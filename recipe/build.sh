@@ -12,12 +12,6 @@ export CMAKE_GENERATOR="make"
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
-if [[ "${target_platform}" == osx-* ]]; then
-    export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=0"
-elif [[ "${target_platform}" == linux-* ]]; then
-    # USE_SYSTEM_LIBGIT2=1 will not allow MBEDTLS to be vendored
-    # export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1"
-fi
 # See the following link for how official Julia sets JULIA_CPU_TARGET
 # https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
 if [[ "${target_platform}" == *-64 ]]; then
@@ -46,6 +40,7 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_LIBSSH2=1 \
  USE_SYSTEM_LLVM=0 \
  USE_SYSTEM_MBEDTLS=0 \
+ USE_SYSTEM_LIBGIT2=0 \
  USE_SYSTEM_MPFR=1 \
  USE_SYSTEM_OPENLIBM=1 \
  USE_SYSTEM_PATCHELF=1 \
