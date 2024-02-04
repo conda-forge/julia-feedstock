@@ -45,7 +45,6 @@ requirements:
     - openlibm
     - gmp
     - curl
-    - libgit2  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
@@ -69,7 +68,6 @@ requirements:
     - suitesparse
     - pcre2
     - curl
-    - libgit2  # [not osx]
     - libssh2
     - mpfr
     - git
