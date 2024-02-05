@@ -15,7 +15,7 @@ source:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
-    - patches/0002-disable-testing-Baz.baz-1.patch  # [linux]
+    - patches/disable-testing-Baz.baz.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
     ## to keep using suitesparse 5, we need to patch some stuff ...
     ## see e.g. https://github.com/JuliaLang/julia/pull/48977
@@ -44,12 +44,12 @@ requirements:
     - patchelf  # [linux]
     - openlibm
     - gmp
-    - libssh2
     - curl
     - libgit2  # [not osx]
-    - mbedtls  # [not osx]
+    - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
+    - mbedtls  # [not osx]
     - mpfr
     - arpack
     - suitesparse
@@ -64,15 +64,15 @@ requirements:
     - openblas-ilp64
     - libosxunwind  # [osx]
     - libunwind  # [linux]
-    - curl
-    - libgit2  # [not osx]
-    - mbedtls  # [not osx]
     - gmp
     - openlibm
     - arpack
     - suitesparse
     - pcre2
+    - curl
+    - libgit2  # [not osx]
     - libssh2
+    - mbedtls  # [not osx]
     - mpfr
     - git
     - libutf8proc
@@ -89,6 +89,7 @@ test:
     - echo $CONDA_JL_HOME
     - echo $CONDA_JL_CONDA_EXE
     # run julia tests
+    # 2024/02/04: remove bitarray and threads due to flakiness on cf ci 
     - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "keywordargs", "numbers", "subtype", "char", "strings", "triplequote", "unicode", "intrinsics", "dict", "hashing", "iobuffer", "staged", "offsetarray", "arrayops", "tuple", "reduce", "reducedim", "abstractarray", "intfuncs", "simdloop", "vecelement",
       "rational", "copy", "math", "fastmath", "functional", "iterators", "operators", "ordering", "path", "ccall", "parse", "gmp", "sorting", "spawn", "backtrace", "exceptions", "file", "read", "version", "namedtuple", "mpfr", "broadcast", "complex", "floatapprox", "reflection", "regex", "float16", "combinatorics",
       "sysinfo", "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs", "precompile", "boundscheck",
