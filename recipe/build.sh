@@ -11,7 +11,6 @@ export CMAKE_GENERATOR="make"
 
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
-export EXTRA_MAKEFLAGS="" 
 # See the following link for how official Julia sets JULIA_CPU_TARGET
 # https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
 if [[ "${target_platform}" == *-64 ]]; then
@@ -34,7 +33,7 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_ARPACK=1 \
  USE_SYSTEM_BLAS=1 \
  USE_BLAS64=1 \
- USE_SYSTEM_CURL=1 \
+ USE_SYSTEM_CURL=0 \
  USE_SYSTEM_GMP=1 \
  USE_SYSTEM_LAPACK=1 \
  USE_SYSTEM_LIBSSH2=1 \
@@ -53,7 +52,6 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  USE_SYSTEM_NGHTTP2=1 \
  USE_SYSTEM_ZLIB=1 \
  USE_SYSTEM_P7ZIP=1 \
- ${EXTRA_MAKEFLAGS} \
  TAGGED_RELEASE_BANNER="https://github.com/conda-forge/julia-feedstock" \
  CC=$CC CXX=$CXX FC=$FC \
  install
