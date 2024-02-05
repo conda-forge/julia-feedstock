@@ -45,6 +45,9 @@ requirements:
     - openlibm
     - gmp
     - libssh2
+    - curl
+    - libgit2  # [not osx]
+    - mbedtls  # [not osx]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - mpfr
@@ -61,6 +64,9 @@ requirements:
     - openblas-ilp64
     - libosxunwind  # [osx]
     - libunwind  # [linux]
+    - curl
+    - libgit2  # [not osx]
+    - mbedtls  # [not osx]
     - gmp
     - openlibm
     - arpack
