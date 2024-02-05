@@ -10,6 +10,8 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+curl:
+- '8'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -22,6 +24,8 @@ fortran_compiler_version:
 - '12'
 gmp:
 - '6'
+libgit2:
+- '1.7'
 libssh2:
 - '1'
 libunwind:
