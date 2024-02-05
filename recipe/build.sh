@@ -17,6 +17,7 @@ if [[ "${target_platform}" == osx-* ]]; then
 elif [[ "${target_platform}" == linux-* ]]; then
     export EXTRA_MAKEFLAGS="USE_SYSTEM_LIBGIT2=1 USE_SYSTEM_MBEDTLS=1"
 fi
+
 # See the following link for how official Julia sets JULIA_CPU_TARGET
 # https://github.com/JuliaCI/julia-buildbot/blob/ba448c690935fe53d2b1fc5ce22bc60fd1e251a7/master/inventory.py
 if [[ "${target_platform}" == *-64 ]]; then
@@ -30,7 +31,7 @@ elif [[ "${target_platform}" == linux-ppc64le ]]; then
 else
     echo "Unknown target ${target_platform}"
     exit 1
-fi    
+fi
 
 make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
  LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ \
@@ -61,7 +62,7 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
 
 # Address some runpath issues
 if [[ "${target_platform}" == linux-* ]]; then
-    rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so}
+    rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so,libssh2.so,libgit2.so,libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
 fi
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
