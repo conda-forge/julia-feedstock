@@ -9,6 +9,11 @@ EOF
 # Julia sets this to unix makefiles later on in its build process
 export CMAKE_GENERATOR="make"
 
+# On Linux, now autodetects the system libstdc++ version, and automatically loads the system library if it is newer.
+# The old behavior of loading the bundled libstdc++ regardless of the system version can be restored by setting the
+#  environment variable `JULIA_PROBE_LIBSTDCXX=0` ([#46976]).
+export JULIA_PROBE_LIBSTDCXX=0
+
 make -C base version_git.jl.phony CC=$CC CXX=$CXX FC=$FC
 
 export EXTRA_MAKEFLAGS="" 
