@@ -13,6 +13,7 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_
   timeoutInMinutes: 360
+  variables: {}
 
   steps:
   # TODO: Fast finish on azure pipelines?
