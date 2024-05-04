@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.10.2" %}
-{% set sha256 = "62468720afbc410eb4f262ed2433a92132627872c9f690b704dc045ccb155401" %}
+{% set version = "1.10.3" %}
+{% set sha256 = "d892b2123be64dacf9d05e4ccbad7f1797f6bf87c397a74804b011c8750f6c8f" %}
 
 package:
   name: {{ name|lower }}
@@ -27,7 +27,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   binary_relocation: false
   features:
 
@@ -38,6 +38,7 @@ requirements:
     - python 3
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - openblas-ilp64
@@ -79,7 +80,6 @@ requirements:
     - libnghttp2
     - zlib
     - p7zip
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   commands:
