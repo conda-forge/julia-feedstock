@@ -44,7 +44,7 @@ pin_run_as_build:
   libunwind:
     max_pin: x.x
 suitesparse:
-- '5'
+- '7'
 target_platform:
 - linux-64
 zip_keys:
