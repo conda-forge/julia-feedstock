@@ -1,5 +1,5 @@
 arpack:
-- '3.8'
+- '3.9'
 c_compiler:
 - gcc
 c_compiler_version:
