@@ -17,8 +17,8 @@ source:
     ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
     - patches/disable-testing-Baz.baz.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
-    # conda-forge suitesparse doesn't have cuda variants
-    - patches/suitesparse-no-cuda.patch
+    # suitesparse soname version is hardcoded
+    - patches/suitesparse-soname.patch
     ## these gmp tests return DivideError rather than OutOfMemoryError on cf ci
     - patches/disable-some-gmp-tests.patch
     ## for some reason, this new change results in weird printouts in cf ci
