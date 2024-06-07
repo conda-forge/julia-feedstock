@@ -39,7 +39,7 @@ pcre2:
 perl:
 - 5.32.1
 suitesparse:
-- '5'
+- '7'
 target_platform:
 - osx-64
 zip_keys:
