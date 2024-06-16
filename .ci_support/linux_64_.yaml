@@ -37,7 +37,7 @@ libunwind:
 mpfr:
 - '4'
 pcre2:
-- '10.43'
+- '10.44'
 perl:
 - 5.32.1
 pin_run_as_build:

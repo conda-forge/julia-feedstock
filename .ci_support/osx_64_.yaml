@@ -35,7 +35,7 @@ macos_machine:
 mpfr:
 - '4'
 pcre2:
-- '10.43'
+- '10.44'
 perl:
 - 5.32.1
 suitesparse:
