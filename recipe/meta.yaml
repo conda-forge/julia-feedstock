@@ -28,7 +28,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
   binary_relocation: false
   features:
 
