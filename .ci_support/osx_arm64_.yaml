@@ -1,11 +1,17 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 arpack:
-- '3.8'
+- '3.9'
 c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -29,11 +35,11 @@ macos_machine:
 mpfr:
 - '4'
 pcre2:
-- '10.42'
+- '10.44'
 perl:
 - 5.32.1
 suitesparse:
-- '5'
+- '7'
 target_platform:
 - osx-arm64
 zip_keys:
@@ -41,4 +47,4 @@ zip_keys:
   - cxx_compiler_version
   - fortran_compiler_version
 zlib:
-- '1.2'
+- '1'
