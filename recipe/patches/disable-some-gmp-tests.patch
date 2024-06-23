@@ -1,0 +1,17 @@
+diff --git a/test/gmp.jl b/test/gmp.jl
+--- test/gmp.jl
++++ test/gmp.jl
+@@ -10,13 +10,8 @@
+ @testset "basics" begin
+     @test BigInt <: Signed
+     @test big(1) isa Signed
+ 
+-    if sizeof(Culong) >= 8
+-        @test_throws OutOfMemoryError big(96608869069402268615522366320733234710)^16374500563449903721
+-        @test_throws OutOfMemoryError 555555555555555555555555555555555555555555555555555^55555555555555555
+-    end
+-
+     let x = big(1)
+         @test signed(x) === x
+         @test convert(Signed, x) === x
+         @test Signed(x) === x

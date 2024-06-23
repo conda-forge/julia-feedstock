@@ -1,9 +1,13 @@
 arpack:
-- '3.8'
+- '3.9'
 c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.12'
 cdt_name:
 - cos6
 channel_sources:
@@ -25,7 +29,7 @@ fortran_compiler_version:
 gmp:
 - '6'
 libgit2:
-- '1.7'
+- '1.8'
 libssh2:
 - '1'
 libunwind:
@@ -33,19 +37,21 @@ libunwind:
 mpfr:
 - '4'
 pcre2:
-- '10.42'
+- '10.44'
 perl:
 - 5.32.1
 pin_run_as_build:
   libunwind:
     max_pin: x.x
 suitesparse:
-- '5'
+- '7'
 target_platform:
 - linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
   - fortran_compiler_version
+- - c_stdlib_version
+  - cdt_name
 zlib:
-- '1.2'
+- '1'
