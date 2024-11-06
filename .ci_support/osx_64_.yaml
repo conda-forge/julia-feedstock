@@ -7,7 +7,7 @@ arpack:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '17'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -21,11 +21,11 @@ curl:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '16'
+- '17'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '12'
+- '13'
 gmp:
 - '6'
 libssh2:
