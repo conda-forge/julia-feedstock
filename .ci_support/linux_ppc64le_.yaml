@@ -1,17 +1,15 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.14'
-MACOSX_SDK_VERSION:
-- '10.14'
 arpack:
 - '3.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '19'
+- '14'
 c_stdlib:
-- macosx_deployment_target
+- sysroot
 c_stdlib_version:
-- '10.14'
+- '2.17'
+cdt_name:
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,31 +17,38 @@ channel_targets:
 curl:
 - '8'
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '19'
+- '14'
+docker_image:
+- quay.io/condaforge/linux-anvil-ppc64le:alma9
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '14'
 gmp:
 - '6'
+libgit2:
+- '1.9'
 libssh2:
 - '1'
+libunwind:
+- '1.6'
 libutf8proc:
 - '2.11'
-macos_machine:
-- x86_64-apple-darwin13.4.0
 mpfr:
 - '4'
 pcre2:
 - '10.45'
 perl:
 - 5.32.1
+pin_run_as_build:
+  libunwind:
+    max_pin: x.x
 suitesparse:
 - '7'
 target_platform:
-- osx-64
+- linux-ppc64le
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
