@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.10.4" %}
-{% set sha256 = "f32e5277f5d82a63824882cdebfac158199bb84814c3c019a3fecc3601586191" %}
+{% set version = "1.11.7" %}
+{% set sha256 = "a6e96ecbd60057c91dc7a99fc1b37517b361a2df8fd1c46ffdad1d9bce89967d" %}
 
 package:
   name: {{ name|lower }}
@@ -14,13 +14,7 @@ source:
   patches:
     ## from https://github.com/archlinux/svntogit-community/tree/packages/julia/trunk
     - patches/julia-hardcoded-libs.patch
-    ## issues with this precompile test, see https://github.com/JuliaLang/julia/issues/43535
-    - patches/disable-testing-Baz.baz.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
-    # 1.10.3 links suitesparse cuda libs, patch should not be needed for 1.10.4
-    - patches/suitesparse-no-cuda.patch
-    # suitesparse soname version is hardcoded
-    - patches/suitesparse-soname.patch
     ## these gmp tests return DivideError rather than OutOfMemoryError on cf ci
     - patches/disable-some-gmp-tests.patch
     ## for some reason, this new change results in weird printouts in cf ci
