@@ -1,6 +1,7 @@
 {% set name = "julia" %}
-{% set version = "1.10.4" %}
-{% set sha256 = "f32e5277f5d82a63824882cdebfac158199bb84814c3c019a3fecc3601586191" %}
+{% set version = "1.10.9" %}
+{% set sha256 = "bbd6f2f97efa7dc5ecfb0d79f4a4d2bf0e3725e63027d5af9f4572a047e78933" %}
+
 
 package:
   name: {{ name|lower }}
@@ -24,7 +25,7 @@ source:
     ## these gmp tests return DivideError rather than OutOfMemoryError on cf ci
     - patches/disable-some-gmp-tests.patch
     ## for some reason, this new change results in weird printouts in cf ci
-    - patches/disable-some-cmdlineargs-test.patch
+    # - patches/disable-some-cmdlineargs-test.patch
 
 build:
   skip: true  # [win]
@@ -46,8 +47,8 @@ requirements:
     - patchelf  # [linux]
     - openlibm
     - gmp
-    - curl
-    - libgit2  # [not osx]
+    - curl <8.10
+    - libgit2 <1.9  # [not osx]
     - libssh2
     - libosxunwind  # [osx]
     - libunwind  # [linux]
@@ -55,11 +56,11 @@ requirements:
     - mpfr
     - arpack
     - suitesparse
-    - pcre2
+    - pcre2 <=10.45
     - git
     - libutf8proc
     - libnghttp2
-    - zlib
+    - zlib <1.3
     - p7zip
 
   run:
@@ -71,7 +72,7 @@ requirements:
     - arpack
     - suitesparse
     - pcre2
-    - curl
+    - curl <8.10
     - libgit2  # [not osx]
     - libssh2
     - mbedtls  # [not osx]
