@@ -62,7 +62,7 @@ make -j${CPU_COUNT} prefix=${PREFIX} sysconfigdir=${PREFIX}/etc \
 
 # Address some runpath issues
 if [[ "${target_platform}" == linux-* ]]; then
-    rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so,libssh2.so,libgit2.so,libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
+    rm $PREFIX/lib/julia/{libcholmod.so,libcurl.so,libssh2.so,libgit2.so,libssl.so}
 fi
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
