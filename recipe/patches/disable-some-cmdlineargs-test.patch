@@ -1,84 +1,41 @@
---- test/cmdlineargs.jl	2025-09-15 19:11:10.000000000 +0000
-+++ test/cmdlineargs.jl.1	2025-10-30 12:47:46.326445545 +0000
-@@ -671,39 +671,6 @@
+diff --git a/test/cmdlineargs.jl b/test/cmdlineargs.jl
+--- test/cmdlineargs.jl
++++ test/cmdlineargs.jl
+@@ -572,37 +572,8 @@
+     @test readchomp(`$exename -E "Base.JLOptions().opt_level_min" --min-optlevel=2`) == "2"
  
      # -g
      @test readchomp(`$exename -E "Base.JLOptions().debug_level" -g`) == "2"
 -    # --print-before/--print-after with pass names is broken on Windows due to no-gnu-unique issues
 -    if !Sys.iswindows()
--        withenv("JULIA_LLVM_ARGS" => "--print-before=BeforeOptimization") do
+-        withenv("JULIA_LLVM_ARGS" => "--print-before=FinalLowerGC") do
 -            let code = readchomperrors(`$exename -g0 -E "@eval Int64(1)+Int64(1)"`)
 -                @test code[1]
 -                code = code[3]
 -                @test occursin("llvm.module.flags", code)
 -                @test !occursin("llvm.dbg.cu", code)
 -                @test !occursin("int.jl", code)
--                @test !occursin("name: \"Int64\"", code)
+-                @test !occursin("\"Int64\"", code)
 -            end
 -            let code = readchomperrors(`$exename -g1 -E "@eval Int64(1)+Int64(1)"`)
 -                @test code[1]
 -                code = code[3]
 -                @test occursin("llvm.module.flags", code)
 -                @test occursin("llvm.dbg.cu", code)
--                # TODO: consider moving test to llvmpasses as this fails on some platforms
--                # without clear reason
--                @test_skip occursin("int.jl", code)
--                @test !occursin("name: \"Int64\"", code)
+-                @test occursin("int.jl", code)
+-                @test !occursin("\"Int64\"", code)
 -            end
 -            let code = readchomperrors(`$exename -g2 -E "@eval Int64(1)+Int64(1)"`)
 -                @test code[1]
 -                code = code[3]
 -                @test occursin("llvm.module.flags", code)
 -                @test occursin("llvm.dbg.cu", code)
--                # TODO: consider moving test to llvmpasses as this fails on some platforms
--                # without clear reason
--                @test_skip occursin("int.jl", code)
--                @test occursin("name: \"Int64\"", code)
+-                @test occursin("int.jl", code)
+-                @test occursin("\"Int64\"", code)
 -            end
 -        end
 -    end
  
      # --check-bounds
      let JL_OPTIONS_CHECK_BOUNDS_DEFAULT = 0,
-@@ -1122,26 +1089,6 @@
-     end
- end
- 
--@testset "heap size hint" begin
--    #heap-size-hint, we reserve 250 MB for non GC memory (llvm, etc.)
--    @test readchomp(`$(Base.julia_cmd()) --startup-file=no --heap-size-hint=500M -e "println(@ccall jl_gc_get_max_memory()::UInt64)"`) == "$((500-250)*1024*1024)"
--
--    mem = ccall(:uv_get_total_memory, UInt64, ())
--    cmem = ccall(:uv_get_constrained_memory, UInt64, ())
--    if cmem > 0 && cmem < mem
--        mem = cmem
--    end
--    maxmem = parse(UInt64, readchomp(`$(Base.julia_cmd()) --startup-file=no --heap-size-hint=25% -e "println(@ccall jl_gc_get_max_memory()::UInt64)"`))
--    hint = max(mem÷4, 251*1024*1024) - 250*1024*1024
--    MAX32HEAP = 1536 * 1024 * 1024
--    if Int === Int32 && hint > MAX32HEAP
--        hint = MAX32HEAP
--    end
--    @test abs(Float64(maxmem) - hint)/maxmem < 0.05
--
--    @test readchomp(`$(Base.julia_cmd()) --startup-file=no --heap-size-hint=10M -e "println(@ccall jl_gc_get_max_memory()::UInt64)"`) == "$(1*1024*1024)"
--end
--
- ## `Main.main` entrypoint
- 
- # Basic usage
-@@ -1154,14 +1101,6 @@
- @test readchomp(`$(Base.julia_cmd()) -e 'module Hello; export main; (@main)(args) = println("hello"); end; using .Hello'`) == "hello"
- @test readchomp(`$(Base.julia_cmd()) -e 'module Hello; export main; (@main)(args) = println("hello"); end; import .Hello'`) == ""
- 
--# test --bug-report=rr
--if Sys.islinux() && Sys.ARCH in (:i686, :x86_64) # rr is only available on these platforms
--    mktempdir() do temp_trace_dir
--        @test success(pipeline(setenv(`$(Base.julia_cmd()) --bug-report=rr-local -e 'exit()'`,
--                                      "JULIA_RR_RECORD_ARGS" => "-n --nested=ignore",
--                                      "_RR_TRACE_DIR" => temp_trace_dir); #=stderr, stdout=#))
--    end
--end
- 
- @testset "--heap-size-hint" begin
-     exename = `$(Base.julia_cmd())`
+         JL_OPTIONS_CHECK_BOUNDS_ON = 1,

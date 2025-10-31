@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.11.7" %}
-{% set sha256 = "a6e96ecbd60057c91dc7a99fc1b37517b361a2df8fd1c46ffdad1d9bce89967d" %}
+{% set version = "1.12.1" %}
+{% set sha256 = "891d16bb91c8a94d5a6355a82c17fa3c2458eb89160d428443a0b2a1b841ea52" %}
 
 
 package:
@@ -19,7 +19,7 @@ source:
     # - patches/disable-testing-Baz.baz.patch  # [linux]
     - patches/julia-libunwind-1.6.patch  # [linux]
     # 1.10.3 links suitesparse cuda libs, patch should not be needed for 1.10.4
-    - patches/suitesparse-no-cuda.patch
+    # - patches/suitesparse-no-cuda.patch
     # suitesparse soname version is hardcoded
     # - patches/suitesparse-soname.patch
     ## these gmp tests return DivideError rather than OutOfMemoryError on cf ci
