@@ -90,9 +90,10 @@ test:
     # see if env vars are defined correctly
     - echo $CONDA_JL_HOME
     - echo $CONDA_JL_CONDA_EXE
+    - echo $CI
     # run julia tests
     # 2024/02/04: remove bitarray and threads due to flakiness on cf ci 
-    - julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "keywordargs", "numbers", "subtype", "char", "strings", "triplequote", "unicode", "intrinsics", "dict", "hashing", "iobuffer", "staged", "offsetarray", "arrayops", "tuple", "reduce", "reducedim", "abstractarray", "intfuncs", "simdloop", "vecelement",
+    - CI=false julia -e 'Base.runtests(["subarray", "core", "compiler", "worlds", "keywordargs", "numbers", "subtype", "char", "strings", "triplequote", "unicode", "intrinsics", "dict", "hashing", "iobuffer", "staged", "offsetarray", "arrayops", "tuple", "reduce", "reducedim", "abstractarray", "intfuncs", "simdloop", "vecelement",
       "rational", "copy", "math", "fastmath", "functional", "iterators", "operators", "ordering", "path", "ccall", "parse", "gmp", "sorting", "spawn", "backtrace", "exceptions", "file", "read", "version", "namedtuple", "mpfr", "broadcast", "complex", "floatapprox", "reflection", "regex", "float16", "combinatorics", "sysinfo",
       "env", "rounding", "ranges", "mod2pi", "euler", "show", "client", "errorshow", "sets", "goto", "llvmcall", "llvmcall2", "ryu", "some", "meta", "stacktraces", "docs", "misc", "stress", "binaryplatforms", "atexit", "enums", "int", "interpreter", "checked", "bitset", "floatfuncs", "precompile", "boundscheck", "error",
       "ambiguous", "cartesian", "osutils", "channels", "iostream", "secretbuffer", "specificity", "reinterpretarray", "syntax", "corelogging", "missing", "asyncmap", "smallarrayshrink", "download", "opaque_closure", "filesystem"]; ncores=ceil(Int, Sys.CPU_THREADS))'                                        # all except stdlib?
