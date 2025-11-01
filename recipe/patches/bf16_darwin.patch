@@ -1,4 +1,4 @@
---- src/runtime_intrinsics.c~	2025-09-28 04:13:13.000000000 +0100
+--- src/runtime_intrinsics.c	2025-09-28 04:13:13.000000000 +0100
 +++ src/runtime_intrinsics.c	2025-11-01 06:14:25.489054133 +0000
 @@ -358,7 +358,8 @@
  #if ((defined(__GNUC__) && __GNUC__ > 12) || \
