@@ -26,6 +26,8 @@ source:
     - patches/disable-some-gmp-tests.patch
     ## for some reason, this new change results in weird printouts in cf ci
     - patches/disable-some-cmdlineargs-test.patch
+    # missing https://github.com/JuliaLang/julia/issues/52067
+    - patches/bf16_darwin.patch 
 
 build:
   skip: true  # [win]
