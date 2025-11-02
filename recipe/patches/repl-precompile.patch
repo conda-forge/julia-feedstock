@@ -1,25 +1,6 @@
-From 09cd83c7e4c867125bd2fdf9815642cdaa402b5c Mon Sep 17 00:00:00 2001
-From: Keno Fischer <keno@juliahub.com>
-Date: Fri, 1 Aug 2025 01:12:16 +0000
-Subject: [PATCH 1/2] Try to remove `readavailable` sections from REPL
- precompile
-
-The `readavailable` is problematic, because it can read partial error
-messages. The `readuntil`s should be safe because they properly fence
-between each prompt. If there is some other reason these readavailables
-are required, let's find out and replace them with proper readuntils
-if we can.
-
-Fixes #59099 (or tries to at least)
----
- stdlib/REPL/src/precompile.jl | 22 +++++++++++++++-------
- 1 file changed, 15 insertions(+), 7 deletions(-)
-
-diff --git a/stdlib/REPL/src/precompile.jl b/stdlib/REPL/src/precompile.jl
-index f9f411566a719..2fa7dafa995fc 100644
---- a/stdlib/REPL/src/precompile.jl
-+++ b/stdlib/REPL/src/precompile.jl
-@@ -24,7 +24,8 @@ function repl_workload()
+--- a/stdlib/REPL/src/precompile.jl	2025-10-17 22:04:28.000000000 +0100
++++ b/stdlib/REPL/src/precompile.jl	2025-11-02 10:27:45.633054683 +0000
+@@ -24,7 +24,8 @@
      function check_errors(out)
          str = String(out)
          if occursin("ERROR:", str) && !any(occursin(e, str) for e in allowed_errors)
@@ -29,7 +10,7 @@ index f9f411566a719..2fa7dafa995fc 100644
              exit(1)
          end
      end
-@@ -40,6 +41,7 @@ function repl_workload()
+@@ -40,6 +41,7 @@
  
      # This is notified as soon as the first prompt appears
      repl_init_event = Base.Event()
@@ -37,7 +18,7 @@ index f9f411566a719..2fa7dafa995fc 100644
  
      atreplinit() do repl
          # Main is closed so we can't evaluate in it, but atreplinit runs at
-@@ -48,6 +50,7 @@ function repl_workload()
+@@ -48,6 +50,7 @@
          t = @async begin
              wait(repl_init_event)
              REPL.activate(REPL.Precompile; interactive_utils=false)
@@ -45,7 +26,7 @@ index f9f411566a719..2fa7dafa995fc 100644
          end
          Base.errormonitor(t)
      end
-@@ -80,6 +83,9 @@ function repl_workload()
+@@ -80,6 +83,9 @@
      """
  
      JULIA_PROMPT = "julia> "
@@ -55,16 +36,21 @@ index f9f411566a719..2fa7dafa995fc 100644
      PKG_PROMPT = "pkg> "
      SHELL_PROMPT = "shell> "
      HELP_PROMPT = "help?> "
-@@ -143,17 +149,20 @@ function repl_workload()
+@@ -142,18 +148,24 @@
+             end
              schedule(repltask)
              # wait for the definitive prompt before start writing to the TTY
-             check_errors(readuntil(output_copy, JULIA_PROMPT))
+-            check_errors(readuntil(output_copy, JULIA_PROMPT))
++            check_errors(readuntil(output_copy, JULIA_PROMPT, keep=true))
 +
 +            # Switch to the activated prompt
 +            notify(repl_init_event)
 +            wait(repl_init_done_event)
 +            write(ptm, "\n")
-+            check_errors(readuntil(output_copy, ACTIVATED_JULIA_PROMPT))
++            # The prompt prints twice - once for the restatement of the input, once
++            # to indicate ready for the new prompt.
++            check_errors(readuntil(output_copy, ACTIVATED_JULIA_PROMPT, keep=true))
++            check_errors(readuntil(output_copy, ACTIVATED_JULIA_PROMPT, keep=true))
 +
              write(debug_output, "\n#### REPL STARTED ####\n")
 -            sleep(0.01)
@@ -80,7 +66,7 @@ index f9f411566a719..2fa7dafa995fc 100644
                  # push our input
                  write(debug_output, "\n#### inputting statement: ####\n$(repr(l))\n####\n")
                  # If the line ends with a CTRL_C, don't write an extra newline, which would
-@@ -166,13 +175,12 @@ function repl_workload()
+@@ -166,13 +178,12 @@
                  strbuf = ""
                  while !eof(output_copy)
                      strbuf *= String(readavailable(output_copy))
@@ -95,36 +81,3 @@ index f9f411566a719..2fa7dafa995fc 100644
                  check_errors(strbuf)
              end
              write(debug_output, "\n#### COMPLETED - Closing REPL ####\n")
-
-From b3046aca64563e91b1626fdf0e5240189845551b Mon Sep 17 00:00:00 2001
-From: Keno Fischer <keno@juliahub.com>
-Date: Fri, 1 Aug 2025 02:47:55 +0000
-Subject: [PATCH 2/2] Try to synchronize the start
-
----
- stdlib/REPL/src/precompile.jl | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/stdlib/REPL/src/precompile.jl b/stdlib/REPL/src/precompile.jl
-index 2fa7dafa995fc..3b69484ee3996 100644
---- a/stdlib/REPL/src/precompile.jl
-+++ b/stdlib/REPL/src/precompile.jl
-@@ -148,13 +148,16 @@ function repl_workload()
-             end
-             schedule(repltask)
-             # wait for the definitive prompt before start writing to the TTY
--            check_errors(readuntil(output_copy, JULIA_PROMPT))
-+            check_errors(readuntil(output_copy, JULIA_PROMPT, keep=true))
- 
-             # Switch to the activated prompt
-             notify(repl_init_event)
-             wait(repl_init_done_event)
-             write(ptm, "\n")
--            check_errors(readuntil(output_copy, ACTIVATED_JULIA_PROMPT))
-+            # The prompt prints twice - once for the restatement of the input, once
-+            # to indicate ready for the new prompt.
-+            check_errors(readuntil(output_copy, ACTIVATED_JULIA_PROMPT, keep=true))
-+            check_errors(readuntil(output_copy, ACTIVATED_JULIA_PROMPT, keep=true))
- 
-             write(debug_output, "\n#### REPL STARTED ####\n")
-             # Input our script
