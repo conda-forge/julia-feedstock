@@ -28,6 +28,8 @@ source:
     - patches/disable-some-cmdlineargs-test.patch
     # missing https://github.com/JuliaLang/julia/issues/52067
     - patches/bf16_darwin.patch 
+    # slow build machine stuttery output fix 
+    - patches/repl-precompile.patch
 
 build:
   skip: true  # [win]
