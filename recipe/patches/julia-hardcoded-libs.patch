@@ -1,24 +1,22 @@
-diff --git a/stdlib/LibGit2_jll/src/LibGit2_jll.jl b/stdlib/LibGit2_jll/src/LibGit2_jll.jl
-index 8d1629e..b5a3b60 100644
---- a/stdlib/LibGit2_jll/src/LibGit2_jll.jl
-+++ b/stdlib/LibGit2_jll/src/LibGit2_jll.jl
-@@ -21,9 +21,9 @@ libgit2_path = ""
+diff -u -r a/julia-1.12.1/stdlib/LibGit2_jll/src/LibGit2_jll.jl b/julia-1.12.1/stdlib/LibGit2_jll/src/LibGit2_jll.jl
+--- a/julia-1.12.1/stdlib/LibGit2_jll/src/LibGit2_jll.jl	2025-09-28 03:13:13.000000000 +0000
++++ b/julia-1.12.1/stdlib/LibGit2_jll/src/LibGit2_jll.jl	2025-10-30 16:19:25.291100020 +0000
+@@ -24,9 +24,9 @@
  if Sys.iswindows()
      const libgit2 = "libgit2.dll"
  elseif Sys.isapple()
--    const libgit2 = "@rpath/libgit2.1.6.dylib"
+-    const libgit2 = "@rpath/libgit2.1.9.dylib"
 +    const libgit2 = "@rpath/libgit2.dylib"
  else
--    const libgit2 = "libgit2.so.1.6"
+-    const libgit2 = "libgit2.so.1.9"
 +    const libgit2 = "libgit2.so"
  end
  
  function __init__()
-diff --git a/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl b/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
-index 69a2fe6..6bd21b3 100644
---- a/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
-+++ b/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
-@@ -21,9 +21,9 @@ libssh2_path = ""
+diff -u -r a/julia-1.12.1/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl b/julia-1.12.1/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl
+--- a/julia-1.12.1/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl	2025-09-28 03:13:13.000000000 +0000
++++ b/julia-1.12.1/stdlib/LibSSH2_jll/src/LibSSH2_jll.jl	2025-10-30 16:19:51.004254965 +0000
+@@ -24,9 +24,9 @@
  if Sys.iswindows()
      const libssh2 = "libssh2.dll"
  elseif Sys.isapple()
@@ -30,35 +28,10 @@ index 69a2fe6..6bd21b3 100644
  end
  
  function __init__()
-diff --git a/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl b/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl
-index a7ca666..62774b9 100644
---- a/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl
-+++ b/stdlib/MbedTLS_jll/src/MbedTLS_jll.jl
-@@ -27,13 +27,13 @@ if Sys.iswindows()
-     const libmbedtls = "libmbedtls.dll"
-     const libmbedx509 = "libmbedx509.dll"
- elseif Sys.isapple()
--    const libmbedcrypto = "@rpath/libmbedcrypto.7.dylib"
--    const libmbedtls = "@rpath/libmbedtls.14.dylib"
--    const libmbedx509 = "@rpath/libmbedx509.1.dylib"
-+    const libmbedcrypto = "@rpath/libmbedcrypto.dylib"
-+    const libmbedtls = "@rpath/libmbedtls.dylib"
-+    const libmbedx509 = "@rpath/libmbedx509.dylib"
- else
--    const libmbedcrypto = "libmbedcrypto.so.7"
--    const libmbedtls = "libmbedtls.so.14"
--    const libmbedx509 = "libmbedx509.so.1"
-+    const libmbedcrypto = "libmbedcrypto.so"
-+    const libmbedtls = "libmbedtls.so"
-+    const libmbedx509 = "libmbedx509.so"
- end
- 
- function __init__()
-diff --git a/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl b/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
-index e0ac190..1f64e24 100644
---- a/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
-+++ b/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
-@@ -20,9 +20,9 @@ libopenlibm_path = ""
+diff -u -r a/julia-1.12.1/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl b/julia-1.12.1/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl
+--- a/julia-1.12.1/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl	2025-07-09 23:06:32.000000000 +0000
++++ b/julia-1.12.1/stdlib/OpenLibm_jll/src/OpenLibm_jll.jl	2025-10-30 16:20:53.489634344 +0000
+@@ -19,9 +19,9 @@
  if Sys.iswindows()
      const libopenlibm = "libopenlibm.dll"
  elseif Sys.isapple()
@@ -70,11 +43,10 @@ index e0ac190..1f64e24 100644
  end
  
  function __init__()
-diff --git a/stdlib/nghttp2_jll/src/nghttp2_jll.jl b/stdlib/nghttp2_jll/src/nghttp2_jll.jl
-index 8b98c76..d926449 100644
---- a/stdlib/nghttp2_jll/src/nghttp2_jll.jl
-+++ b/stdlib/nghttp2_jll/src/nghttp2_jll.jl
-@@ -20,9 +20,9 @@ libnghttp2_path = ""
+diff -u -r a/julia-1.12.1/stdlib/nghttp2_jll/src/nghttp2_jll.jl b/julia-1.12.1/stdlib/nghttp2_jll/src/nghttp2_jll.jl
+--- a/julia-1.12.1/stdlib/nghttp2_jll/src/nghttp2_jll.jl	2025-07-09 23:06:32.000000000 +0000
++++ b/julia-1.12.1/stdlib/nghttp2_jll/src/nghttp2_jll.jl	2025-10-30 16:21:26.834836643 +0000
+@@ -19,9 +19,9 @@
  if Sys.iswindows()
      const libnghttp2 = "libnghttp2-14.dll"
  elseif Sys.isapple()

@@ -1,0 +1,12 @@
+--- src/runtime_intrinsics.c	2025-09-28 04:13:13.000000000 +0100
++++ src/runtime_intrinsics.c	2025-11-01 06:14:25.489054133 +0000
+@@ -358,7 +358,8 @@
+ #if ((defined(__GNUC__) && __GNUC__ > 12) || \
+      (defined(__clang__) && __clang_major__ > 16)) && \
+     !defined(_CPU_PPC64_) && !defined(_CPU_PPC_) && \
+-    !defined(_OS_WINDOWS_) && !defined(_CPU_RISCV64_)
++    !defined(_OS_WINDOWS_) && !defined(_CPU_RISCV64_) && \
++    !defined(_OS_DARWIN_)
+     #define BFLOAT16_TYPE __bf16
+     #define BFLOAT16_TO_UINT16(x) (*(uint16_t*)&(x))
+     #define BFLOAT16_FROM_UINT16(x) (*(__bf16*)&(x))
