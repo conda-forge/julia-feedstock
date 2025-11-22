@@ -37,7 +37,7 @@ libutf8proc:
 mpfr:
 - '4'
 pcre2:
-- '10.46'
+- '10.47'
 perl:
 - 5.32.1
 pin_run_as_build:
