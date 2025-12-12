@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.12.1" %}
-{% set sha256 = "891d16bb91c8a94d5a6355a82c17fa3c2458eb89160d428443a0b2a1b841ea52" %}
+{% set version = "1.12.2" %}
+{% set sha256 = "fcb641075c5465e5de4de15d0c5c73c23517a31fe8e65f8ad89b6a7cc847d46c" %}
 
 
 package:
@@ -27,13 +27,13 @@ source:
     ## for some reason, this new change results in weird printouts in cf ci
     - patches/disable-some-cmdlineargs-test.patch
     # missing https://github.com/JuliaLang/julia/issues/52067
-    - patches/bf16_darwin.patch 
+    - patches/bf16_darwin.patch
     # slow build machine stuttery output fix 
     - patches/repl-precompile.patch
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   binary_relocation: false
   features:
 
