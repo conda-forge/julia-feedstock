@@ -28,8 +28,17 @@ source:
     - patches/disable-some-cmdlineargs-test.patch
     # missing https://github.com/JuliaLang/julia/issues/52067
     - patches/bf16_darwin.patch
-    # slow build machine stuttery output fix 
+    # slow build machine stuttery output fix
     - patches/repl-precompile.patch
+    # backport https://github.com/JuliaLang/julia/pull/60778: `xcrun --show-sdk-version` fails
+    # to resolve the SDK on current CI images, leaving MACOS_PLATFORM_VERSION empty and breaking
+    # the bundled lld at precompile time with "malformed sdk version"
+    - patches/xcrun-sdk-version.patch  # [osx]
+    # v1.12.7 regression from JuliaLang/julia@fde4693fc51 (backport of #61652 + #62152): the
+    # Darwin whole_archive macro now unconditionally passes -force_load, which breaks when
+    # LIBUTF8PROC is a -lutf8proc flag (USE_SYSTEM_UTF8PROC=1) rather than a static archive path,
+    # causing "ld: file not found: -lutf8proc" when linking libjulia-internal
+    - patches/darwin-force-load-system-libs.patch  # [osx]
 
 build:
   skip: true  # [win]
