@@ -29,6 +29,10 @@ source:
     # missing https://github.com/JuliaLang/julia/issues/52067
     - patches/bf16_darwin.patch
     # slow build machine stuttery output fix
+    # TODO: drop this patch (and delete patches/repl-precompile.patch) once we no
+    # longer build julia 1.12.x - stdlib/REPL/src/precompile.jl was rewritten
+    # upstream in 1.13.0 with an equivalent prompt_ready/activate_done event-based
+    # fix, so this no longer applies there (see PR #312)
     - patches/repl-precompile.patch
     # backport https://github.com/JuliaLang/julia/pull/60778: `xcrun --show-sdk-version` fails
     # to resolve the SDK on current CI images, leaving MACOS_PLATFORM_VERSION empty and breaking
