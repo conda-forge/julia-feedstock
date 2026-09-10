@@ -28,8 +28,10 @@ source:
     - patches/disable-some-cmdlineargs-test.patch
     # missing https://github.com/JuliaLang/julia/issues/52067
     - patches/bf16_darwin.patch
-    # slow build machine stuttery output fix
-    - patches/repl-precompile.patch
+    # slow build machine stuttery output fix, superseded upstream in 1.13.0 by a rewrite
+    # of stdlib/REPL/src/precompile.jl using the same prompt_ready/activate_done event
+    # synchronization approach, so this no longer applies (and is no longer needed)
+    # - patches/repl-precompile.patch
     # backport https://github.com/JuliaLang/julia/pull/60778: `xcrun --show-sdk-version` fails
     # to resolve the SDK on current CI images, leaving MACOS_PLATFORM_VERSION empty and breaking
     # the bundled lld at precompile time with "malformed sdk version"
