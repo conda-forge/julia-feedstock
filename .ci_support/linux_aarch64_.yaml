@@ -31,7 +31,7 @@ libgit2:
 libssh2:
 - '1'
 libunwind:
-- '1.6'
+- '1.8'
 libutf8proc:
 - '2.11'
 mpfr:
