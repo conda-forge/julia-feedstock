@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.12.7" %}
-{% set sha256 = "5c7d85b771de3185eeca9fbc2e6173d8bcf6d74f68418622a9e9c43ad752af51" %}
+{% set version = "1.13.0" %}
+{% set sha256 = "6b7f8eecb208b2fffc95cec6713a06c94f51bcbc5616630c30b42bd9221cb26e" %}
 
 
 package:
@@ -28,8 +28,10 @@ source:
     - patches/disable-some-cmdlineargs-test.patch
     # missing https://github.com/JuliaLang/julia/issues/52067
     - patches/bf16_darwin.patch
-    # slow build machine stuttery output fix
-    - patches/repl-precompile.patch
+    # slow build machine stuttery output fix, superseded upstream in 1.13.0 by a rewrite
+    # of stdlib/REPL/src/precompile.jl using the same prompt_ready/activate_done event
+    # synchronization approach, so this no longer applies (and is no longer needed)
+    # - patches/repl-precompile.patch
     # backport https://github.com/JuliaLang/julia/pull/60778: `xcrun --show-sdk-version` fails
     # to resolve the SDK on current CI images, leaving MACOS_PLATFORM_VERSION empty and breaking
     # the bundled lld at precompile time with "malformed sdk version"
