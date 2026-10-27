@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 arpack:
 - '3.9'
 c_compiler:
