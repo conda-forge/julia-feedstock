@@ -29,7 +29,7 @@ gmp:
 libssh2:
 - '1'
 libutf8proc:
-- '2.11'
+- '2.12'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 mpfr:
