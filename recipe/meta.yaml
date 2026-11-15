@@ -83,6 +83,11 @@ requirements:
 
   run:
     - openblas-ilp64
+    # TEMPORARY: libjulia-internal imports the legacy libc++ symbols that libcxx 23.1.5
+    # builds >= 1 no longer export (dlopen fails with "Symbol not found:
+    # __ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv"), so keep the same
+    # pin as in host. See https://github.com/JuliaLang/julia/issues/64968
+    - libcxx 23.1.5 *_0  # [osx]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
