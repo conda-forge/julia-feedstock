@@ -1,6 +1,6 @@
 {% set name = "julia" %}
-{% set version = "1.13.3" %}
-{% set sha256 = "13c4cd067962d6c81fea60081925be9e2992a4204289cc30dee3ddd9692cf31b" %}
+{% set version = "1.13.4" %}
+{% set sha256 = "55bb4442c887a3e99f287b53c467fdd5e78e376344ea2a84865742d13a27d71c" %}
 
 
 package:
@@ -32,10 +32,9 @@ source:
     # of stdlib/REPL/src/precompile.jl using the same prompt_ready/activate_done event
     # synchronization approach, so this no longer applies (and is no longer needed)
     # - patches/repl-precompile.patch
-    # backport https://github.com/JuliaLang/julia/pull/60778: `xcrun --show-sdk-version` fails
-    # to resolve the SDK on current CI images, leaving MACOS_PLATFORM_VERSION empty and breaking
-    # the bundled lld at precompile time with "malformed sdk version"
-    - patches/xcrun-sdk-version.patch  # [osx]
+    # backport of https://github.com/JuliaLang/julia/pull/60778 (`xcrun --sdk macosx
+    # --show-sdk-version`) is already included upstream as of 1.13.4, so the patch no longer applies
+    # - patches/xcrun-sdk-version.patch  # [osx]
     # v1.12.7 regression from JuliaLang/julia@fde4693fc51 (backport of #61652 + #62152): the
     # Darwin whole_archive macro now unconditionally passes -force_load, which breaks when
     # LIBUTF8PROC is a -lutf8proc flag (USE_SYSTEM_UTF8PROC=1) rather than a static archive path,
@@ -44,7 +43,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 0
   binary_relocation: false
   features:
 
@@ -65,6 +64,11 @@ requirements:
     - curl
     - libgit2   # [not osx]
     - libssh2
+    # TEMPORARY: libcxx 23.1.5 rebuilds (build number >= 1, uploaded 2026-11-13) no longer
+    # export std::__1::__vector_base_common<true>::__throw_length_error() and
+    # __basic_string_common<true>::__throw_length_error(), which the prebuilt static libLLVM*.a
+    # need, so libjulia-internal fails to link on osx-64. Build 0 works (see #318).
+    - libcxx 23.1.5 *_0  # [osx]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - mpfr
@@ -79,6 +83,11 @@ requirements:
 
   run:
     - openblas-ilp64
+    # TEMPORARY: libjulia-internal imports the legacy libc++ symbols that libcxx 23.1.5
+    # builds >= 1 no longer export (dlopen fails with "Symbol not found:
+    # __ZNKSt3__120__vector_base_commonILb1EE20__throw_length_errorEv"), so keep the same
+    # pin as in host. See https://github.com/JuliaLang/julia/issues/64968
+    - libcxx 23.1.5 *_0  # [osx]
     - libosxunwind  # [osx]
     - libunwind  # [linux]
     - gmp
